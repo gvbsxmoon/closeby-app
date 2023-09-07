@@ -1,5 +1,4 @@
-import 'package:closeby/components/cb-components/card.dart';
-import 'package:closeby/components/searchbar.dart';
+import 'package:closeby/components/searchbar/searchbar.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,11 +12,7 @@ class MainApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return const MaterialApp(
       home: Scaffold(
-        body: SafeArea(
-            child: Padding(
-          padding: EdgeInsets.all(20.0),
-          child: Searchbar(),
-        )),
+        body: SafeArea(child: Searchbar()),
       ),
     );
   }

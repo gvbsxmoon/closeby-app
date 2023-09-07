@@ -4,12 +4,12 @@ import 'package:flutter/material.dart';
 class AppShadow {
   static List<BoxShadow> lightShadow = [
     BoxShadow(
-      color: AppColor.primaryBlack.withOpacity(0.08),
+      color: AppColor.primaryBlack.withOpacity(0.05),
       offset: const Offset(0, 1),
       blurRadius: 2,
     ),
     BoxShadow(
-      color: AppColor.primaryBlack.withOpacity(0.05),
+      color: AppColor.primaryBlack.withOpacity(0.02),
       offset: const Offset(0, 4),
       blurRadius: 12,
     ),
