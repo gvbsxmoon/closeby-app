@@ -1,8 +1,9 @@
 import 'package:closeby/components/cb-components/card.dart';
+import 'package:closeby/components/searchbar/search_footer.dart';
+import 'package:closeby/components/searchbar/search_prompt.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
 import 'package:closeby/components/cb-components/chips.dart';
 import 'package:closeby/controller/searchbar_controller.dart';
-
 import 'package:flutter/material.dart';
 
 class Searchbar extends StatefulWidget {
@@ -28,82 +29,121 @@ class _SearchbarState extends State<Searchbar> {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(20.0),
-      child: Column(
-        children: [
-          SearchSection(
-            isExpanded: controller.model.isPlaceExpanded,
-            title: 'Where to?',
-            selected: controller.model.selectedPlace,
-            callback: () {
-              setState(() {
-                controller.onPlaceExpanded();
-              });
-            },
-            child: SizedBox(
-              height: 145,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: places.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(left: 20.0, right: index == places.length - 1 ? 20.0 : 0.0),
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          controller.onPlaceSelected(places[index]);
-                        });
-                      },
-                      child: CBCard(
-                          isSelected:
-                              controller.model.selectedPlaceIndex == index,
-                          title: places[index],
-                          asset: 'assets/places/${places[index]}.png'),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 32,
-          ),
-          SearchSection(
-            isExpanded: controller.model.isGoodExpanded,
-            title: 'What?',
-            selected: controller.model.selectedGood,
-            callback: () {
-              setState(() {
-                controller.onGoodExpanded();
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 20.0),
-              child: Wrap(
-                runSpacing: 12,
-                spacing: 12,
-                children: goods
-                    .map(
-                      (e) => GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            controller.onGoodSelected(goods.indexOf(e), e);
-                          });
-                        },
-                        child: CBChips(
-                          isSelected: controller.model.selectedGoodIndex ==
-                              goods.indexOf(e),
-                          title: e,
-                        ),
-                      ),
-                    )
-                    .toList(),
-              ),
-            ),
-          ),
-        ],
+    return AnimatedCrossFade(
+      duration: const Duration(milliseconds: 300),
+      firstChild: searchbarInit(), // Widget quando non espanso
+      secondChild: searchbarSections(), // Widget quando espanso
+      crossFadeState: controller.model.state
+          ? CrossFadeState.showSecond
+          : CrossFadeState.showFirst,
+    );
+  }
+
+  GestureDetector searchbarInit() {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          controller.onSearchbarOpened();
+        });
+      },
+      child: SearchPrompt(
+        place: controller.model.selectedPlace,
+        good: controller.model.selectedGood,
       ),
+    );
+  }
+
+  Column searchbarSections() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Padding(
+          padding: const EdgeInsets.all(20.0),
+          child: Column(
+            children: [
+              SearchSection(
+                isExpanded: controller.model.isPlaceExpanded,
+                title: 'Where to?',
+                selected: controller.model.selectedPlace,
+                callback: () {
+                  setState(() {
+                    controller.onPlaceExpanded();
+                  });
+                },
+                child: SizedBox(
+                  height: 145,
+                  child: ListView.builder(
+                    scrollDirection: Axis.horizontal,
+                    itemCount: places.length,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(
+                            left: 20.0,
+                            right: index == places.length - 1 ? 20.0 : 0.0),
+                        child: GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              controller.onPlaceSelected(index, places[index]);
+                            });
+                          },
+                          child: CBCard(
+                              isSelected:
+                                  controller.model.selectedPlaceIndex == index,
+                              title: places[index],
+                              asset: 'assets/places/${places[index]}.png'),
+                        ),
+                      );
+                    },
+                  ),
+                ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              SearchSection(
+                isExpanded: controller.model.isGoodExpanded,
+                title: 'What?',
+                selected: controller.model.selectedGood,
+                callback: () {
+                  setState(() {
+                    controller.onGoodExpanded();
+                  });
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Wrap(
+                    runSpacing: 12,
+                    spacing: 12,
+                    children: goods
+                        .map(
+                          (e) => GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                controller.onGoodSelected(goods.indexOf(e), e);
+                              });
+                            },
+                            child: CBChips(
+                              isSelected: controller.model.selectedGoodIndex ==
+                                  goods.indexOf(e),
+                              title: e,
+                            ),
+                          ),
+                        )
+                        .toList(),
+                  ),
+                ),
+              ),
+            ],
+          ),
+        ),
+        SearchFooter(
+          onSearch: () {
+            setState(() {
+              controller.onSearchbarClosed();
+            });
+          },
+        ),
+      ],
     );
   }
 }

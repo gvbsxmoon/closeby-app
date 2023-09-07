@@ -3,7 +3,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/shadow.dart';
 import 'package:flutter/material.dart';
 
-class SearchSection extends StatefulWidget {
+class SearchSection extends StatelessWidget {
   const SearchSection({
     super.key,
     required this.title,
@@ -20,27 +20,22 @@ class SearchSection extends StatefulWidget {
   final Function() callback;
 
   @override
-  State<SearchSection> createState() => _SearchSectionState();
-}
-
-class _SearchSectionState extends State<SearchSection> {
-  @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: widget.isExpanded
+      onTap: isExpanded
           ? null
           : () {
-              widget.callback();
+              callback();
             },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: widget.isExpanded ? 20 : 16),
+        padding: EdgeInsets.symmetric(vertical: isExpanded ? 20 : 16),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow:
-              widget.isExpanded ? AppShadow.darkShadow : AppShadow.lightShadow,
-          borderRadius: BorderRadius.circular(widget.isExpanded ? 24 : 16),
+              isExpanded ? AppShadow.darkShadow : AppShadow.lightShadow,
+          borderRadius: BorderRadius.circular(isExpanded ? 24 : 16),
           border: Border.all(color: AppColor.lightGrey),
         ),
         child: Column(
@@ -54,21 +49,21 @@ class _SearchSectionState extends State<SearchSection> {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      widget.title,
+                      title,
                       textAlign: TextAlign.left,
                       style: AppFonts.montserrat(
                           fontWeight: FontWeight.bold,
-                          fontSize: widget.isExpanded ? 24 : 16,
-                          color: widget.isExpanded
+                          fontSize: isExpanded ? 24 : 14,
+                          color: isExpanded
                               ? AppColor.primaryBlack
                               : AppColor.darkGrey),
                     ),
-                    if (!widget.isExpanded && widget.selected.isNotEmpty)
+                    if (!isExpanded && selected.isNotEmpty)
                       Text(
-                        widget.selected,
+                        selected,
                         style: AppFonts.montserrat(
                             fontWeight: FontWeight.bold,
-                            fontSize: 16,
+                            fontSize: 14,
                             color: AppColor.primaryBlack),
                       ),
                   ],
@@ -78,13 +73,13 @@ class _SearchSectionState extends State<SearchSection> {
                 duration: const Duration(milliseconds: 300),
                 curve: Curves
                     .easeInOut, // Puoi personalizzare la curva dell'animazione
-                child: widget.isExpanded
+                child: isExpanded
                     ? const SizedBox(
                         height: 24,
                       )
                     : const SizedBox(), // Widget condizionale da animare
               ),
-              if (widget.isExpanded)
+              if (isExpanded)
                 /* AnimatedOpacity(
                   opacity: widget.isExpanded ? 1 : 0,
                   duration: const Duration(milliseconds: 300),
@@ -93,8 +88,8 @@ class _SearchSectionState extends State<SearchSection> {
               AnimatedCrossFade(
                 duration: const Duration(milliseconds: 300),
                 firstChild: const SizedBox(), // Widget quando non espanso
-                secondChild: widget.child, // Widget quando espanso
-                crossFadeState: widget.isExpanded
+                secondChild: child, // Widget quando espanso
+                crossFadeState: isExpanded
                     ? CrossFadeState.showSecond
                     : CrossFadeState.showFirst,
               ),

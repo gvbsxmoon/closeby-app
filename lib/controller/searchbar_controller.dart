@@ -3,8 +3,9 @@ import 'package:closeby/model/searchbar_model.dart';
 class SearchbarController {
   SearchbarModel model = SearchbarModel.getInstance();
 
-  void onPlaceSelected(String index) {
-    model.selectedPlace = index;
+  void onPlaceSelected(int index, String selected) {
+    model.selectedPlace = selected;
+    model.selectedPlaceIndex = index;
     model.isPlaceExpanded = false;
     model.isGoodExpanded = true;
   }
@@ -16,13 +17,19 @@ class SearchbarController {
 
   void onPlaceExpanded() {
     model.isPlaceExpanded = !model.isPlaceExpanded;
-    print(model.isPlaceExpanded);
     model.isGoodExpanded = false;
   }
 
   void onGoodExpanded() {
     model.isGoodExpanded = !model.isGoodExpanded;
-    print(model.isGoodExpanded);
     model.isPlaceExpanded = false;
+  }
+
+  void onSearchbarOpened() {
+    model.state = true;
+  }
+
+  void onSearchbarClosed() {
+    model.state = false;
   }
 }

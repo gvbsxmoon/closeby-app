@@ -1,13 +1,12 @@
 class SearchbarModel {
-  bool isPlaceExpanded = false;
+  bool state = false;
+  bool isPlaceExpanded = true;
   bool isGoodExpanded = false;
-  String whatTo = "Anything";
-  String whereTo = "Anywhere";
   int selectedPlaceIndex = -1;
   int selectedGoodIndex = -1;
 
-  String selectedPlace = "";
-  String selectedGood = "";
+  String selectedPlace = "Anywhere";
+  String selectedGood = "Anything";
 
   SearchbarModel._privateConstructor();
 
