@@ -1,7 +1,7 @@
 import 'package:closeby/model/searchbar_model.dart';
 
 class SearchbarController {
-  SearchbarModel model = SearchbarModel.getInstance();
+  SearchbarModel model = SearchbarModel();
 
   void onPlaceSelected(int index, String selected) {
     model.selectedPlace = selected;
@@ -31,5 +31,13 @@ class SearchbarController {
 
   void onSearchbarClosed() {
     model.state = false;
+  }
+
+  void onSearchbarClear() {
+    model.state = false;
+    model.selectedPlace = 'Anywhere';
+    model.selectedPlaceIndex = -1;
+    model.selectedGood = 'Anything';
+    model.selectedGoodIndex = -1;
   }
 }

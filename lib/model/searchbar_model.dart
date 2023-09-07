@@ -8,11 +8,11 @@ class SearchbarModel {
   String selectedPlace = "Anywhere";
   String selectedGood = "Anything";
 
-  SearchbarModel._privateConstructor();
+  SearchbarModel._();
 
-  static final SearchbarModel _instance = SearchbarModel._privateConstructor();
+  static final SearchbarModel _instance = SearchbarModel._();
 
-  factory SearchbarModel.getInstance() {
+  factory SearchbarModel() {
     return _instance;
   }
 }

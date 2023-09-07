@@ -142,6 +142,11 @@ class _SearchbarState extends State<Searchbar> {
               controller.onSearchbarClosed();
             });
           },
+          onClear: () {
+            setState(() {
+              controller.onSearchbarClear();
+            });
+          },
         ),
       ],
     );

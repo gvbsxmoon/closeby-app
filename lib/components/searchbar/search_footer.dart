@@ -8,9 +8,11 @@ class SearchFooter extends StatelessWidget {
   const SearchFooter({
     super.key,
     required this.onSearch,
+    required this.onClear,
   });
 
   final Function() onSearch;
+  final Function() onClear;
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +31,9 @@ class SearchFooter extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextButton(
-              onPressed: null,
+              onPressed: () {
+                onClear();
+              },
               child: Text(
                 'Clear all',
                 style: AppFonts.figtree(fontSize: 16),

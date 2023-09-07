@@ -1,4 +1,3 @@
-import 'package:closeby/model/searchbar_model.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/shadow.dart';
