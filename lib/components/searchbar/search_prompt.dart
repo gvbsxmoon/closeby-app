@@ -46,7 +46,7 @@ class _SearchPromptState extends State<SearchPrompt> {
               children: <Widget>[
                 Text(
                   widget.good == 'Anything' ? 'What are you looking for?' : widget.good,
-                  style: AppFonts.montserrat(
+                  style: AppFonts.figtree(
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
                   ),
@@ -56,7 +56,7 @@ class _SearchPromptState extends State<SearchPrompt> {
                 ),
                 Text(
                   '${widget.place} · ${widget.date}',
-                  style: AppFonts.montserrat(
+                  style: AppFonts.figtree(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
                       color: AppColor.secondaryBlack),

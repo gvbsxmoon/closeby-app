@@ -48,7 +48,7 @@ class SearchSection extends StatelessWidget {
                     Text(
                       title,
                       textAlign: TextAlign.left,
-                      style: AppFonts.montserrat(
+                      style: AppFonts.figtree(
                           fontWeight: FontWeight.bold,
                           fontSize: isExpanded ? 24 : 14,
                           color: isExpanded
@@ -58,7 +58,7 @@ class SearchSection extends StatelessWidget {
                     if (!isExpanded && selected.isNotEmpty)
                       Text(
                         selected,
-                        style: AppFonts.montserrat(
+                        style: AppFonts.figtree(
                             fontWeight: FontWeight.bold,
                             fontSize: 14,
                             color: AppColor.primaryBlack),

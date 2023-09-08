@@ -31,20 +31,18 @@ class SearchFooter extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             TextButton(
-              onPressed: () {
-                onClear();
-              },
+              onPressed: onClear,
               child: Text(
                 'Clear all',
-                style: AppFonts.figtree(fontSize: 16),
+                style: AppFonts.figtree(fontSize: 16, fontWeight: FontWeight.w600)
+                    .copyWith(decoration: TextDecoration.underline),
               ),
             ),
             CBButton(
-                title: 'Search',
-                searchIcon: true,
-                onTap: () {
-                  onSearch();
-                }),
+              title: 'Search',
+              searchIcon: true,
+              onTap: onSearch,
+            ),
           ]),
     );
   }

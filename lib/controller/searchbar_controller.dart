@@ -36,6 +36,8 @@ class SearchbarController {
   void onDateSelected(DateTimeRange selected) {
     model.selectedDate =
         '${DateFormat.MMMd().format(selected.start)} - ${DateFormat.MMMd().format(selected.end)}';
+    if (model.isPlaceExpanded) model.isPlaceExpanded = false;
+    if (model.isGoodExpanded) model.isGoodExpanded = false;
   }
 
   // WHEN SOMETHING IS EXPANDED
@@ -49,22 +51,18 @@ class SearchbarController {
     model.isPlaceExpanded = false;
   }
 
-  void onDateExpanded() {
-    model.isGoodExpanded = false;
-  }
-
-  // TRACK SEARCHBAR STATE
-  void onSearchbarOpened() {
+  void onSearchbarOpen() {
     model.state = true;
     model.isPlaceExpanded = true;
   }
 
-  void onSearchbarClosed() {
+  void onSearchbarClose() {
     model.state = false;
   }
 
   void onSearchbarClear() {
-    model.state = false;
+    model.isPlaceExpanded = true;
+    model.isGoodExpanded = false;
     model.selectedPlace = 'Anywhere';
     model.selectedPlaceIndex = -1;
     model.selectedGood = 'Anything';

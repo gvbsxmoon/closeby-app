@@ -13,7 +13,7 @@ class SearchDateSection extends StatelessWidget {
 
   final String title;
   final String selected;
-  final Future<void> Function() onTap;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ class SearchDateSection extends StatelessWidget {
                   Text(
                     title,
                     textAlign: TextAlign.left,
-                    style: AppFonts.montserrat(
+                    style: AppFonts.figtree(
                         fontWeight: FontWeight.bold,
                         fontSize: 14,
                         color: AppColor.darkGrey),
@@ -51,7 +51,7 @@ class SearchDateSection extends StatelessWidget {
                   if (selected.isNotEmpty)
                     Text(
                       selected,
-                      style: AppFonts.montserrat(
+                      style: AppFonts.figtree(
                           fontWeight: FontWeight.bold,
                           fontSize: 14,
                           color: AppColor.primaryBlack),

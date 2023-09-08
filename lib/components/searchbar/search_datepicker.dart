@@ -21,7 +21,7 @@ Future<DateTimeRange?> searchDatePickerRange(BuildContext context) async {
                   color: AppColor.primaryBlack,
                   fontSize: 14,
                   fontWeight: FontWeight.w600),
-              headlineSmall: AppFonts.montserrat(
+              headlineSmall: AppFonts.figtree(
                   fontSize: 24, fontWeight: FontWeight.bold),
             ),
             colorScheme: ColorScheme.dark(

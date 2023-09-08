@@ -2,7 +2,7 @@
             decoration: InputDecoration(
               contentPadding: EdgeInsets.zero,
               hintText: 'Anywhere',
-              hintStyle: AppFonts.montserrat(
+              hintStyle: AppFonts.figtree(
                 fontWeight: FontWeight.w500,
                 fontSize: 14,
               ),

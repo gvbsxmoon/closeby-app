@@ -1,12 +1,16 @@
+import 'package:flutter/material.dart';
+
 import 'package:closeby/components/cb-components/card.dart';
+import 'package:closeby/components/cb-components/chips.dart';
+
+import 'package:closeby/components/searchbar/search_close.dart';
 import 'package:closeby/components/searchbar/search_date_section.dart';
 import 'package:closeby/components/searchbar/search_datepicker.dart';
 import 'package:closeby/components/searchbar/search_footer.dart';
 import 'package:closeby/components/searchbar/search_prompt.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
-import 'package:closeby/components/cb-components/chips.dart';
+
 import 'package:closeby/controller/searchbar_controller.dart';
-import 'package:flutter/material.dart';
 
 class Searchbar extends StatefulWidget {
   const Searchbar({super.key});
@@ -31,11 +35,13 @@ class _SearchbarState extends State<Searchbar> {
 
   Future<void> openDatePicker() async {
     final datePickerRange = await searchDatePickerRange(context);
+
     if (datePickerRange != null) {
       setState(() {
         controller.onDateSelected(datePickerRange);
       });
     }
+    ;
   }
 
   @override
@@ -54,7 +60,7 @@ class _SearchbarState extends State<Searchbar> {
     return GestureDetector(
       onTap: () {
         setState(() {
-          controller.onSearchbarOpened();
+          controller.onSearchbarOpen();
         });
       },
       child: SearchPrompt(
@@ -72,7 +78,15 @@ class _SearchbarState extends State<Searchbar> {
         Padding(
           padding: const EdgeInsets.all(20.0),
           child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
             children: [
+              SearchClose(
+                onTap: () {
+                  setState(() {
+                    controller.onSearchbarClose();
+                  });
+                },
+              ),
               SearchSection(
                 isExpanded: controller.model.isPlaceExpanded,
                 title: 'Where to?',
@@ -111,7 +125,7 @@ class _SearchbarState extends State<Searchbar> {
                 ),
               ),
               const SizedBox(
-                height: 32,
+                height: 16,
               ),
               SearchSection(
                 isExpanded: controller.model.isGoodExpanded,
@@ -148,7 +162,7 @@ class _SearchbarState extends State<Searchbar> {
                 ),
               ),
               const SizedBox(
-                height: 32,
+                height: 16,
               ),
               SearchDateSection(
                 title: 'When?',
@@ -161,7 +175,7 @@ class _SearchbarState extends State<Searchbar> {
         SearchFooter(
           onSearch: () {
             setState(() {
-              controller.onSearchbarClosed();
+              controller.onSearchbarClose();
             });
           },
           onClear: () {
