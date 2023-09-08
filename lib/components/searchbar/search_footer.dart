@@ -3,6 +3,7 @@ import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:closeby/utils/shadow.dart";
 import "package:flutter/material.dart";
+import "package:font_awesome_flutter/font_awesome_flutter.dart";
 
 class SearchFooter extends StatelessWidget {
   const SearchFooter({
@@ -17,15 +18,11 @@ class SearchFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 16),
+      padding: const EdgeInsets.only(top: 16),
       decoration: BoxDecoration(
-          boxShadow: AppShadow.topShadow,
-          gradient: LinearGradient(
-            colors: [AppColor.offWhite, Colors.white],
-            stops: const [0, 1],
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-          )),
+        color: Colors.white,
+        border: Border(top: BorderSide(color: AppColor.lightGrey, width: 1)),
+      ),
       child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           crossAxisAlignment: CrossAxisAlignment.center,
@@ -34,13 +31,14 @@ class SearchFooter extends StatelessWidget {
               onPressed: onClear,
               child: Text(
                 'Clear all',
-                style: AppFonts.figtree(fontSize: 16, fontWeight: FontWeight.w600)
-                    .copyWith(decoration: TextDecoration.underline),
+                style:
+                    AppFonts.figtree(fontSize: 16, fontWeight: FontWeight.w600)
+                        .copyWith(decoration: TextDecoration.underline),
               ),
             ),
             CBButton(
-              title: 'Search',
-              searchIcon: true,
+              label: 'Search',
+              icon: FontAwesomeIcons.magnifyingGlass,
               onTap: onSearch,
             ),
           ]),

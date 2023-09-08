@@ -33,7 +33,7 @@ class SearchSection extends StatelessWidget {
           color: Colors.white,
           boxShadow: isExpanded ? AppShadow.darkShadow : AppShadow.lightShadow,
           borderRadius: BorderRadius.circular(isExpanded ? 24 : 16),
-          border: Border.all(color: AppColor.lightGrey),
+          border: Border.all(color: isExpanded ? AppColor.lightGrey : AppColor.darkGrey),
         ),
         child: Column(
             mainAxisAlignment: MainAxisAlignment.start,

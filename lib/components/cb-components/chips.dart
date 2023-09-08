@@ -27,7 +27,6 @@ class _CBChipsState extends State<CBChips> {
         color: widget.isSelected ? AppColor.primaryBlack : AppColor.offWhite,
         border: Border.all(
           color: widget.isSelected ? AppColor.primaryBlack : AppColor.darkGrey,
-          width: 1,
         ),
       ),
       child: Text(

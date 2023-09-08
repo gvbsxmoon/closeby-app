@@ -1,18 +1,23 @@
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CBButton extends StatefulWidget {
   const CBButton({
     super.key,
-    required this.title,
-    required this.searchIcon,
+    required this.label,
+    this.icon,
+    this.expanded = false,
+    this.outlined = false,
+    this.appleButton = false,
     required this.onTap,
   });
 
-  final String title;
-  final bool searchIcon;
+  final String label;
+  final IconData? icon;
+  final bool expanded;
+  final bool outlined;
+  final bool appleButton;
   final Function() onTap;
 
   @override
@@ -27,30 +32,48 @@ class _CBButtonState extends State<CBButton> {
         widget.onTap();
       },
       child: Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+        padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 14),
+        width: widget.expanded ? double.infinity : null,
         decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(12),
-          color: AppColor.rebeccaPurple,
-        ),
-        child: Row(children: [
-          if (widget.searchIcon)
-            Icon(
-              FontAwesomeIcons.magnifyingGlass,
-              size: 14,
-              color: AppColor.offWhite,
-            ),
-          if (widget.searchIcon)
-            const SizedBox(
-              width: 8,
-            ),
-          Text(
-            widget.title,
-            style: AppFonts.figtree(
-                fontWeight: FontWeight.w600,
-                fontSize: 16,
-                color: AppColor.offWhite),
+          borderRadius: BorderRadius.circular(16),
+          color: widget.outlined
+              ? AppColor.offWhite
+              : widget.appleButton
+                  ? AppColor.primaryBlack
+                  : AppColor.rebeccaPurple,
+          border: Border.all(
+            color: widget.outlined ? AppColor.darkGrey : AppColor.offWhite,
+            width: 2,
           ),
-        ]),
+        ),
+        child: Row(
+            mainAxisAlignment: widget.expanded
+                ? MainAxisAlignment.center
+                : MainAxisAlignment.start,
+            children: [
+              if (widget.icon != null)
+                Icon(
+                  widget.icon,
+                  size: 16,
+                  color: widget.outlined
+                      ? AppColor.rebeccaPurple
+                      : AppColor.offWhite,
+                ),
+              if (widget.icon != null)
+                const SizedBox(
+                  width: 8,
+                ),
+              Text(
+                widget.label,
+                style: AppFonts.figtree(
+                  fontWeight: FontWeight.w600,
+                  fontSize: 18,
+                  color: widget.outlined
+                      ? AppColor.primaryBlack
+                      : AppColor.offWhite,
+                ),
+              ),
+            ]),
       ),
     );
   }

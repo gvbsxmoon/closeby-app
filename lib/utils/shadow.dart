@@ -11,20 +11,20 @@ class AppShadow {
     BoxShadow(
       color: AppColor.primaryBlack.withOpacity(0.02),
       offset: const Offset(0, 4),
-      blurRadius: 12,
+      blurRadius: 8,
     ),
   ];
 
   static List<BoxShadow> darkShadow = [
     BoxShadow(
-      color: AppColor.primaryBlack.withOpacity(0.1),
+      color: AppColor.primaryBlack.withOpacity(0.15),
       offset: const Offset(0, 1),
       blurRadius: 2,
     ),
     BoxShadow(
-      color: AppColor.primaryBlack.withOpacity(0.08),
+      color: AppColor.primaryBlack.withOpacity(0.06),
       offset: const Offset(0, 4),
-      blurRadius: 12,
+      blurRadius: 8,
     ),
   ];
 

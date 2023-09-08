@@ -20,9 +20,10 @@ class SearchClose extends StatelessWidget {
           width: 32,
           height: 32,
           decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              color: Colors.white,
-              border: Border.all(color: AppColor.darkGrey)),
+            shape: BoxShape.circle,
+            color: Colors.white,
+            border: Border.all(color: AppColor.darkGrey, width: 1),
+          ),
           child: const Icon(
             FontAwesomeIcons.xmark,
             size: 16,

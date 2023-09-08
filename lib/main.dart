@@ -1,6 +1,6 @@
-import 'package:closeby/components/cb-components/navbar.dart';
-import 'package:closeby/components/searchbar/searchbar.dart';
-import 'package:closeby/utils/colors.dart';
+import 'package:closeby/components/navbar.dart';
+import 'package:closeby/router/router.dart';
+import 'package:closeby/view/login.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 
@@ -14,20 +14,18 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Theme(
-        data: ThemeData(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent),
-        child: Scaffold(
-          body: Container(
-            color: AppColor.offWhite,
-            child: const SafeArea(
-              child: Searchbar(),
-            ),
-          ),
-          bottomNavigationBar: const CBNavbar(),
+    return GestureDetector(
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: MaterialApp.router(
+        title: 'Closeby',
+        theme: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
         ),
+        debugShowCheckedModeBanner: false,
+        routerConfig: getRouter(),
       ),
     );
   }
