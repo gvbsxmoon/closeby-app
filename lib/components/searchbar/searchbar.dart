@@ -1,4 +1,6 @@
 import 'package:closeby/components/cb-components/card.dart';
+import 'package:closeby/components/searchbar/search_date_section.dart';
+import 'package:closeby/components/searchbar/search_datepicker.dart';
 import 'package:closeby/components/searchbar/search_footer.dart';
 import 'package:closeby/components/searchbar/search_prompt.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
@@ -27,12 +29,21 @@ class _SearchbarState extends State<Searchbar> {
     "Soffitta"
   ];
 
+  Future<void> openDatePicker() async {
+    final datePickerRange = await searchDatePickerRange(context);
+    if (datePickerRange != null) {
+      setState(() {
+        controller.onDateSelected(datePickerRange);
+      });
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnimatedCrossFade(
       duration: const Duration(milliseconds: 300),
-      firstChild: searchbarInit(), // Widget quando non espanso
-      secondChild: searchbarSections(), // Widget quando espanso
+      firstChild: searchbarInit(),
+      secondChild: searchbarSections(),
       crossFadeState: controller.model.state
           ? CrossFadeState.showSecond
           : CrossFadeState.showFirst,
@@ -49,6 +60,7 @@ class _SearchbarState extends State<Searchbar> {
       child: SearchPrompt(
         place: controller.model.selectedPlace,
         good: controller.model.selectedGood,
+        date: controller.model.selectedDate,
       ),
     );
   }
@@ -65,7 +77,7 @@ class _SearchbarState extends State<Searchbar> {
                 isExpanded: controller.model.isPlaceExpanded,
                 title: 'Where to?',
                 selected: controller.model.selectedPlace,
-                callback: () {
+                onTap: () {
                   setState(() {
                     controller.onPlaceExpanded();
                   });
@@ -78,8 +90,9 @@ class _SearchbarState extends State<Searchbar> {
                     itemBuilder: (context, index) {
                       return Padding(
                         padding: EdgeInsets.only(
-                            left: 20.0,
-                            right: index == places.length - 1 ? 20.0 : 0.0),
+                          left: 20.0,
+                          right: index == places.length - 1 ? 20.0 : 0.0,
+                        ),
                         child: GestureDetector(
                           onTap: () {
                             setState(() {
@@ -104,7 +117,7 @@ class _SearchbarState extends State<Searchbar> {
                 isExpanded: controller.model.isGoodExpanded,
                 title: 'What?',
                 selected: controller.model.selectedGood,
-                callback: () {
+                onTap: () {
                   setState(() {
                     controller.onGoodExpanded();
                   });
@@ -119,7 +132,8 @@ class _SearchbarState extends State<Searchbar> {
                           (e) => GestureDetector(
                             onTap: () {
                               setState(() {
-                                controller.onGoodSelected(goods.indexOf(e), e);
+                                controller.onGoodSelected(
+                                    goods.indexOf(e), e, openDatePicker);
                               });
                             },
                             child: CBChips(
@@ -132,6 +146,14 @@ class _SearchbarState extends State<Searchbar> {
                         .toList(),
                   ),
                 ),
+              ),
+              const SizedBox(
+                height: 32,
+              ),
+              SearchDateSection(
+                title: 'When?',
+                selected: controller.model.selectedDate,
+                onTap: openDatePicker,
               ),
             ],
           ),

@@ -1,8 +1,10 @@
 import 'package:closeby/components/searchbar/searchbar.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
-void main() {
+void main() async {
+  await initializeDateFormatting('en_EN', null);
   runApp(const MainApp());
 }
 

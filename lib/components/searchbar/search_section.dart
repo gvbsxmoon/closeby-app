@@ -10,31 +10,28 @@ class SearchSection extends StatelessWidget {
     required this.selected,
     required this.child,
     required this.isExpanded,
-    required this.callback,
+    required this.onTap,
   });
 
   final String title;
   final String selected;
   final Widget child;
   final bool isExpanded;
-  final Function() callback;
+  final Function() onTap;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: isExpanded
           ? null
-          : () {
-              callback();
-            },
+          : onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         width: MediaQuery.of(context).size.width,
         padding: EdgeInsets.symmetric(vertical: isExpanded ? 20 : 16),
         decoration: BoxDecoration(
           color: Colors.white,
-          boxShadow:
-              isExpanded ? AppShadow.darkShadow : AppShadow.lightShadow,
+          boxShadow: isExpanded ? AppShadow.darkShadow : AppShadow.lightShadow,
           borderRadius: BorderRadius.circular(isExpanded ? 24 : 16),
           border: Border.all(color: AppColor.lightGrey),
         ),
@@ -80,19 +77,14 @@ class SearchSection extends StatelessWidget {
                     : const SizedBox(), // Widget condizionale da animare
               ),
               if (isExpanded)
-                /* AnimatedOpacity(
-                  opacity: widget.isExpanded ? 1 : 0,
+                AnimatedCrossFade(
                   duration: const Duration(milliseconds: 300),
-                  child: widget.child,
-                ), */
-              AnimatedCrossFade(
-                duration: const Duration(milliseconds: 300),
-                firstChild: const SizedBox(), // Widget quando non espanso
-                secondChild: child, // Widget quando espanso
-                crossFadeState: isExpanded
-                    ? CrossFadeState.showSecond
-                    : CrossFadeState.showFirst,
-              ),
+                  firstChild: const SizedBox(), // Widget quando non espanso
+                  secondChild: child, // Widget quando espanso
+                  crossFadeState: isExpanded
+                      ? CrossFadeState.showSecond
+                      : CrossFadeState.showFirst,
+                ),
             ]),
       ),
     );

@@ -9,10 +9,12 @@ class SearchPrompt extends StatefulWidget {
     super.key,
     required this.place,
     required this.good,
+    required this.date
   });
 
   final String place;
   final String good;
+  final String date;
 
   @override
   State<SearchPrompt> createState() => _SearchPromptState();
@@ -43,7 +45,7 @@ class _SearchPromptState extends State<SearchPrompt> {
               mainAxisSize: MainAxisSize.min,
               children: <Widget>[
                 Text(
-                  'What are you looking for?',
+                  widget.good == 'Anything' ? 'What are you looking for?' : widget.good,
                   style: AppFonts.montserrat(
                     fontWeight: FontWeight.w600,
                     fontSize: 14,
@@ -53,7 +55,7 @@ class _SearchPromptState extends State<SearchPrompt> {
                   height: 2,
                 ),
                 Text(
-                  '${widget.place} · ${widget.good}',
+                  '${widget.place} · ${widget.date}',
                   style: AppFonts.montserrat(
                       fontWeight: FontWeight.w400,
                       fontSize: 12,
