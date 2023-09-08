@@ -65,7 +65,7 @@ class _CBCheckboxState extends State<CBCheckbox> {
         Text(
           widget.label,
           style: AppFonts.figtree(
-            fontSize: 16,
+            fontSize: 18,
             fontWeight: FontWeight.w400,
           ),
         )

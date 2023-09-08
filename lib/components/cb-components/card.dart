@@ -51,7 +51,7 @@ class _CBCardState extends State<CBCard> {
           padding: const EdgeInsets.only(left: 2.0),
           child: Text(
             widget.title,
-            style: AppFonts.figtree(fontWeight: FontWeight.w600),
+            style: AppFonts.figtree(),
           ),
         )
       ],

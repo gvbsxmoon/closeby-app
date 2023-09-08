@@ -24,7 +24,7 @@ class AppFonts {
   }) {
     return GoogleFonts.figtree(
       textStyle: TextStyle(
-        fontWeight: fontWeight ?? FontWeight.normal,
+        fontWeight: fontWeight ?? FontWeight.w600,
         fontSize: fontSize ?? 14,
         color: color ?? AppColor.primaryBlack,
       ),

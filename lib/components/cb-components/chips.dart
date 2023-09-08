@@ -33,7 +33,6 @@ class _CBChipsState extends State<CBChips> {
         widget.title,
         style: AppFonts.figtree(
           color: widget.isSelected ? AppColor.offWhite : AppColor.primaryBlack,
-          fontWeight: FontWeight.w600,
         ),
       ),
     );

@@ -60,7 +60,6 @@ class SearchSection extends StatelessWidget {
                         selected,
                         style: AppFonts.figtree(
                             fontWeight: FontWeight.bold,
-                            fontSize: 14,
                             color: AppColor.primaryBlack),
                       ),
                   ],

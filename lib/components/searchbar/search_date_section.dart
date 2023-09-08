@@ -45,7 +45,6 @@ class SearchDateSection extends StatelessWidget {
                     textAlign: TextAlign.left,
                     style: AppFonts.figtree(
                         fontWeight: FontWeight.bold,
-                        fontSize: 14,
                         color: AppColor.darkGrey),
                   ),
                   if (selected.isNotEmpty)
@@ -53,7 +52,6 @@ class SearchDateSection extends StatelessWidget {
                       selected,
                       style: AppFonts.figtree(
                           fontWeight: FontWeight.bold,
-                          fontSize: 14,
                           color: AppColor.primaryBlack),
                     ),
                 ],

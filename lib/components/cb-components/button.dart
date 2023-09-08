@@ -66,7 +66,6 @@ class _CBButtonState extends State<CBButton> {
               Text(
                 widget.label,
                 style: AppFonts.figtree(
-                  fontWeight: FontWeight.w600,
                   fontSize: 18,
                   color: widget.outlined
                       ? AppColor.primaryBlack

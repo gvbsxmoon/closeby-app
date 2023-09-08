@@ -32,7 +32,7 @@ class SearchFooter extends StatelessWidget {
               child: Text(
                 'Clear all',
                 style:
-                    AppFonts.figtree(fontSize: 16, fontWeight: FontWeight.w600)
+                    AppFonts.figtree(fontSize: 18)
                         .copyWith(decoration: TextDecoration.underline),
               ),
             ),

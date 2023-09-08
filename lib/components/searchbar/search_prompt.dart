@@ -42,10 +42,7 @@ class _SearchPromptState extends State<SearchPrompt> {
                 widget.good == 'Anything'
                     ? 'What are you looking for?'
                     : widget.good,
-                style: AppFonts.figtree(
-                  fontWeight: FontWeight.w600,
-                  fontSize: 14,
-                ),
+                style: AppFonts.figtree(),
               ),
               const SizedBox(
                 height: 2,

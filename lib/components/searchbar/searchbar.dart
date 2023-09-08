@@ -22,15 +22,15 @@ class Searchbar extends StatefulWidget {
 class _SearchbarState extends State<Searchbar> {
   final SearchbarController controller = SearchbarController();
 
-  List<String> places = ["Milano", "Roma", "Torino", "Napoli"];
+  List<String> places = ["Milan", "Rome", "Turin", "Naples"];
 
   List<String> goods = [
     "Garage",
     "Box",
     "Open spaces",
-    "Spazi professionali",
-    "Seminterrato",
-    "Soffitta"
+    "Professional spaces",
+    "Basement",
+    "Ceiling"
   ];
 
   Future<void> openDatePicker() async {
@@ -97,7 +97,7 @@ class _SearchbarState extends State<Searchbar> {
                 });
               },
               child: SizedBox(
-                height: 145,
+                height: 152,
                 child: ListView.builder(
                   scrollDirection: Axis.horizontal,
                   itemCount: places.length,

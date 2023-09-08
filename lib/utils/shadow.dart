@@ -27,17 +27,4 @@ class AppShadow {
       blurRadius: 8,
     ),
   ];
-
-  static List<BoxShadow> topShadow = [
-    BoxShadow(
-      color: AppColor.primaryBlack.withOpacity(0.05),
-      offset: const Offset(0, -2),
-      blurRadius: 2,
-    ),
-    BoxShadow(
-      color: AppColor.primaryBlack.withOpacity(0.02),
-      offset: const Offset(0, -6),
-      blurRadius: 12,
-    ),
-  ];
 }

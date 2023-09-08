@@ -51,7 +51,7 @@ class _CBTextFieldState extends State<CBTextField> {
       onChanged: (v) => setState(() {
         if (widget.onChanged != null) widget.onChanged!(v);
       }),
-      style: AppFonts.figtree(),
+      style: AppFonts.figtree(fontSize: 18),
       keyboardType: widget.keyboardType,
       obscureText: widget.obscureText,
       decoration: InputDecoration(

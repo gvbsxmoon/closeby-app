@@ -18,11 +18,10 @@ Future<DateTimeRange?> searchDatePickerRange(BuildContext context) async {
             ),
             textTheme: TextTheme(
               bodyMedium: AppFonts.figtree(
-                  color: AppColor.primaryBlack,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600),
-              headlineSmall: AppFonts.figtree(
-                  fontSize: 24, fontWeight: FontWeight.bold),
+                color: AppColor.primaryBlack,
+              ),
+              headlineSmall:
+                  AppFonts.figtree(fontSize: 24, fontWeight: FontWeight.bold),
             ),
             colorScheme: ColorScheme.dark(
               primary: AppColor.primaryBlack,

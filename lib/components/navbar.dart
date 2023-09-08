@@ -22,7 +22,7 @@ class Navbar extends StatelessWidget {
           ),
         ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: const <NavbarItem>[
             NavbarItem(
               icon: FontAwesomeIcons.magnifyingGlass,
@@ -77,7 +77,6 @@ class NavbarItem extends StatelessWidget {
             label,
             style: AppFonts.figtree(
               fontSize: 12,
-              fontWeight: FontWeight.w600,
               color: AppColor.secondaryBlack,
             ),
           )
