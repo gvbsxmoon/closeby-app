@@ -36,7 +36,7 @@ class Navbar extends StatelessWidget {
             ),
             NavbarItem(
               icon: FontAwesomeIcons.circleUser,
-              label: 'Profile',
+              label: 'Log in',
               route: '/profile',
             ),
           ],

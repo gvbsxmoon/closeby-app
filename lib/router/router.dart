@@ -6,6 +6,7 @@ import 'package:go_router/go_router.dart';
 
 GoRouter getRouter() {
   return GoRouter(
+    initialLocation: '/profile',
     routes: <RouteBase>[
       GoRoute(
           path: '/',

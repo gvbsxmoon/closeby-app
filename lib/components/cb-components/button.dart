@@ -47,6 +47,7 @@ class _CBButtonState extends State<CBButton> {
           ),
         ),
         child: Row(
+            crossAxisAlignment: CrossAxisAlignment.center,
             mainAxisAlignment: widget.expanded
                 ? MainAxisAlignment.center
                 : MainAxisAlignment.start,
@@ -54,7 +55,7 @@ class _CBButtonState extends State<CBButton> {
               if (widget.icon != null)
                 Icon(
                   widget.icon,
-                  size: 16,
+                  size: widget.appleButton ? 20 : 16,
                   color: widget.outlined
                       ? AppColor.rebeccaPurple
                       : AppColor.offWhite,

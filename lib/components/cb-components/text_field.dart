@@ -2,6 +2,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class CBTextField extends StatefulWidget {
   const CBTextField({
@@ -12,6 +13,8 @@ class CBTextField extends StatefulWidget {
     this.keyboardType,
     this.controller,
     this.obscureText = false,
+    this.showPassword,
+    this.showEye = false,
     this.inputFormatters = const [],
     this.validator,
   });
@@ -20,6 +23,8 @@ class CBTextField extends StatefulWidget {
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final bool obscureText;
+  final Function()? showPassword;
+  final bool showEye;
   final bool borderColored;
   final TextEditingController? controller;
   final List<TextInputFormatter> inputFormatters;
@@ -51,15 +56,21 @@ class _CBTextFieldState extends State<CBTextField> {
       onChanged: (v) => setState(() {
         if (widget.onChanged != null) widget.onChanged!(v);
       }),
-      style: AppFonts.figtree(fontSize: 18),
+      style: AppFonts.figtree(),
       keyboardType: widget.keyboardType,
       obscureText: widget.obscureText,
       decoration: InputDecoration(
+        suffixIcon: widget.showEye ? GestureDetector(
+          onTap: widget.showPassword,
+          child: Icon(
+            widget.obscureText ? FontAwesomeIcons.eye : FontAwesomeIcons.eyeSlash,
+            color: AppColor.darkGrey,
+          ),
+        ) : null,
         isDense: true,
         filled: true,
         fillColor: AppColor.offWhite,
-        contentPadding:
-            const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+        contentPadding: const EdgeInsets.all(16),
         hintText: widget.hintText,
         enabledBorder: controller.text.isNotEmpty
             ? OutlineInputBorder(
@@ -85,6 +96,10 @@ class _CBTextFieldState extends State<CBTextField> {
         errorMaxLines: 1,
         errorStyle: AppFonts.figtree(
           color: AppColor.salmonPink,
+        ),
+        hintStyle: AppFonts.figtree(
+          color: AppColor.secondaryBlack,
+          fontWeight: FontWeight.w400,
         ),
       ),
     );

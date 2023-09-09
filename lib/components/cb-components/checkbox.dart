@@ -7,6 +7,7 @@ class CBCheckbox extends StatefulWidget {
     super.key,
     required this.checked,
     required this.label,
+    required this.onChanged,
   });
 
   @override
@@ -14,6 +15,7 @@ class CBCheckbox extends StatefulWidget {
 
   final bool checked;
   final String label;
+  final Function() onChanged;
 }
 
 class _CBCheckboxState extends State<CBCheckbox> {
@@ -21,55 +23,63 @@ class _CBCheckboxState extends State<CBCheckbox> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
-      children: [
-        Container(
-          width: 20,
-          height: 20,
-          clipBehavior: Clip.antiAlias,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(5),
-            border: Border.all(
-                color: widget.checked ? AppColor.rebeccaPurple : AppColor.darkGrey,
-                width: 2),
-            color: AppColor.offWhite,
-          ),
-          child: Stack(
-            alignment: AlignmentDirectional.center,
-            children: [
-              AnimatedContainer(
-                duration: const Duration(milliseconds: 50),
-                width: widget.checked ? 22 : 0,
-                height: widget.checked ? 22 : 0,
-                decoration: BoxDecoration(
-                  color: AppColor.rebeccaPurple,
-                  borderRadius: BorderRadius.circular(3),
-                ),
+    return GestureDetector(
+      onTap: widget.onChanged,
+      child: Padding(
+        padding: const EdgeInsets.only(left: 4.0),
+        child: Row(
+          children: [
+            Container(
+              width: 20,
+              height: 20,
+              clipBehavior: Clip.antiAlias,
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5),
+                border: Border.all(
+                    color: widget.checked
+                        ? AppColor.rebeccaPurple
+                        : AppColor.darkGrey,
+                    width: 2),
+                color: AppColor.offWhite,
               ),
-              SizedBox(
-                width: 6,
-                height: 6,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: AppColor.offWhite,
-                    borderRadius: BorderRadius.circular(1),
+              child: Stack(
+                alignment: AlignmentDirectional.center,
+                children: [
+                  AnimatedContainer(
+                    duration: const Duration(milliseconds: 50),
+                    width: widget.checked ? 22 : 0,
+                    height: widget.checked ? 22 : 0,
+                    decoration: BoxDecoration(
+                      color: AppColor.rebeccaPurple,
+                      borderRadius: BorderRadius.circular(3),
+                    ),
                   ),
-                ),
+                  SizedBox(
+                    width: 6,
+                    height: 6,
+                    child: DecoratedBox(
+                      decoration: BoxDecoration(
+                        color: AppColor.offWhite,
+                        borderRadius: BorderRadius.circular(1),
+                      ),
+                    ),
+                  ),
+                ],
               ),
-            ],
-          ),
+            ),
+            const SizedBox(
+              width: 12,
+            ),
+            Text(
+              widget.label,
+              style: AppFonts.figtree(
+                fontWeight: FontWeight.w400,
+                color: AppColor.secondaryBlack
+              ),
+            )
+          ],
         ),
-        const SizedBox(
-          width: 12,
-        ),
-        Text(
-          widget.label,
-          style: AppFonts.figtree(
-            fontSize: 18,
-            fontWeight: FontWeight.w400,
-          ),
-        )
-      ],
+      ),
     );
   }
 }
