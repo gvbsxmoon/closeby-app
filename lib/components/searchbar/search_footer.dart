@@ -18,7 +18,7 @@ class SearchFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16),
+      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 20),
       decoration: BoxDecoration(
         color: Colors.white,
         border: Border(top: BorderSide(color: AppColor.lightGrey, width: 1)),
@@ -32,7 +32,7 @@ class SearchFooter extends StatelessWidget {
               child: Text(
                 'Clear all',
                 style:
-                    AppFonts.figtree(fontSize: 18)
+                    AppFonts.figtree()
                         .copyWith(decoration: TextDecoration.underline),
               ),
             ),

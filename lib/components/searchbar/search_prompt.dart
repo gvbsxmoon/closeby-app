@@ -19,58 +19,60 @@ class SearchPrompt extends StatefulWidget {
 class _SearchPromptState extends State<SearchPrompt> {
   @override
   Widget build(BuildContext context) {
-    return Container(
-      padding: const EdgeInsets.only(left: 20.0, right: 10, bottom: 9, top: 9),
-      alignment: Alignment.topLeft,
-      width: MediaQuery.of(context).size.width,
-      height: 54,
-      decoration: BoxDecoration(
-          color: Colors.white,
-          border: Border.all(color: AppColor.darkGrey),
-          borderRadius: BorderRadius.circular(36),
-          boxShadow: AppShadow.lightShadow),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          Column(
-            mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                widget.good == 'Anything'
-                    ? 'What are you looking for?'
-                    : widget.good,
-                style: AppFonts.figtree(),
-              ),
-              const SizedBox(
-                height: 2,
-              ),
-              Text(
-                '${widget.place} · ${widget.date}',
-                style: AppFonts.figtree(
-                    fontWeight: FontWeight.w400,
-                    fontSize: 12,
-                    color: AppColor.secondaryBlack),
-              )
-            ],
-          ),
-          Container(
-            clipBehavior: Clip.antiAlias,
-            decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: AppColor.darkGrey, width: 1),
+    return Padding(
+      padding: const EdgeInsets.fromLTRB(20, 16, 20, 0),
+      child: Container(
+        padding:
+            const EdgeInsets.only(left: 20.0, right: 10, bottom: 12, top: 12),
+        alignment: Alignment.topLeft,
+        width: MediaQuery.of(context).size.width,
+        height: 60,
+        decoration: BoxDecoration(
+            color: Colors.white,
+            border: Border.all(color: AppColor.lightGrey),
+            borderRadius: BorderRadius.circular(36),
+            boxShadow: AppShadow.darkShadow),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisSize: MainAxisSize.min,
+              children: <Widget>[
+                Text(
+                  widget.good == 'Anything'
+                      ? 'What are you looking for?'
+                      : widget.good,
+                  style: AppFonts.figtree(),
+                ),
+                const SizedBox(
+                  height: 2,
+                ),
+                Text(
+                  '${widget.place} · ${widget.date}',
+                  style: AppFonts.figtree(
+                      fontWeight: FontWeight.w400,
+                      fontSize: 12,
+                      color: AppColor.secondaryBlack),
+                )
+              ],
             ),
-            child: const Padding(
-              padding: EdgeInsets.all(8.0),
-              child: Icon(
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: AppColor.darkGrey, width: 1),
+              ),
+              child: const Icon(
                 FontAwesomeIcons.magnifyingGlass,
                 size: 14,
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

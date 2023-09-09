@@ -42,7 +42,7 @@ class _CBButtonState extends State<CBButton> {
                   ? AppColor.primaryBlack
                   : AppColor.rebeccaPurple,
           border: Border.all(
-            color: widget.outlined ? AppColor.darkGrey : AppColor.offWhite,
+            color: widget.outlined ? AppColor.darkGrey : widget.appleButton ? AppColor.primaryBlack : AppColor.rebeccaPurple,
             width: 2,
           ),
         ),
@@ -67,7 +67,6 @@ class _CBButtonState extends State<CBButton> {
               Text(
                 widget.label,
                 style: AppFonts.figtree(
-                  fontSize: 18,
                   color: widget.outlined
                       ? AppColor.primaryBlack
                       : AppColor.offWhite,

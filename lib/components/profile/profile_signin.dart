@@ -1,4 +1,5 @@
 import 'package:closeby/components/cb-components/button.dart';
+import 'package:closeby/components/cb-components/text_button.dart';
 import 'package:closeby/components/cb-components/text_field.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
@@ -89,28 +90,24 @@ class _ProfileSignInState extends State<ProfileSignIn> {
                   ),
                 ],
               ),
-              const SizedBox(height: 8),
-              Padding(
-                padding: const EdgeInsets.only(left: 4.0),
-                child: Row(
-                  children: [
-                    Text(
-                      'Still not a member?',
+              const SizedBox(height: 32),
+              Row(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 4.0),
+                    child: Text(
+                      "Don't have an account?",
                       style: AppFonts.figtree(
                           color: AppColor.secondaryBlack,
+                          fontSize: 12,
                           fontWeight: FontWeight.w400),
                     ),
-                    TextButton(
-                      onPressed: widget.onSignUp,
-                      child: Text(
-                        'Sign up',
-                        style: AppFonts.figtree(color: AppColor.rebeccaPurple),
-                      ),
-                    ),
-                  ],
-                ),
+                  ),
+                  const SizedBox(width: 4),
+                  CBTextButton(onPressed: widget.onSignUp, label: "Sign up"),
+                ],
               ),
-              const SizedBox(height: 8),
+              const SizedBox(height: 32),
               CBButton(expanded: true, label: "Log in", onTap: _onSubmit)
             ],
           ),

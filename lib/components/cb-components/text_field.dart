@@ -70,7 +70,7 @@ class _CBTextFieldState extends State<CBTextField> {
         isDense: true,
         filled: true,
         fillColor: AppColor.offWhite,
-        contentPadding: const EdgeInsets.all(16),
+        contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
         hintText: widget.hintText,
         enabledBorder: controller.text.isNotEmpty
             ? OutlineInputBorder(

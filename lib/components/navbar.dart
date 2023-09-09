@@ -68,7 +68,8 @@ class NavbarItem extends StatelessWidget {
             padding: const EdgeInsets.only(bottom: 8.0),
             child: Icon(
               icon,
-              color: ModalRoute.of(context)!.settings.name == route
+              size: 18,
+              color: ModalRoute.of(context)?.settings.name == route
                   ? AppColor.rebeccaPurple
                   : AppColor.darkGrey,
             ),

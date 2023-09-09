@@ -28,7 +28,7 @@ class SearchDateSection extends StatelessWidget {
           color: Colors.white,
           boxShadow: AppShadow.lightShadow,
           borderRadius: BorderRadius.circular(16),
-          border: Border.all(color: AppColor.darkGrey),
+          border: Border.all(color: AppColor.lightGrey),
         ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.start,
