@@ -19,6 +19,7 @@
  - lightShadow per quando qualcosa fluttua ma non è "in faccia"
  - darkShadow quando qualcosa è "in faccia"
 # FOCAL POINTS
-- sullo switch della navbar mi da due errori: uno sul settings.name non null e uno sull overflow
+- ho un errore quando passo da pagina di login with email a profile
+- il form di login non viene validato correttamente a causa degli stati
 
 # TODO

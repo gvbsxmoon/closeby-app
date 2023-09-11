@@ -13,6 +13,7 @@ class Favorites extends StatelessWidget {
     return CBWrapper(
       margin: true,
       title: "Favorites",
+      subtitle: "Log in to view your wishlists",
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -20,11 +21,6 @@ class Favorites extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(
-                "Log in to view your wishlists",
-                style: AppFonts.figtree(fontSize: 24),
-              ),
-              const SizedBox(height: 12),
               Text(
                 "You can create, view, or edit wishlists once you’ve logged in.",
                 style: AppFonts.figtree(

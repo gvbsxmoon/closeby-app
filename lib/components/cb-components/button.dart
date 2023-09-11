@@ -55,7 +55,7 @@ class _CBButtonState extends State<CBButton> {
               if (widget.icon != null)
                 Icon(
                   widget.icon,
-                  size: widget.appleButton ? 20 : 16,
+                  size: widget.appleButton ? 22 : 18,
                   color: widget.outlined
                       ? AppColor.rebeccaPurple
                       : AppColor.offWhite,

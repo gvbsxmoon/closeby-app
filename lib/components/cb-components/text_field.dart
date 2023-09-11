@@ -11,6 +11,7 @@ class CBTextField extends StatefulWidget {
     this.onChanged,
     this.borderColored = true,
     this.keyboardType,
+    this.focusNode,
     this.controller,
     this.obscureText = false,
     this.showPassword,
@@ -22,6 +23,7 @@ class CBTextField extends StatefulWidget {
   final String? hintText;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
+  final FocusNode? focusNode;
   final bool obscureText;
   final Function()? showPassword;
   final bool showEye;
@@ -52,6 +54,7 @@ class _CBTextFieldState extends State<CBTextField> {
       cursorColor: AppColor.darkGrey,
       inputFormatters: widget.inputFormatters,
       controller: controller,
+      focusNode: widget.focusNode,
       validator: widget.validator,
       onChanged: (v) => setState(() {
         if (widget.onChanged != null) widget.onChanged!(v);
@@ -60,17 +63,22 @@ class _CBTextFieldState extends State<CBTextField> {
       keyboardType: widget.keyboardType,
       obscureText: widget.obscureText,
       decoration: InputDecoration(
-        suffixIcon: widget.showEye ? GestureDetector(
-          onTap: widget.showPassword,
-          child: Icon(
-            widget.obscureText ? FontAwesomeIcons.eye : FontAwesomeIcons.eyeSlash,
-            color: AppColor.darkGrey,
-          ),
-        ) : null,
+        suffixIcon: widget.showEye
+            ? GestureDetector(
+                onTap: widget.showPassword,
+                child: Icon(
+                  widget.obscureText
+                      ? FontAwesomeIcons.eye
+                      : FontAwesomeIcons.eyeSlash,
+                  color: AppColor.darkGrey,
+                ),
+              )
+            : null,
         isDense: true,
         filled: true,
         fillColor: AppColor.offWhite,
-        contentPadding: const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
+        contentPadding:
+            const EdgeInsets.symmetric(vertical: 18, horizontal: 16),
         hintText: widget.hintText,
         enabledBorder: controller.text.isNotEmpty
             ? OutlineInputBorder(
@@ -96,6 +104,7 @@ class _CBTextFieldState extends State<CBTextField> {
         errorMaxLines: 1,
         errorStyle: AppFonts.figtree(
           color: AppColor.salmonPink,
+          fontSize: 12,
         ),
         hintStyle: AppFonts.figtree(
           color: AppColor.secondaryBlack,

@@ -1,3 +1,4 @@
+import 'package:closeby/model/login_model.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:closeby/utils/colors.dart';
@@ -23,20 +24,20 @@ class Navbar extends StatelessWidget {
         ),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: const <NavbarItem>[
-            NavbarItem(
+          children: <NavbarItem>[
+            const NavbarItem(
               icon: FontAwesomeIcons.magnifyingGlass,
               label: 'Explore',
               route: '/',
             ),
-            NavbarItem(
+            const NavbarItem(
               icon: FontAwesomeIcons.heart,
               label: 'Favorites',
               route: '/favorites',
             ),
             NavbarItem(
               icon: FontAwesomeIcons.circleUser,
-              label: 'Log in',
+              label: LoginModel().isLogged ? 'Profile' : 'Log in',
               route: '/profile',
             ),
           ],

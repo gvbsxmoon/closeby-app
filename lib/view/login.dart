@@ -1,8 +1,7 @@
-import 'package:closeby/components/cb-components/separator.dart';
 import 'package:closeby/components/cb-components/wrapper.dart';
-import 'package:closeby/components/profile/profile_buttons.dart';
-import 'package:closeby/components/profile/profile_signin.dart';
-import 'package:closeby/components/profile/profile_signup.dart';
+import 'package:closeby/components/login/login_buttons.dart';
+import 'package:closeby/components/login/login_card.dart';
+import 'package:closeby/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatefulWidget {
@@ -13,39 +12,27 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  bool _signState = true;
-
-  void _toggleState() {
-    setState(() {
-      _signState = !_signState;
-    });
-  }
+  final LoginController controller = LoginController();
 
   @override
   Widget build(BuildContext context) {
     return CBWrapper(
-      margin: true,
       title: "Profile",
-      child: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Column(
-          children: [
-            AnimatedCrossFade(
-              duration: const Duration(milliseconds: 300),
-              firstChild: ProfileSignIn(
-                onSignUp: _toggleState,
-              ),
-              secondChild: ProfileSignUp(
-                onSignIn: _toggleState,
-              ),
-              crossFadeState: _signState
-                  ? CrossFadeState.showFirst
-                  : CrossFadeState.showSecond,
+      subtitle: "Welcome to Closeby",
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          const Padding(
+            padding: EdgeInsets.fromLTRB(20, 0, 20, 48),
+            child: LoginCard(),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            child: LoginSignServiceButtons(
+              controller: controller,
             ),
-            const CBSeparator(),
-            const ProfileSignServiceButtons()
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

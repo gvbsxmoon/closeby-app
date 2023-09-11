@@ -26,7 +26,7 @@ class SearchClose extends StatelessWidget {
           ),
           child: const Icon(
             FontAwesomeIcons.xmark,
-            size: 16,
+            size: 14,
           ),
         ),
       ),

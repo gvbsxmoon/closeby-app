@@ -8,11 +8,13 @@ class CBWrapper extends StatelessWidget {
     super.key,
     this.margin = false,
     this.title,
+    this.subtitle,
     required this.child,
   });
 
   final bool margin;
   final String? title;
+  final String? subtitle;
   final Widget child;
 
   @override
@@ -21,24 +23,34 @@ class CBWrapper extends StatelessWidget {
       backgroundColor: AppColor.offWhite,
       body: SafeArea(
         bottom: false,
-        child: Container(
-          margin: margin
-              ? const EdgeInsets.symmetric(vertical: 20, horizontal: 16)
-              : null,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              if (title != null)
-                Padding(
-                  padding: const EdgeInsets.only(bottom: 32.0),
-                  child: Text(
-                    title!,
-                    style: AppFonts.figtree(fontSize: 32),
-                  ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            if (title != null)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 32, 20, 16),
+                child: Text(
+                  title!,
+                  style: AppFonts.figtree(fontSize: 32),
                 ),
-              Expanded(child: child),
-            ],
-          ),
+              ),
+            if (subtitle != null)
+              Padding(
+                padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
+                child: Text(
+                  subtitle!,
+                  style: AppFonts.figtree(fontSize: 24),
+                ),
+              ),
+            Expanded(
+              child: Container(
+                margin: margin
+                    ? const EdgeInsets.symmetric(horizontal: 20)
+                    : null,
+                child: child,
+              ),
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: const Navbar(),
