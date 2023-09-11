@@ -5,7 +5,6 @@ import 'package:intl/intl.dart';
 class SearchbarController {
   SearchbarModel model = SearchbarModel();
 
-  // WHEN SOMETHING IS SELECTED
   void onPlaceSelected(int index, String selected) {
     if (index == model.selectedPlaceIndex) {
       model.selectedPlace = 'Anywhere';
@@ -40,7 +39,6 @@ class SearchbarController {
     if (model.isGoodExpanded) model.isGoodExpanded = false;
   }
 
-  // WHEN SOMETHING IS EXPANDED
   void onPlaceExpanded() {
     model.isPlaceExpanded = !model.isPlaceExpanded;
     model.isGoodExpanded = false;

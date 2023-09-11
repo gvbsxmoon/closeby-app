@@ -1,4 +1,3 @@
-import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 import 'package:closeby/components/cb-components/card.dart';

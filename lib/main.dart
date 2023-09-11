@@ -1,6 +1,4 @@
-import 'package:closeby/components/navbar.dart';
 import 'package:closeby/router/router.dart';
-import 'package:closeby/view/login.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/date_symbol_data_local.dart';
 

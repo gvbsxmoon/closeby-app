@@ -16,6 +16,7 @@ dependencies:
   google_fonts: ^4.0.4
   intl: ^0.18.1
   nb_utils: ^6.0.3
+  figma_squircle: ^0.5.3
 
 dev_dependencies:
   flutter_test:

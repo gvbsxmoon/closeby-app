@@ -5,13 +5,13 @@ Color hexToColor(String code) {
 }
 
 class AppColor {
-  static final Color rebeccaPurple = hexToColor("4C4CF6");
-  static final Color salmonPink = hexToColor("FF9577");
-  static final Color babyBlue = hexToColor("BBE4E7");
-  static final Color bananaYellow = hexToColor("F8D576");
-  static final Color primaryBlack = hexToColor("1F1F1F");
-  static final Color secondaryBlack = hexToColor("717171");
-  static final Color offWhite = hexToColor("FAFAFA");
-  static final Color lightGrey = hexToColor("E9E9E9");
-  static final Color darkGrey = hexToColor("D1D1D1");
+  static Color get rebeccaPurple => hexToColor("4C4CF6");
+  static Color get salmonPink => hexToColor("FF9577");
+  static Color get babyBlue => hexToColor("BBE4E7");
+  static Color get bananaYellow => hexToColor("F8D576");
+  static Color get primaryBlack => hexToColor("1F1F1F");
+  static Color get secondaryBlack => hexToColor("717171");
+  static Color get offWhite => hexToColor("FAFAFA");
+  static Color get lightGrey => hexToColor("E9E9E9");
+  static Color get darkGrey => hexToColor("D1D1D1");
 }

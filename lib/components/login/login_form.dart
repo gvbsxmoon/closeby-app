@@ -7,6 +7,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:nb_utils/nb_utils.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -27,7 +28,6 @@ class _LoginFormState extends State<LoginForm> {
   final RegExp _emailRegex = RegExp(
       r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
-  String _confirmPassword = "";
   bool _obscureTextPrimary = true;
   bool _obscureTextSecondary = true;
 
@@ -78,6 +78,12 @@ class _LoginFormState extends State<LoginForm> {
           onChanged: (v) => setState(() {
             widget.controller.model.user.fullName = v;
           }),
+          validator: (value) {
+            if (value != null && value.isEmpty) {
+              return 'Full name is required';
+            }
+            return null;
+          },
         ),
         const SizedBox(height: 16),
         CBTextField(
@@ -98,7 +104,8 @@ class _LoginFormState extends State<LoginForm> {
             ),
           ],
           validator: (value) {
-            if (value != null && value.isNotEmpty && value.length < 8) {
+            if (value != null && value.isEmpty ||
+                value != null && value.isNotEmpty && value.length < 8) {
               return 'Password must be at least 8 characters long';
             }
             return null;
@@ -114,9 +121,6 @@ class _LoginFormState extends State<LoginForm> {
               _obscureTextSecondary = !_obscureTextSecondary;
             });
           },
-          onChanged: (v) => setState(() {
-            _confirmPassword = v;
-          }),
           inputFormatters: [
             FilteringTextInputFormatter.deny(
               RegExp(r'\s'),
@@ -134,30 +138,25 @@ class _LoginFormState extends State<LoginForm> {
   }
 
   void _onSubmit() {
+    //TODO: add api call
     if (_formKey.currentState!.validate()) {
-      print("form validato");
+      print("form validated");
 
       if (!_isEmailSubmitted) {
         setState(() {
           _isEmailSubmitted = true;
-          _isRegistered = true;
+          //_isregistered should be setted by the api
+          _isRegistered = false;
         });
       } else {
+        // sign up sign in
         print(
             "${widget.controller.model.user.email} -- ${widget.controller.model.user.password}");
       }
 
-      /* ScaffoldMessenger.of(context).showSnackBar(
-        SnackBar(
-          backgroundColor: AppColor.rebeccaPurple,
-          content: Text(
-            "Logging in...",
-            style: AppFonts.figtree(color: AppColor.offWhite),
-          ),
-        ),
-      ); */
+      _formKey.currentState!.reset();
     } else {
-      print(_formKey.currentState!.validate());
+      print("form not validated");
     }
   }
 
@@ -177,68 +176,71 @@ class _LoginFormState extends State<LoginForm> {
             size: 18,
             color: AppColor.primaryBlack,
           ),
-          onPressed: () => Navigator.of(context).pop(),
+          onPressed: () => finish(context),
         ),
         scrolledUnderElevation: 0,
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(20),
-        child: Column(
-          children: [
-            Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  CBTextField(
-                    hintText: "Email",
-                    focusNode: _focusNode,
-                    onChanged: (v) => setState(() {
-                      widget.controller.model.user.email = v;
-                    }),
-                    validator: (value) {
-                      if (value != null && value.isEmpty ||
-                          !_emailRegex.hasMatch(value!)) {
-                        return 'Please enter a valid email';
-                      }
-                      return null;
-                    },
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
-                    child: Text(
-                      "Enter the email with which you are signed in or the one with which you intend to sign up.",
-                      style: AppFonts.figtree(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppColor.secondaryBlack),
+      body: Hero(
+        tag: "login-form",
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            children: [
+              Form(
+                key: _formKey,
+                child: Column(
+                  children: [
+                    CBTextField(
+                      hintText: "Email",
+                      focusNode: _focusNode,
+                      onChanged: (v) => setState(() {
+                        widget.controller.model.user.email = v;
+                      }),
+                      validator: (value) {
+                        if (value != null && value.isEmpty ||
+                            !_emailRegex.hasMatch(value!)) {
+                          return 'Please enter a valid email';
+                        }
+                        return null;
+                      },
                     ),
-                  ),
-                  AnimatedCrossFade(
-                    firstChild: _buildAlreadySignedUp(),
-                    secondChild:
-                        _isEmailSubmitted ? _buildNotSignedUp() : Container(),
-                    crossFadeState: _isRegistered
-                        ? CrossFadeState.showFirst
-                        : CrossFadeState.showSecond,
-                    duration: const Duration(milliseconds: 150),
-                  ),
-                ],
+                    Padding(
+                      padding: const EdgeInsets.symmetric(
+                          vertical: 12, horizontal: 4),
+                      child: Text(
+                        "Enter the email with which you are signed in or the one with which you intend to sign up.",
+                        style: AppFonts.figtree(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
+                            color: AppColor.secondaryBlack),
+                      ),
+                    ),
+                    AnimatedCrossFade(
+                      firstChild: _buildAlreadySignedUp(),
+                      secondChild:
+                          _isEmailSubmitted ? _buildNotSignedUp() : Container(),
+                      crossFadeState: _isRegistered
+                          ? CrossFadeState.showFirst
+                          : CrossFadeState.showSecond,
+                      duration: const Duration(milliseconds: 150),
+                    ),
+                  ],
+                ),
               ),
-            ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32.0),
-              child: CBButton(
-                expanded: true,
-                label: _isRegistered
-                    ? "Log in"
-                    : _isEmailSubmitted
-                        ? "Sign up"
-                        : "Continue",
-                onTap: _onSubmit,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 32.0),
+                child: CBButton(
+                  expanded: true,
+                  label: _isRegistered
+                      ? "Log in"
+                      : _isEmailSubmitted
+                          ? "Sign up"
+                          : "Continue",
+                  onTap: _onSubmit,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

@@ -22,9 +22,7 @@ class SearchSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: isExpanded
-          ? null
-          : onTap,
+      onTap: isExpanded ? null : onTap,
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         width: MediaQuery.of(context).size.width,
@@ -67,19 +65,18 @@ class SearchSection extends StatelessWidget {
               ),
               AnimatedSize(
                 duration: const Duration(milliseconds: 300),
-                curve: Curves
-                    .easeInOut, // Puoi personalizzare la curva dell'animazione
+                curve: Curves.easeInOut,
                 child: isExpanded
                     ? const SizedBox(
                         height: 24,
                       )
-                    : const SizedBox(), // Widget condizionale da animare
+                    : const SizedBox(),
               ),
               if (isExpanded)
                 AnimatedCrossFade(
                   duration: const Duration(milliseconds: 300),
-                  firstChild: const SizedBox(), // Widget quando non espanso
-                  secondChild: child, // Widget quando espanso
+                  firstChild: const SizedBox(),
+                  secondChild: child,
                   crossFadeState: isExpanded
                       ? CrossFadeState.showSecond
                       : CrossFadeState.showFirst,

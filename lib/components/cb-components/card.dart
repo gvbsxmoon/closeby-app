@@ -1,5 +1,6 @@
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 
 class CBCard extends StatefulWidget {
@@ -24,24 +25,29 @@ class _CBCardState extends State<CBCard> {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        SizedBox(
+        Container(
           width: 120,
+          clipBehavior: Clip.antiAlias,
+          decoration: ShapeDecoration(
+            shape: SmoothRectangleBorder(
+              borderRadius: SmoothBorderRadius(
+                cornerRadius: 12,
+                cornerSmoothing: 1,
+              ),
+            ),
+          ),
           child: AspectRatio(
             aspectRatio: 1,
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(12),
-              child: ColorFiltered(
-                colorFilter: widget.isSelected
-                    ? const ColorFilter.mode(
-                        Colors.transparent, BlendMode.color)
-                    : ColorFilter.mode(
-                        AppColor.lightGrey,
-                        BlendMode.saturation,
-                      ),
-                child: Image.asset(
-                  widget.asset,
-                  fit: BoxFit.cover,
-                ),
+            child: ColorFiltered(
+              colorFilter: widget.isSelected
+                  ? const ColorFilter.mode(Colors.transparent, BlendMode.color)
+                  : ColorFilter.mode(
+                      AppColor.lightGrey,
+                      BlendMode.saturation,
+                    ),
+              child: Image.asset(
+                widget.asset,
+                fit: BoxFit.cover,
               ),
             ),
           ),

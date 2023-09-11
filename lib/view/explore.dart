@@ -1,4 +1,5 @@
 import 'package:closeby/components/cb-components/wrapper.dart';
+import 'package:closeby/components/searchbar/searchbar.dart';
 import 'package:flutter/material.dart';
 
 class Explore extends StatelessWidget {
@@ -7,7 +8,7 @@ class Explore extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const CBWrapper(
-      child: Center(child: Text("TODO")),
+      child: Searchbar(),
     );
   }
 }
