@@ -7,12 +7,14 @@ class CBWrapper extends StatelessWidget {
   const CBWrapper({
     super.key,
     this.margin = false,
+    this.header,
     this.title,
     this.subtitle,
     required this.child,
   });
 
   final bool margin;
+  final Widget? header;
   final String? title;
   final String? subtitle;
   final Widget child;
@@ -20,15 +22,17 @@ class CBWrapper extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.offWhite,
       body: SafeArea(
         bottom: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            if (header != null) header!,
             if (title != null)
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 32, 20, 16),
+                padding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
                 child: Text(
                   title!,
                   style: AppFonts.figtree(fontSize: 32),
@@ -36,7 +40,7 @@ class CBWrapper extends StatelessWidget {
               ),
             if (subtitle != null)
               Padding(
-                padding: const EdgeInsets.fromLTRB(20, 0, 20, 32),
+                padding: const EdgeInsets.fromLTRB(24, 0, 24, 32),
                 child: Text(
                   subtitle!,
                   style: AppFonts.figtree(fontSize: 24),
@@ -44,9 +48,8 @@ class CBWrapper extends StatelessWidget {
               ),
             Expanded(
               child: Container(
-                margin: margin
-                    ? const EdgeInsets.symmetric(horizontal: 20)
-                    : null,
+                margin:
+                    margin ? const EdgeInsets.symmetric(horizontal: 24) : null,
                 child: child,
               ),
             ),

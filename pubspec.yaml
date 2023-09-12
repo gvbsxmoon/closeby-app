@@ -28,6 +28,7 @@ flutter:
   assets:
     - assets/places/
     - assets/illustrations/
+    - assets/logo.svg
 
 flutter_launcher_icons:
   android: true

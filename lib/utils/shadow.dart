@@ -15,6 +15,32 @@ class AppShadow {
     ),
   ];
 
+  static List<BoxShadow> get mediumShadow => [
+    BoxShadow(
+      color: AppColor.primaryBlack.withOpacity(0.04),
+      offset: const Offset(0, 1),
+      blurRadius: 12,
+    ),
+    BoxShadow(
+      color: AppColor.primaryBlack.withOpacity(0.04),
+      offset: const Offset(0, 2),
+      blurRadius: 16,
+    ),
+  ];
+
+  static List<BoxShadow> get bottomMediumShadow => [
+    BoxShadow(
+      color: AppColor.primaryBlack.withOpacity(1),
+      offset: const Offset(0, 2),
+      blurRadius: 4,
+    ),
+    BoxShadow(
+      color: AppColor.primaryBlack.withOpacity(1),
+      offset: const Offset(0, 2),
+      blurRadius: 6,
+    ),
+  ];
+
   static List<BoxShadow> get darkShadow => [
     BoxShadow(
       color: AppColor.primaryBlack.withOpacity(0.06),

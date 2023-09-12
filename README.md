@@ -1,5 +1,5 @@
 # DESIGN GUIDELINES
-- per le varie viste viene utilizzato il componente wrapper che ha il margin opzionale configurato (20 orizzontale, 16 verticale)
+- per le varie viste viene utilizzato il componente wrapper che ha il margin opzionale configurato (24 orizzontale, 16 verticale)
 - per i padding si possono utilizzare tutti i multipli di 4, al di sopra del valore 8 si ragiona in multipli di 8 (4, 8, 16, 24, 32)
 - la font size puo essere di
   - 32 per large title

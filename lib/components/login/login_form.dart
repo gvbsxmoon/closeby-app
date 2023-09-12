@@ -180,67 +180,64 @@ class _LoginFormState extends State<LoginForm> {
         ),
         scrolledUnderElevation: 0,
       ),
-      body: Hero(
-        tag: "login-form",
-        child: Padding(
-          padding: const EdgeInsets.all(20),
-          child: Column(
-            children: [
-              Form(
-                key: _formKey,
-                child: Column(
-                  children: [
-                    CBTextField(
-                      hintText: "Email",
-                      focusNode: _focusNode,
-                      onChanged: (v) => setState(() {
-                        widget.controller.model.user.email = v;
-                      }),
-                      validator: (value) {
-                        if (value != null && value.isEmpty ||
-                            !_emailRegex.hasMatch(value!)) {
-                          return 'Please enter a valid email';
-                        }
-                        return null;
-                      },
+      body: Padding(
+        padding: const EdgeInsets.all(24),
+        child: Column(
+          children: [
+            Form(
+              key: _formKey,
+              child: Column(
+                children: [
+                  CBTextField(
+                    hintText: "Email",
+                    focusNode: _focusNode,
+                    onChanged: (v) => setState(() {
+                      widget.controller.model.user.email = v;
+                    }),
+                    validator: (value) {
+                      if (value != null && value.isEmpty ||
+                          !_emailRegex.hasMatch(value!)) {
+                        return 'Please enter a valid email';
+                      }
+                      return null;
+                    },
+                  ),
+                  Padding(
+                    padding:
+                        const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
+                    child: Text(
+                      "Enter the email with which you are signed in or the one with which you intend to sign up.",
+                      style: AppFonts.figtree(
+                          fontSize: 12,
+                          fontWeight: FontWeight.w400,
+                          color: AppColor.secondaryBlack),
                     ),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(
-                          vertical: 12, horizontal: 4),
-                      child: Text(
-                        "Enter the email with which you are signed in or the one with which you intend to sign up.",
-                        style: AppFonts.figtree(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
-                            color: AppColor.secondaryBlack),
-                      ),
-                    ),
-                    AnimatedCrossFade(
-                      firstChild: _buildAlreadySignedUp(),
-                      secondChild:
-                          _isEmailSubmitted ? _buildNotSignedUp() : Container(),
-                      crossFadeState: _isRegistered
-                          ? CrossFadeState.showFirst
-                          : CrossFadeState.showSecond,
-                      duration: const Duration(milliseconds: 150),
-                    ),
-                  ],
-                ),
+                  ),
+                  AnimatedCrossFade(
+                    firstChild: _buildAlreadySignedUp(),
+                    secondChild:
+                        _isEmailSubmitted ? _buildNotSignedUp() : Container(),
+                    crossFadeState: _isRegistered
+                        ? CrossFadeState.showFirst
+                        : CrossFadeState.showSecond,
+                    duration: const Duration(milliseconds: 150),
+                  ),
+                ],
               ),
-              Padding(
-                padding: const EdgeInsets.symmetric(vertical: 32.0),
-                child: CBButton(
-                  expanded: true,
-                  label: _isRegistered
-                      ? "Log in"
-                      : _isEmailSubmitted
-                          ? "Sign up"
-                          : "Continue",
-                  onTap: _onSubmit,
-                ),
+            ),
+            Padding(
+              padding: const EdgeInsets.symmetric(vertical: 32.0),
+              child: CBButton(
+                expanded: true,
+                label: _isRegistered
+                    ? "Log in"
+                    : _isEmailSubmitted
+                        ? "Sign up"
+                        : "Continue",
+                onTap: _onSubmit,
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -26,7 +26,7 @@ class SearchSection extends StatelessWidget {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 300),
         width: MediaQuery.of(context).size.width,
-        padding: EdgeInsets.symmetric(vertical: isExpanded ? 20 : 16),
+        padding: EdgeInsets.symmetric(vertical: isExpanded ? 24 : 16),
         decoration: BoxDecoration(
           color: Colors.white,
           boxShadow: isExpanded ? AppShadow.darkShadow : AppShadow.lightShadow,
@@ -38,7 +38,7 @@ class SearchSection extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   crossAxisAlignment: CrossAxisAlignment.center,

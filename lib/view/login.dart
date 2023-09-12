@@ -23,11 +23,11 @@ class _LoginState extends State<Login> {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           const Padding(
-            padding: EdgeInsets.fromLTRB(20, 0, 20, 48),
+            padding: EdgeInsets.fromLTRB(24, 0, 24, 48),
             child: LoginCard(),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 24),
             child: LoginSignServiceButtons(
               controller: controller,
             ),
