@@ -20,7 +20,8 @@ class SearchInput extends StatefulWidget {
   State<SearchInput> createState() => _SearchInputState();
 }
 
-class _SearchInputState extends State<SearchInput> {
+class _SearchInputState extends State<SearchInput>
+    with SingleTickerProviderStateMixin {
   final SearchbarController controller = SearchbarController();
 
   List<String> places = ["Milan", "Rome", "Turin", "Naples"];
@@ -33,6 +34,37 @@ class _SearchInputState extends State<SearchInput> {
     "Basement",
     "Ceiling"
   ];
+
+  late AnimationController _controller;
+  late Animation<double> _opacityAnimation;
+
+  @override
+  void initState() {
+    super.initState();
+
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(milliseconds: 300),
+    );
+
+    _opacityAnimation = Tween<double>(
+      begin: 0.0,
+      end: 1.0,
+    ).animate(
+      CurvedAnimation(
+        parent: _controller,
+        curve: const Interval(0.5, 1.0, curve: Curves.easeOut),
+      ),
+    );
+
+    _controller.forward();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   Future<void> openDatePicker() async {
     final datePickerRange = await searchDatePickerRange(context);
@@ -70,94 +102,103 @@ class _SearchInputState extends State<SearchInput> {
     );
   }
 
-  Padding searchbarSections() {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
-      child: Column(
-        children: [
-          SearchSection(
-            isExpanded: controller.model.isPlaceExpanded,
-            title: 'Where to?',
-            selected: controller.model.selectedPlace,
-            onTap: () {
-              setState(() {
-                controller.onPlaceExpanded();
-              });
-            },
-            child: SizedBox(
-              height: 152,
-              child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: places.length,
-                itemBuilder: (context, index) {
-                  return Padding(
-                    padding: EdgeInsets.only(
-                      left: 24.0,
-                      right: index == places.length - 1 ? 24.0 : 0.0,
-                    ),
-                    child: GestureDetector(
-                      onTap: () {
-                        setState(() {
-                          controller.onPlaceSelected(index, places[index]);
-                        });
-                      },
-                      child: CBCard(
-                          isSelected:
-                              controller.model.selectedPlaceIndex == index,
-                          title: places[index],
-                          asset: 'assets/places/${places[index]}.png'),
-                    ),
-                  );
-                },
-              ),
-            ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          SearchSection(
-            isExpanded: controller.model.isGoodExpanded,
-            title: 'What?',
-            selected: controller.model.selectedGood,
-            onTap: () {
-              setState(() {
-                controller.onGoodExpanded();
-              });
-            },
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
-              child: Wrap(
-                runSpacing: 12,
-                spacing: 12,
-                children: goods
-                    .map(
-                      (e) => GestureDetector(
+  AnimatedBuilder searchbarSections() {
+    return AnimatedBuilder(
+      animation: _opacityAnimation,
+      builder: (context, child) {
+        return Opacity(
+          opacity: _opacityAnimation.value,
+          child: child,
+        );
+      },
+      child: Padding(
+        padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 24),
+        child: Column(
+          children: [
+            SearchSection(
+              isExpanded: controller.model.isPlaceExpanded,
+              title: 'Where to?',
+              selected: controller.model.selectedPlace,
+              onTap: () {
+                setState(() {
+                  controller.onPlaceExpanded();
+                });
+              },
+              child: SizedBox(
+                height: 152,
+                child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: places.length,
+                  itemBuilder: (context, index) {
+                    return Padding(
+                      padding: EdgeInsets.only(
+                        left: 24.0,
+                        right: index == places.length - 1 ? 24.0 : 0.0,
+                      ),
+                      child: GestureDetector(
                         onTap: () {
                           setState(() {
-                            controller.onGoodSelected(
-                                goods.indexOf(e), e, openDatePicker);
+                            controller.onPlaceSelected(index, places[index]);
                           });
                         },
-                        child: CBChips(
-                          isSelected: controller.model.selectedGoodIndex ==
-                              goods.indexOf(e),
-                          title: e,
-                        ),
+                        child: CBCard(
+                            isSelected:
+                                controller.model.selectedPlaceIndex == index,
+                            title: places[index],
+                            asset: 'assets/places/${places[index]}.png'),
                       ),
-                    )
-                    .toList(),
+                    );
+                  },
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 16,
-          ),
-          SearchDateSection(
-            title: 'When?',
-            selected: controller.model.selectedDate,
-            onTap: openDatePicker,
-          ),
-        ],
+            const SizedBox(
+              height: 16,
+            ),
+            SearchSection(
+              isExpanded: controller.model.isGoodExpanded,
+              title: 'What?',
+              selected: controller.model.selectedGood,
+              onTap: () {
+                setState(() {
+                  controller.onGoodExpanded();
+                });
+              },
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 24.0),
+                child: Wrap(
+                  runSpacing: 12,
+                  spacing: 12,
+                  children: goods
+                      .map(
+                        (e) => GestureDetector(
+                          onTap: () {
+                            setState(() {
+                              controller.onGoodSelected(
+                                  goods.indexOf(e), e, openDatePicker);
+                            });
+                          },
+                          child: CBChips(
+                            isSelected: controller.model.selectedGoodIndex ==
+                                goods.indexOf(e),
+                            title: e,
+                          ),
+                        ),
+                      )
+                      .toList(),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 16,
+            ),
+            SearchDateSection(
+              title: 'When?',
+              selected: controller.model.selectedDate,
+              onTap: openDatePicker,
+            ),
+          ],
+        ),
       ),
     );
   }

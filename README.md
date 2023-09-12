@@ -19,7 +19,6 @@
  - lightShadow per quando qualcosa fluttua ma non è "in faccia"
  - darkShadow quando qualcosa è "in faccia"
 # FOCAL POINTS
-- ho un errore quando passo da pagina di login with email a profile
-- il form di login non viene validato correttamente a causa degli stati
+- non si aggiorna lo stato della searchbar sto impazzendo
 
 # TODO
