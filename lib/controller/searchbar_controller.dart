@@ -59,12 +59,6 @@ class SearchbarController {
   }
 
   void onSearchbarClear() {
-    print('clear');
-    print(model.selectedPlace +
-        ' ' +
-        model.selectedGood +
-        ' ' +
-        model.selectedDate);
     model.isPlaceExpanded = true;
     model.isGoodExpanded = false;
     model.selectedPlace = 'Anywhere';
@@ -72,10 +66,5 @@ class SearchbarController {
     model.selectedGood = 'Anything';
     model.selectedGoodIndex = -1;
     model.selectedDate = 'Anytime';
-    print(model.selectedPlace +
-        ' ' +
-        model.selectedGood +
-        ' ' +
-        model.selectedDate);
   }
 }

@@ -1,5 +1,6 @@
 import 'package:closeby/components/searchbar/search_input.dart';
 import 'package:closeby/controller/searchbar_controller.dart';
+import 'package:closeby/model/searchbar_model.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/shadow.dart';
@@ -17,6 +18,8 @@ class Searchbar extends StatefulWidget {
 class _SearchbarState extends State<Searchbar> {
   final SearchbarController controller = SearchbarController();
 
+  SearchbarModel model = SearchbarModel();
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -24,7 +27,8 @@ class _SearchbarState extends State<Searchbar> {
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
         child: Container(
-          padding: const EdgeInsets.only(left: 16, right: 10, bottom: 0, top: 0),
+          padding:
+              const EdgeInsets.only(left: 16, right: 10, bottom: 0, top: 0),
           alignment: Alignment.center,
           width: MediaQuery.of(context).size.width,
           height: 56,
@@ -44,13 +48,13 @@ class _SearchbarState extends State<Searchbar> {
                 mainAxisSize: MainAxisSize.min,
                 children: <Widget>[
                   Text(
-                    controller.model.selectedGood == 'Anything'
+                    model.selectedGood == 'Anything'
                         ? 'What are you looking for?'
-                        : controller.model.selectedGood,
+                        : model.selectedGood,
                     style: AppFonts.figtree(),
                   ),
                   Text(
-                    '${controller.model.selectedPlace} · ${controller.model.selectedDate}',
+                    '${model.selectedPlace} · ${model.selectedDate}',
                     style: AppFonts.figtree(
                         fontWeight: FontWeight.w400,
                         fontSize: 12,
