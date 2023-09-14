@@ -1,7 +1,9 @@
+import 'package:get/get.dart';
+
 class User {
-  String fullName = "";
-  String email = "";
-  String password = "";
+  RxString fullName = "".obs;
+  RxString email = "".obs;
+  RxString password = "".obs;
 
   User._();
 

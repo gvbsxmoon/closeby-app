@@ -7,7 +7,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'package:get/route_manager.dart';
 
 class LoginForm extends StatefulWidget {
   const LoginForm({
@@ -58,9 +58,7 @@ class _LoginFormState extends State<LoginForm> {
             _obscureTextPrimary = !_obscureTextPrimary;
           });
         },
-        onChanged: (v) => setState(() {
-          widget.controller.model.user.password = v;
-        }),
+        onChanged: (v) => widget.controller.model.user.password.value = v,
         inputFormatters: [
           FilteringTextInputFormatter.deny(
             RegExp(r'\s'),
@@ -75,9 +73,7 @@ class _LoginFormState extends State<LoginForm> {
       children: [
         CBTextField(
           hintText: "Full name",
-          onChanged: (v) => setState(() {
-            widget.controller.model.user.fullName = v;
-          }),
+          onChanged: (v) => widget.controller.model.user.fullName.value = v,
           validator: (value) {
             if (value != null && value.isEmpty) {
               return 'Full name is required';
@@ -95,9 +91,7 @@ class _LoginFormState extends State<LoginForm> {
               _obscureTextPrimary = !_obscureTextPrimary;
             });
           },
-          onChanged: (v) => setState(() {
-            widget.controller.model.user.password = v;
-          }),
+          onChanged: (v) => widget.controller.model.user.password.value = v,
           inputFormatters: [
             FilteringTextInputFormatter.deny(
               RegExp(r'\s'),
@@ -176,7 +170,7 @@ class _LoginFormState extends State<LoginForm> {
             size: 18,
             color: AppColor.primaryBlack,
           ),
-          onPressed: () => finish(context),
+          onPressed: () => Get.back(),
         ),
         scrolledUnderElevation: 0,
       ),
@@ -191,9 +185,8 @@ class _LoginFormState extends State<LoginForm> {
                   CBTextField(
                     hintText: "Email",
                     focusNode: _focusNode,
-                    onChanged: (v) => setState(() {
-                      widget.controller.model.user.email = v;
-                    }),
+                    onChanged: (v) =>
+                        widget.controller.model.user.email.value = v,
                     validator: (value) {
                       if (value != null && value.isEmpty ||
                           !_emailRegex.hasMatch(value!)) {

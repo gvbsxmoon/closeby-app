@@ -1,3 +1,4 @@
+import 'package:closeby/controller/searchbar_controller.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
 
@@ -10,8 +11,7 @@ import 'package:closeby/components/searchbar/search_datepicker.dart';
 import 'package:closeby/components/searchbar/search_footer.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
 
-import 'package:closeby/controller/searchbar_controller.dart';
-import 'package:nb_utils/nb_utils.dart';
+import 'package:get/get.dart';
 
 class SearchInput extends StatefulWidget {
   const SearchInput({super.key});
@@ -22,7 +22,7 @@ class SearchInput extends StatefulWidget {
 
 class _SearchInputState extends State<SearchInput>
     with SingleTickerProviderStateMixin {
-  final SearchbarController controller = SearchbarController();
+  final SearchbarController controller = Get.put(SearchbarController());
 
   List<String> places = ["Milan", "Rome", "Turin", "Naples"];
 
@@ -35,14 +35,14 @@ class _SearchInputState extends State<SearchInput>
     "Ceiling"
   ];
 
-  late AnimationController _controller;
+  late AnimationController _animationController;
   late Animation<double> _opacityAnimation;
 
   @override
   void initState() {
     super.initState();
 
-    _controller = AnimationController(
+    _animationController = AnimationController(
       vsync: this,
       duration: const Duration(milliseconds: 300),
     );
@@ -52,52 +52,41 @@ class _SearchInputState extends State<SearchInput>
       end: 1.0,
     ).animate(
       CurvedAnimation(
-        parent: _controller,
+        parent: _animationController,
         curve: const Interval(0.5, 1.0, curve: Curves.easeOut),
       ),
     );
 
-    _controller.forward();
+    _animationController.forward();
   }
 
   @override
   void dispose() {
-    _controller.dispose();
+    _animationController.dispose();
     super.dispose();
   }
 
   Future<void> openDatePicker() async {
     final datePickerRange = await searchDatePickerRange(context);
 
-    if (datePickerRange != null) {
-      setState(() {
-        controller.onDateSelected(datePickerRange);
-      });
-    }
+    if (datePickerRange != null) controller.onDateSelected(datePickerRange);
   }
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.offWhite,
-        foregroundColor: AppColor.primaryBlack,
-        leading: SearchClose(onTap: () => finish(context)),
-        elevation: 0,
-      ),
-      body: searchbarSections(),
-      bottomNavigationBar: SearchFooter(
-        onSearch: () {
-          setState(() {
-            controller.onSearchbarClose();
-            finish(context);
-          });
-        },
-        onClear: () {
-          setState(() {
-            controller.onSearchbarClear();
-          });
-        },
+    return Obx(
+      () => Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColor.offWhite,
+          foregroundColor: AppColor.primaryBlack,
+          leading: SearchClose(onTap: () => Get.back()),
+          elevation: 0,
+        ),
+        body: searchbarSections(),
+        bottomNavigationBar: SearchFooter(
+          onSearch: () => Get.back(),
+          onClear: () => controller.onSearchbarClear(),
+        ),
       ),
     );
   }
@@ -116,14 +105,10 @@ class _SearchInputState extends State<SearchInput>
         child: Column(
           children: [
             SearchSection(
-              isExpanded: controller.model.isPlaceExpanded,
+              isExpanded: controller.model.isPlaceExpanded.value,
               title: 'Where to?',
-              selected: controller.model.selectedPlace,
-              onTap: () {
-                setState(() {
-                  controller.onPlaceExpanded();
-                });
-              },
+              selected: controller.model.selectedPlace.value,
+              onTap: () => controller.onPlaceExpanded(),
               child: SizedBox(
                 height: 152,
                 child: ListView.builder(
@@ -136,11 +121,8 @@ class _SearchInputState extends State<SearchInput>
                         right: index == places.length - 1 ? 24.0 : 0.0,
                       ),
                       child: GestureDetector(
-                        onTap: () {
-                          setState(() {
-                            controller.onPlaceSelected(index, places[index]);
-                          });
-                        },
+                        onTap: () =>
+                            controller.onPlaceSelected(index, places[index]),
                         child: CBCard(
                             isSelected:
                                 controller.model.selectedPlaceIndex == index,
@@ -156,14 +138,10 @@ class _SearchInputState extends State<SearchInput>
               height: 16,
             ),
             SearchSection(
-              isExpanded: controller.model.isGoodExpanded,
+              isExpanded: controller.model.isGoodExpanded.value,
               title: 'What?',
-              selected: controller.model.selectedGood,
-              onTap: () {
-                setState(() {
-                  controller.onGoodExpanded();
-                });
-              },
+              selected: controller.model.selectedGood.value,
+              onTap: () => controller.onGoodExpanded(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
                 child: Wrap(
@@ -172,12 +150,8 @@ class _SearchInputState extends State<SearchInput>
                   children: goods
                       .map(
                         (e) => GestureDetector(
-                          onTap: () {
-                            setState(() {
-                              controller.onGoodSelected(
-                                  goods.indexOf(e), e, openDatePicker);
-                            });
-                          },
+                          onTap: () => controller.onGoodSelected(
+                              goods.indexOf(e), e, openDatePicker),
                           child: CBChips(
                             isSelected: controller.model.selectedGoodIndex ==
                                 goods.indexOf(e),
@@ -194,7 +168,7 @@ class _SearchInputState extends State<SearchInput>
             ),
             SearchDateSection(
               title: 'When?',
-              selected: controller.model.selectedDate,
+              selected: controller.model.selectedDate.value,
               onTap: openDatePicker,
             ),
           ],

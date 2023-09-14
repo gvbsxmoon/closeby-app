@@ -3,7 +3,7 @@ import "package:closeby/components/cb-components/wrapper.dart";
 import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
-import "package:go_router/go_router.dart";
+import "package:get/route_manager.dart";
 
 class Favorites extends StatelessWidget {
   const Favorites({super.key});
@@ -32,7 +32,7 @@ class Favorites extends StatelessWidget {
           CBButton(
               label: 'Log in',
               expanded: true,
-              onTap: () => context.go('/profile'))
+              onTap: () => Get.toNamed('/favorites'))
         ],
       ),
     );

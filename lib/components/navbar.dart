@@ -3,7 +3,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/route_manager.dart';
 
 class Navbar extends StatelessWidget {
   const Navbar({
@@ -37,7 +37,7 @@ class Navbar extends StatelessWidget {
             ),
             NavbarItem(
               icon: FontAwesomeIcons.circleUser,
-              label: LoginModel().isLogged ? 'Profile' : 'Log in',
+              label: LoginModel.isLogged ? 'Profile' : 'Log in',
               route: '/profile',
             ),
           ],
@@ -62,7 +62,7 @@ class NavbarItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => context.go(route),
+      onTap: () => Get.toNamed(route),
       child: Column(
         children: [
           Padding(

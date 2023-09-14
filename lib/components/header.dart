@@ -15,7 +15,7 @@ class Header extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(28, 16, 24, 0),
+          padding: const EdgeInsets.fromLTRB(28, 16, 24, 4),
           child: Row(
             children: [
               SvgPicture.asset(
@@ -46,7 +46,7 @@ class Header extends StatelessWidget {
             ],
           ),
         ),
-        const Searchbar()
+        Searchbar(),
       ],
     );
   }

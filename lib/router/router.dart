@@ -1,28 +1,14 @@
 import 'package:closeby/view/explore.dart';
 import 'package:closeby/view/favorites.dart';
 import 'package:closeby/view/login.dart';
-import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
+import 'package:get/route_manager.dart';
 
-GoRouter getRouter() {
-  return GoRouter(
-    initialLocation: '/',
-    routes: <RouteBase>[
-      GoRoute(
-          path: '/',
-          builder: (BuildContext context, GoRouterState state) {
-            return const Explore();
-          }),
-      GoRoute(
-          path: '/favorites',
-          builder: (BuildContext context, GoRouterState state) {
-            return const Favorites();
-          }),
-      GoRoute(
-          path: '/profile',
-          builder: (BuildContext context, GoRouterState state) {
-            return const Login();
-          })
-    ],
-  );
+class AppRouter {
+  static List<GetPage> get routes => <GetPage>[
+        GetPage(name: '/', page: () => const Explore()),
+        GetPage(name: '/favorites', page: () => const Favorites()),
+        GetPage(name: '/profile', page: () => const Login())
+      ];
+
+  static String get initialRoute => "/";
 }

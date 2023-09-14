@@ -3,6 +3,7 @@ import 'package:closeby/components/login/login_buttons.dart';
 import 'package:closeby/components/login/login_card.dart';
 import 'package:closeby/controller/login_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Login extends StatefulWidget {
   const Login({super.key});
@@ -12,7 +13,7 @@ class Login extends StatefulWidget {
 }
 
 class _LoginState extends State<Login> {
-  final LoginController controller = LoginController();
+  final LoginController controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {

@@ -1,15 +1,15 @@
+import 'package:get/get.dart';
+
 class SearchbarModel {
-  bool state = false;
+  RxBool isPlaceExpanded = true.obs;
+  RxBool isGoodExpanded = false.obs;
 
-  bool isPlaceExpanded = true;
-  bool isGoodExpanded = false;
+  int selectedPlaceIndex = -1.obs;
+  int selectedGoodIndex = -1.obs;
 
-  int selectedPlaceIndex = -1;
-  int selectedGoodIndex = -1;
-
-  String selectedPlace = "Anywhere";
-  String selectedGood = "Anything";
-  String selectedDate = "Anytime";
+  RxString selectedPlace = "Anywhere".obs;
+  RxString selectedGood = "Anything".obs;
+  RxString selectedDate = "Anytime".obs;
 
   SearchbarModel._();
 
