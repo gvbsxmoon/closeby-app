@@ -58,7 +58,7 @@ class _LoginFormState extends State<LoginForm> {
             _obscureTextPrimary = !_obscureTextPrimary;
           });
         },
-        onChanged: (v) => widget.controller.model.user.password.value = v,
+        onChanged: (v) => widget.controller.model.user.password = v,
         inputFormatters: [
           FilteringTextInputFormatter.deny(
             RegExp(r'\s'),
@@ -73,7 +73,7 @@ class _LoginFormState extends State<LoginForm> {
       children: [
         CBTextField(
           hintText: "Full name",
-          onChanged: (v) => widget.controller.model.user.fullName.value = v,
+          onChanged: (v) => widget.controller.model.user.fullName = v,
           validator: (value) {
             if (value != null && value.isEmpty) {
               return 'Full name is required';
@@ -91,7 +91,7 @@ class _LoginFormState extends State<LoginForm> {
               _obscureTextPrimary = !_obscureTextPrimary;
             });
           },
-          onChanged: (v) => widget.controller.model.user.password.value = v,
+          onChanged: (v) => widget.controller.model.user.password = v,
           inputFormatters: [
             FilteringTextInputFormatter.deny(
               RegExp(r'\s'),
@@ -186,7 +186,7 @@ class _LoginFormState extends State<LoginForm> {
                     hintText: "Email",
                     focusNode: _focusNode,
                     onChanged: (v) =>
-                        widget.controller.model.user.email.value = v,
+                        widget.controller.model.user.email = v,
                     validator: (value) {
                       if (value != null && value.isEmpty ||
                           !_emailRegex.hasMatch(value!)) {

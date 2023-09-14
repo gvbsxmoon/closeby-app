@@ -37,7 +37,7 @@ class Navbar extends StatelessWidget {
             ),
             NavbarItem(
               icon: FontAwesomeIcons.circleUser,
-              label: LoginModel.isLogged ? 'Profile' : 'Log in',
+              label: LoginModel().isLogged ? 'Profile' : 'Log in',
               route: '/profile',
             ),
           ],

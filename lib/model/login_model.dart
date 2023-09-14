@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 
 class LoginModel {
   User user = User();
-  RxBool loggedIn = false.obs;
+  final RxBool _isLogged = false.obs;
   
   LoginModel._();
 
   static final LoginModel _instance = LoginModel._();
 
-  static bool get isLogged => _instance.loggedIn.value;
+  bool get isLogged => _isLogged.value;
 
   factory LoginModel() {
     return _instance;
