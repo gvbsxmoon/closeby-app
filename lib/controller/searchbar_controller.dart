@@ -8,64 +8,55 @@ class SearchbarController extends GetxController {
 
   void onPlaceSelected(int index, String selected) {
     if (index == model.selectedPlaceIndex) {
-      model.selectedPlace.value = 'Anywhere';
+      model.selectedPlace = 'Anywhere';
       model.selectedPlaceIndex = -1;
-      update();
     } else {
-      model.selectedPlace.value = selected;
+      model.selectedPlace = selected;
       model.selectedPlaceIndex = index;
-      model.isPlaceExpanded.value = false;
-      model.isGoodExpanded.value = true;
-      update();
+      model.isPlaceExpanded = false;
+      model.isGoodExpanded = true;
     }
   }
 
   void onGoodSelected(int index, String selected, Function() openDatePicker) {
     if (index == model.selectedGoodIndex) {
-      model.selectedGood.value = 'Anything';
+      model.selectedGood = 'Anything';
       model.selectedGoodIndex = -1;
-      update();
     } else {
-      model.selectedGood.value = selected;
+      model.selectedGood = selected;
       model.selectedGoodIndex = index;
-      model.isGoodExpanded.value = false;
+      model.isGoodExpanded = false;
 
       Future.delayed(const Duration(milliseconds: 150), () {
         openDatePicker();
       });
-
-      update();
     }
   }
 
   void onDateSelected(DateTimeRange selected) {
-    model.selectedDate.value =
+    model.selectedDate =
         '${DateFormat.MMMd().format(selected.start)} - ${DateFormat.MMMd().format(selected.end)}';
-    if (model.isPlaceExpanded.value) model.isPlaceExpanded.value = false;
-    if (model.isGoodExpanded.value) model.isGoodExpanded.value = false;
-    update();
+    if (model.isPlaceExpanded) model.isPlaceExpanded = false;
+    if (model.isGoodExpanded) model.isGoodExpanded = false;
   }
 
   void onPlaceExpanded() {
-    model.isPlaceExpanded.value = !model.isPlaceExpanded.value;
-    model.isGoodExpanded.value = false;
-    update();
+    model.isPlaceExpanded = !model.isPlaceExpanded;
+    model.isGoodExpanded = false;
   }
 
   void onGoodExpanded() {
-    model.isGoodExpanded.value = !model.isGoodExpanded.value;
-    model.isPlaceExpanded.value = false;
-    update();
+    model.isGoodExpanded = !model.isGoodExpanded;
+    model.isPlaceExpanded = false;
   }
 
   void onSearchbarClear() {
-    model.isPlaceExpanded.value = true;
-    model.isGoodExpanded.value = false;
-    model.selectedPlace.value = 'Anywhere';
+    model.isPlaceExpanded = true;
+    model.isGoodExpanded = false;
+    model.selectedPlace = 'Anywhere';
     model.selectedPlaceIndex = -1;
-    model.selectedGood.value = 'Anything';
+    model.selectedGood = 'Anything';
     model.selectedGoodIndex = -1;
-    model.selectedDate.value = 'Anytime';
-    update();
+    model.selectedDate = 'Anytime';
   }
 }

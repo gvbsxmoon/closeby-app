@@ -105,9 +105,9 @@ class _SearchInputState extends State<SearchInput>
         child: Column(
           children: [
             SearchSection(
-              isExpanded: controller.model.isPlaceExpanded.value,
+              isExpanded: controller.model.isPlaceExpanded,
               title: 'Where to?',
-              selected: controller.model.selectedPlace.value,
+              selected: controller.model.selectedPlace,
               onTap: () => controller.onPlaceExpanded(),
               child: SizedBox(
                 height: 152,
@@ -138,9 +138,9 @@ class _SearchInputState extends State<SearchInput>
               height: 16,
             ),
             SearchSection(
-              isExpanded: controller.model.isGoodExpanded.value,
+              isExpanded: controller.model.isGoodExpanded,
               title: 'What?',
-              selected: controller.model.selectedGood.value,
+              selected: controller.model.selectedGood,
               onTap: () => controller.onGoodExpanded(),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 24.0),
@@ -168,7 +168,7 @@ class _SearchInputState extends State<SearchInput>
             ),
             SearchDateSection(
               title: 'When?',
-              selected: controller.model.selectedDate.value,
+              selected: controller.model.selectedDate,
               onTap: openDatePicker,
             ),
           ],

@@ -1,3 +1,4 @@
+import 'package:closeby/components/test_carousel.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/shadow.dart';
@@ -34,12 +35,10 @@ class _ProductCardState extends State<ProductCard> {
                   ),
                 ),
               ),
-              child: const AspectRatio(
-                  aspectRatio: 1 / 1,
-                  child: Image(
-                    image: AssetImage('assets/places/Milan.png'),
-                    fit: BoxFit.cover,
-                  )),
+              child: AspectRatio(
+                aspectRatio: 1 / 1,
+                child: TestCarousel(),
+              ),
             ),
             Padding(
               padding: const EdgeInsets.all(4.0),

@@ -28,10 +28,6 @@ class MainApp extends StatelessWidget {
           ),
           debugShowCheckedModeBanner: false,
         )
-
-        /* MaterialApp.router(
-        
-      ), */
         );
   }
 }
