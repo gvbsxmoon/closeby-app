@@ -1,9 +1,12 @@
 import 'package:closeby/components/cb-components/button.dart';
+import 'package:closeby/components/cb-components/rounded_button.dart';
 import 'package:closeby/components/cb-components/text_field.dart';
+import 'package:closeby/components/cb-components/wrapper.dart';
 import 'package:closeby/controller/login_controller.dart';
 
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
+import 'package:closeby/utils/mixins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
@@ -21,12 +24,9 @@ class LoginForm extends StatefulWidget {
   State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> {
+class _LoginFormState extends State<LoginForm> with FormValidator {
   final _formKey = GlobalKey<FormState>();
   final _focusNode = FocusNode();
-
-  final RegExp _emailRegex = RegExp(
-      r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+");
 
   bool _obscureTextPrimary = true;
   bool _obscureTextSecondary = true;
@@ -74,12 +74,7 @@ class _LoginFormState extends State<LoginForm> {
         CBTextField(
           hintText: "Full name",
           onChanged: (v) => widget.controller.model.user.fullName = v,
-          validator: (value) {
-            if (value != null && value.isEmpty) {
-              return 'Full name is required';
-            }
-            return null;
-          },
+          validator: (v) => validate(v, "Full name"),
         ),
         const SizedBox(height: 16),
         CBTextField(
@@ -97,13 +92,7 @@ class _LoginFormState extends State<LoginForm> {
               RegExp(r'\s'),
             ),
           ],
-          validator: (value) {
-            if (value != null && value.isEmpty ||
-                value != null && value.isNotEmpty && value.length < 8) {
-              return 'Password must be at least 8 characters long';
-            }
-            return null;
-          },
+          validator: (v) => validatePassword(v),
         ),
         const SizedBox(height: 16),
         CBTextField(
@@ -120,12 +109,8 @@ class _LoginFormState extends State<LoginForm> {
               RegExp(r'\s'),
             ),
           ],
-          validator: (value) {
-            if (value != widget.controller.model.user.password) {
-              return 'Passwords do not match';
-            }
-            return null;
-          },
+          validator: (v) => validateMatch(
+              v, widget.controller.model.user.password, "Passwords"),
         ),
       ],
     );
@@ -156,82 +141,77 @@ class _LoginFormState extends State<LoginForm> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        title: Text(
-          "Continue with email",
-          style: AppFonts.figtree(fontSize: 14),
-        ),
-        backgroundColor: AppColor.offWhite,
-        leading: IconButton(
-          icon: Icon(
-            FontAwesomeIcons.chevronLeft,
-            size: 18,
-            color: AppColor.primaryBlack,
-          ),
-          onPressed: () => Get.back(),
-        ),
-        scrolledUnderElevation: 0,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(24),
-        child: Column(
+    return CBWrapper(
+        header: Stack(
+          alignment: Alignment.centerLeft,
           children: [
-            Form(
-              key: _formKey,
-              child: Column(
-                children: [
-                  CBTextField(
-                    hintText: "Email",
-                    focusNode: _focusNode,
-                    onChanged: (v) =>
-                        widget.controller.model.user.email = v,
-                    validator: (value) {
-                      if (value != null && value.isEmpty ||
-                          !_emailRegex.hasMatch(value!)) {
-                        return 'Please enter a valid email';
-                      }
-                      return null;
-                    },
-                  ),
-                  Padding(
-                    padding:
-                        const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
-                    child: Text(
-                      "Enter the email with which you are signed in or the one with which you intend to sign up.",
-                      style: AppFonts.figtree(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: AppColor.secondaryBlack),
-                    ),
-                  ),
-                  AnimatedCrossFade(
-                    firstChild: _buildAlreadySignedUp(),
-                    secondChild:
-                        _isEmailSubmitted ? _buildNotSignedUp() : Container(),
-                    crossFadeState: _isRegistered
-                        ? CrossFadeState.showFirst
-                        : CrossFadeState.showSecond,
-                    duration: const Duration(milliseconds: 150),
-                  ),
-                ],
+            Center(
+              child: Text(
+                "Continue with email",
+                style: AppFonts.figtree(fontSize: 14),
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 32.0),
-              child: CBButton(
-                expanded: true,
-                label: _isRegistered
-                    ? "Log in"
-                    : _isEmailSubmitted
-                        ? "Sign up"
-                        : "Continue",
-                onTap: _onSubmit,
-              ),
-            ),
+            CBRoundedButton(
+              leftMargin: true,
+              onTap: () => Get.back(),
+              icon: FontAwesomeIcons.chevronLeft,
+            )
           ],
         ),
+        child: _buildLoginForm());
+  }
+
+  Padding _buildLoginForm() {
+    return Padding(
+      padding: const EdgeInsets.all(24),
+      child: Column(
+        children: [
+          Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                CBTextField(
+                  hintText: "Email",
+                  focusNode: _focusNode,
+                  onChanged: (v) => widget.controller.model.user.email = v,
+                  validator: (v) => validateEmail(v),
+                ),
+                Padding(
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
+                  child: Text(
+                    "Enter the email with which you are signed in or the one with which you intend to sign up.",
+                    style: AppFonts.figtree(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        color: AppColor.secondaryBlack),
+                  ),
+                ),
+                AnimatedCrossFade(
+                  firstChild: _buildAlreadySignedUp(),
+                  secondChild:
+                      _isEmailSubmitted ? _buildNotSignedUp() : Container(),
+                  crossFadeState: _isRegistered
+                      ? CrossFadeState.showFirst
+                      : CrossFadeState.showSecond,
+                  duration: const Duration(milliseconds: 150),
+                ),
+              ],
+            ),
+          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical: 32.0),
+            child: CBButton(
+              expanded: true,
+              label: _isRegistered
+                  ? "Log in"
+                  : _isEmailSubmitted
+                      ? "Sign up"
+                      : "Continue",
+              onTap: _onSubmit,
+            ),
+          ),
+        ],
       ),
     );
   }

@@ -5,59 +5,55 @@ import 'package:closeby/utils/shadow.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/route_manager.dart';
 
-class ProductCard extends StatefulWidget {
+class ProductCard extends StatelessWidget {
   const ProductCard({super.key});
-
-  @override
-  State<ProductCard> createState() => _ProductCardState();
-}
-
-class _ProductCardState extends State<ProductCard> {
-  bool _isFavorite = false;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Stack(
-          alignment: Alignment.topRight,
-          children: [
-            Container(
-              clipBehavior: Clip.antiAlias,
-              width: MediaQuery.of(context).size.width,
-              decoration: ShapeDecoration(
-                shape: SmoothRectangleBorder(
-                  borderRadius: SmoothBorderRadius(
-                    cornerRadius: 24,
-                    cornerSmoothing: 1,
+        GestureDetector(
+          onTap: () => Get.toNamed("/product"),
+          child: Stack(
+            alignment: Alignment.topRight,
+            children: [
+              Container(
+                clipBehavior: Clip.antiAlias,
+                width: MediaQuery.of(context).size.width,
+                decoration: ShapeDecoration(
+                  shape: SmoothRectangleBorder(
+                    borderRadius: SmoothBorderRadius(
+                      cornerRadius: 24,
+                      cornerSmoothing: 1,
+                    ),
+                  ),
+                ),
+                child: const AspectRatio(
+                  aspectRatio: 1 / 1,
+                  child: Hero(
+                    tag: "carousel",
+                    child: TestCarousel(),
                   ),
                 ),
               ),
-              child: AspectRatio(
-                aspectRatio: 1 / 1,
-                child: TestCarousel(),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: IconButton(
-                onPressed: () {
-                  setState(() {
-                    _isFavorite = !_isFavorite;
-                  });
-                },
-                icon: Icon(
-                  _isFavorite
-                      ? FontAwesomeIcons.solidHeart
-                      : FontAwesomeIcons.heart,
-                  color: _isFavorite ? AppColor.salmonPink : AppColor.offWhite,
-                  shadows: AppShadow.mediumShadow,
+              Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: IconButton(
+                  padding: EdgeInsets.zero,
+                  constraints: const BoxConstraints(),
+                  onPressed: () {},
+                  icon: Icon(
+                    true ? FontAwesomeIcons.solidHeart : FontAwesomeIcons.heart,
+                    color: true ? AppColor.salmonPink : AppColor.offWhite,
+                    shadows: AppShadow.mediumShadow,
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
         const SizedBox(height: 12),
         Row(

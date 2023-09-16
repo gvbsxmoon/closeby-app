@@ -5,21 +5,16 @@ import 'package:closeby/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class Login extends StatefulWidget {
-  const Login({super.key});
+class Login extends StatelessWidget {
+  Login({super.key});
 
-  @override
-  State<Login> createState() => _LoginState();
-}
-
-class _LoginState extends State<Login> {
   final LoginController controller = Get.put(LoginController());
 
   @override
   Widget build(BuildContext context) {
     return CBWrapper(
       title: "Profile",
-      subtitle: "Welcome to Closeby",
+      subtitle: "Welcome to CloseBy",
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

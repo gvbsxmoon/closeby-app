@@ -1,15 +1,19 @@
+import 'package:closeby/components/cb-components/button.dart';
+import 'package:closeby/components/cb-components/wrapper.dart';
 import 'package:closeby/controller/searchbar_controller.dart';
 import 'package:closeby/utils/colors.dart';
+import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
 import 'package:closeby/components/cb-components/card.dart';
 import 'package:closeby/components/cb-components/chips.dart';
 
-import 'package:closeby/components/searchbar/search_close.dart';
+import 'package:closeby/components/cb-components/rounded_button.dart';
 import 'package:closeby/components/searchbar/search_date_section.dart';
 import 'package:closeby/components/searchbar/search_datepicker.dart';
-import 'package:closeby/components/searchbar/search_footer.dart';
+import 'package:closeby/components/cb-components/footer.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 import 'package:get/get.dart';
 
@@ -74,21 +78,31 @@ class _SearchInputState extends State<SearchInput>
 
   @override
   Widget build(BuildContext context) {
-    return Obx(
-      () => Scaffold(
-        appBar: AppBar(
-          backgroundColor: AppColor.offWhite,
-          foregroundColor: AppColor.primaryBlack,
-          leading: SearchClose(onTap: () => Get.back()),
-          elevation: 0,
-        ),
-        body: searchbarSections(),
-        bottomNavigationBar: SearchFooter(
-          onSearch: () => Get.back(),
-          onClear: () => controller.onSearchbarClear(),
-        ),
-      ),
-    );
+    return Obx(() => CBWrapper(
+          header: Padding(
+            padding: const EdgeInsets.only(left: 24.0),
+            child: CBRoundedButton(
+              onTap: () => Get.back(),
+              icon: FontAwesomeIcons.xmark,
+            ),
+          ),
+          footer: CBFooter(
+            leftWidget: TextButton(
+              onPressed: () => controller.onSearchbarClear(),
+              child: Text(
+                'Clear all',
+                style: AppFonts.figtree()
+                    .copyWith(decoration: TextDecoration.underline),
+              ),
+            ),
+            rightWidget: CBButton(
+              label: 'Search',
+              icon: FontAwesomeIcons.magnifyingGlass,
+              onTap: () => Get.back(),
+            ),
+          ),
+          child: searchbarSections(),
+        ));
   }
 
   AnimatedBuilder searchbarSections() {

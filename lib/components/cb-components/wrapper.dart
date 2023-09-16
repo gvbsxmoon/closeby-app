@@ -11,6 +11,7 @@ class CBWrapper extends StatelessWidget {
     this.title,
     this.subtitle,
     required this.child,
+    this.footer,
   });
 
   final bool margin;
@@ -18,6 +19,7 @@ class CBWrapper extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final Widget child;
+  final Widget? footer;
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +31,13 @@ class CBWrapper extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (header != null) header!,
+            if (header != null) Padding(
+              padding: const EdgeInsets.only(top: 16),
+              child: header!,
+            ),
             if (title != null)
               Padding(
-                padding: const EdgeInsets.fromLTRB(24, 32, 24, 16),
+                padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
                 child: Text(
                   title!,
                   style: AppFonts.figtree(fontSize: 32),
@@ -40,7 +45,7 @@ class CBWrapper extends StatelessWidget {
               ),
             if (subtitle != null)
               Padding(
-                padding: const EdgeInsets.fromLTRB(24, 0, 24, 32),
+                padding: const EdgeInsets.fromLTRB(24, 16, 24, 32),
                 child: Text(
                   subtitle!,
                   style: AppFonts.figtree(fontSize: 24),
@@ -49,14 +54,14 @@ class CBWrapper extends StatelessWidget {
             Expanded(
               child: Container(
                 margin:
-                    margin ? const EdgeInsets.symmetric(horizontal: 24) : null,
+                    margin ? const EdgeInsets.fromLTRB(24, 0, 24, 32) : null,
                 child: child,
               ),
             ),
           ],
         ),
       ),
-      bottomNavigationBar: const Navbar(),
+      bottomNavigationBar: footer ?? const Navbar(),
     );
   }
 }

@@ -5,6 +5,8 @@ Color hexToColor(String code) {
 }
 
 class AppColor {
+  AppColor._();
+  
   static Color get rebeccaPurple => hexToColor("4C4CF6");
   static Color get lightRebeccaPurple => hexToColor("7D7DF8");
   static Color get salmonPink => hexToColor("FF9577");

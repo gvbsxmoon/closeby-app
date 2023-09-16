@@ -32,7 +32,7 @@ class Favorites extends StatelessWidget {
           CBButton(
               label: 'Log in',
               expanded: true,
-              onTap: () => Get.toNamed('/favorites'))
+              onTap: () => Get.toNamed('/profile'))
         ],
       ),
     );

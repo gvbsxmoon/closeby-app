@@ -2,6 +2,8 @@ import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
 
 class AppShadow {
+  AppShadow._();
+  
   static List<BoxShadow> get lightShadow => [
     BoxShadow(
       color: AppColor.primaryBlack.withOpacity(0.02),

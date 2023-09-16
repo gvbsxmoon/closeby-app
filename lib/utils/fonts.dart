@@ -3,6 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class AppFonts {
+  AppFonts._();
+  
   static TextStyle figtree({
     FontWeight? fontWeight,
     double? fontSize,

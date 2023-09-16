@@ -15,19 +15,19 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-        onTap: () {
-          FocusManager.instance.primaryFocus?.unfocus();
-        },
-        child: GetMaterialApp(
-          initialRoute: AppRouter.initialRoute,
-          getPages: AppRouter.routes,
-          title: 'Closeby',
-          theme: ThemeData(
-            splashColor: Colors.transparent,
-            highlightColor: Colors.transparent,
-          ),
-          debugShowCheckedModeBanner: false,
-        )
-        );
+      onTap: () {
+        FocusManager.instance.primaryFocus?.unfocus();
+      },
+      child: GetMaterialApp(
+        initialRoute: AppRouter.initialRoute,
+        getPages: AppRouter.routes,
+        title: 'CloseBy',
+        theme: ThemeData(
+          splashColor: Colors.transparent,
+          highlightColor: Colors.transparent,
+        ),
+        debugShowCheckedModeBanner: false,
+      ),
+    );
   }
 }

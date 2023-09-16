@@ -24,7 +24,7 @@ class Searchbar extends StatelessWidget {
                 const EdgeInsets.only(left: 16, right: 10, bottom: 0, top: 0),
             alignment: Alignment.center,
             width: MediaQuery.of(context).size.width,
-            height: 64,
+            height: 56,
             decoration: BoxDecoration(
               color: Colors.white,
               border: Border.all(color: AppColor.lightGrey),

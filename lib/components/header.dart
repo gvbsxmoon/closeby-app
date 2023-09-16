@@ -15,7 +15,7 @@ class Header extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Padding(
-          padding: const EdgeInsets.fromLTRB(28, 12, 24, 4),
+          padding: const EdgeInsets.fromLTRB(28, 0, 24, 0),
           child: Row(
             children: [
               SvgPicture.asset(
