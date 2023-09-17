@@ -1,4 +1,3 @@
-import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
 
@@ -18,14 +17,13 @@ class CBTextButton extends StatelessWidget {
       onPressed: onPressed,
       style: TextButton.styleFrom(
         minimumSize: Size.zero,
-        padding: const EdgeInsets.all(0),
+        padding: EdgeInsets.zero,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
       ),
       child: Text(
         label,
         style: AppFonts.figtree(
-          color: AppColor.rebeccaPurple,
-          fontSize: 12,
+          fontSize: 14,
         ).copyWith(
           decoration: TextDecoration.underline,
         ),

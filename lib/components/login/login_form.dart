@@ -142,23 +142,25 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
   @override
   Widget build(BuildContext context) {
     return CBWrapper(
-        header: Stack(
-          alignment: Alignment.centerLeft,
-          children: [
-            Center(
-              child: Text(
-                "Continue with email",
-                style: AppFonts.figtree(fontSize: 14),
-              ),
+      header: Stack(
+        alignment: Alignment.centerLeft,
+        children: [
+          Center(
+            child: Text(
+              "Continue with email",
+              style: AppFonts.figtree(fontSize: 14),
             ),
-            CBRoundedButton(
-              leftMargin: true,
-              onTap: () => Get.back(),
-              icon: FontAwesomeIcons.chevronLeft,
-            )
-          ],
-        ),
-        child: _buildLoginForm());
+          ),
+          CBRoundedButton(
+            leftMargin: true,
+            onTap: () => Get.back(),
+            icon: FontAwesomeIcons.chevronLeft,
+          )
+        ],
+      ),
+      footer: const SizedBox(),
+      child: _buildLoginForm(),
+    );
   }
 
   Padding _buildLoginForm() {

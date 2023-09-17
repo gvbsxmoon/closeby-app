@@ -66,17 +66,18 @@ class _TestCarouselState extends State<TestCarousel> {
                 )
               : Container(
                   margin:
-                      const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+                      const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
                   padding:
                       const EdgeInsets.symmetric(horizontal: 12, vertical: 4),
                   decoration: BoxDecoration(
-                      color: AppColor.primaryBlack,
-                      borderRadius: BorderRadius.circular(16)),
+                    color: AppColor.primaryBlack.withOpacity(0.75),
+                    borderRadius: BorderRadius.circular(16),
+                  ),
                   child: Text(
-                    "${_pageCounter+1} / ${arr.length}",
+                    "${_pageCounter + 1} / ${arr.length}",
                     style: AppFonts.figtree(
                         color: AppColor.offWhite,
-                        fontSize: 12,
+                        fontSize: 10,
                         fontWeight: FontWeight.bold),
                   ),
                 ),

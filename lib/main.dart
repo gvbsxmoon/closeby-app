@@ -25,6 +25,7 @@ class MainApp extends StatelessWidget {
         theme: ThemeData(
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
+          useMaterial3: true,
         ),
         debugShowCheckedModeBanner: false,
       ),

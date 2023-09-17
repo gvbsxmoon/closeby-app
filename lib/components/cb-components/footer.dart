@@ -17,7 +17,7 @@ class CBFooter extends StatelessWidget {
       height: 100,
       padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: AppColor.offWhite,
         border: Border(top: BorderSide(color: AppColor.lightGrey, width: 1)),
       ),
       child: Row(

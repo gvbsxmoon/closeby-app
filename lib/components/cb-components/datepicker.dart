@@ -2,7 +2,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 
-Future<DateTimeRange?> searchDatePickerRange(BuildContext context) async {
+Future<DateTimeRange?> showCBDatePicker(BuildContext context) async {
   return await showDateRangePicker(
     context: context,
     helpText: '',
@@ -28,6 +28,7 @@ Future<DateTimeRange?> searchDatePickerRange(BuildContext context) async {
               onPrimary: AppColor.offWhite,
               surface: AppColor.offWhite,
               onSurface: AppColor.primaryBlack,
+              
             ),
             dialogBackgroundColor: AppColor.offWhite),
         child: child!,
