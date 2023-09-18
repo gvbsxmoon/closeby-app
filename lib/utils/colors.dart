@@ -14,7 +14,7 @@ class AppColor {
   static Color get bananaYellow => hexToColor("F8D576");
   static Color get primaryBlack => hexToColor("1F1F1F");
   static Color get secondaryBlack => hexToColor("717171");
-  static Color get offWhite => hexToColor("FFFBFE");
+  static Color get offWhite => hexToColor("FAFAFA");
   static Color get lightGrey => hexToColor("E9E9E9");
   static Color get darkGrey => hexToColor("D1D1D1");
 }

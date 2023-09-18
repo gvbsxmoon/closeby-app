@@ -6,8 +6,8 @@ class SearchbarModel {
   final RxString _selectedPlace = "Anywhere".obs;
   final RxString _selectedGood = "Anything".obs;
   final RxString _selectedDate = "Anytime".obs;
-  int _selectedPlaceIndex = -1.obs;
-  int _selectedGoodIndex = -1.obs;
+  final RxInt _selectedPlaceIndex = (-1).obs;
+  final RxInt _selectedGoodIndex = (-1).obs;
 
   bool get isPlaceExpanded => _isPlaceExpanded.value;
 
@@ -17,13 +17,13 @@ class SearchbarModel {
 
   set isGoodExpanded(bool value) => _isGoodExpanded.value = value;
 
-  int get selectedPlaceIndex => _selectedPlaceIndex;
+  int get selectedPlaceIndex => _selectedPlaceIndex.value;
 
-  set selectedPlaceIndex(int value) => _selectedPlaceIndex = value;
+  set selectedPlaceIndex(int value) => _selectedPlaceIndex.value = value;
 
-  int get selectedGoodIndex => _selectedGoodIndex;
+  int get selectedGoodIndex => _selectedGoodIndex.value;
 
-  set selectedGoodIndex(int value) => _selectedGoodIndex = value;
+  set selectedGoodIndex(int value) => _selectedGoodIndex.value = value;
 
   String get selectedPlace => _selectedPlace.value;
 

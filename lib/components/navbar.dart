@@ -1,4 +1,4 @@
-import 'package:closeby/model/login_model.dart';
+import 'package:closeby/model/observable/login_model.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:closeby/utils/colors.dart';

@@ -1,4 +1,4 @@
-import 'package:closeby/model/searchbar_model.dart';
+import 'package:closeby/model/observable/searchbar_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';

@@ -1,4 +1,5 @@
 import 'package:closeby/router/router.dart';
+import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:get/route_manager.dart';
 import 'package:intl/date_symbol_data_local.dart';
@@ -26,6 +27,7 @@ class MainApp extends StatelessWidget {
           splashColor: Colors.transparent,
           highlightColor: Colors.transparent,
           useMaterial3: true,
+          scaffoldBackgroundColor: AppColor.offWhite,
         ),
         debugShowCheckedModeBanner: false,
       ),

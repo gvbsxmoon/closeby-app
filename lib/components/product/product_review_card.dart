@@ -1,8 +1,8 @@
 import 'package:closeby/components/product/product_description.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
+import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
-
 
 class ProductReviewCard extends StatelessWidget {
   const ProductReviewCard({
@@ -20,10 +20,14 @@ class ProductReviewCard extends StatelessWidget {
       padding: const EdgeInsets.all(16),
       margin: EdgeInsets.only(left: 24, right: isLast ? 24 : 0),
       width: MediaQuery.of(context).size.width * 0.84,
-      decoration: BoxDecoration(
-        color: AppColor.offWhite,
-        borderRadius: BorderRadius.circular(16),
-        border: Border.all(color: AppColor.lightGrey, width: 1),
+      decoration: ShapeDecoration(
+        color: AppColor.lightGrey.withOpacity(0.4),
+        shape: SmoothRectangleBorder(
+          borderRadius: SmoothBorderRadius(
+            cornerRadius: 16,
+            cornerSmoothing: 1,
+          ),
+        ),
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

@@ -17,6 +17,7 @@ dependencies:
   figma_squircle: ^0.5.3
   get: ^4.6.6
   smooth_page_indicator: ^1.1.0
+  uuid: ^4.0.0
 
 dev_dependencies:
   flutter_test:

@@ -34,6 +34,11 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
   bool _isRegistered = false;
   bool _isEmailSubmitted = false;
 
+  String _email = "";
+  String _password = "";
+  String _firstName = "";
+  String _lastName = "";
+
   @override
   void initState() {
     _focusNode.requestFocus();
@@ -58,7 +63,9 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
             _obscureTextPrimary = !_obscureTextPrimary;
           });
         },
-        onChanged: (v) => widget.controller.model.user.password = v,
+        onChanged: (v) => setState(() {
+          _password = v;
+        }),
         inputFormatters: [
           FilteringTextInputFormatter.deny(
             RegExp(r'\s'),
@@ -72,9 +79,19 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
     return Column(
       children: [
         CBTextField(
-          hintText: "Full name",
-          onChanged: (v) => widget.controller.model.user.fullName = v,
-          validator: (v) => validate(v, "Full name"),
+          hintText: "First name",
+          onChanged: (v) => setState(() {
+            _firstName = v;
+          }),
+          validator: (v) => validate(v, "First name"),
+        ),
+        const SizedBox(height: 16),
+        CBTextField(
+          hintText: "Last name",
+          onChanged: (v) => setState(() {
+            _lastName = v;
+          }),
+          validator: (v) => validate(v, "Last name"),
         ),
         const SizedBox(height: 16),
         CBTextField(
@@ -86,7 +103,9 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
               _obscureTextPrimary = !_obscureTextPrimary;
             });
           },
-          onChanged: (v) => widget.controller.model.user.password = v,
+          onChanged: (v) => setState(() {
+            _password = v;
+          }),
           inputFormatters: [
             FilteringTextInputFormatter.deny(
               RegExp(r'\s'),
@@ -109,28 +128,26 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
               RegExp(r'\s'),
             ),
           ],
-          validator: (v) => validateMatch(
-              v, widget.controller.model.user.password, "Passwords"),
+          validator: (v) => validateMatch(v, _password, "Passwords"),
         ),
       ],
     );
   }
 
   void _onSubmit() {
-    //TODO: add api call
     if (_formKey.currentState!.validate()) {
-      print("form validated");
+      _isEmailSubmitted = true;
 
-      if (!_isEmailSubmitted) {
+      if (!widget.controller.checkEmail(_email)) {
         setState(() {
-          _isEmailSubmitted = true;
           //_isregistered should be setted by the api
           _isRegistered = false;
         });
       } else {
-        // sign up sign in
-        print(
-            "${widget.controller.model.user.email} -- ${widget.controller.model.user.password}");
+        setState(() {
+          //_isregistered should be setted by the api
+          _isRegistered = false;
+        });
       }
 
       _formKey.currentState!.reset();
@@ -175,8 +192,11 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
                 CBTextField(
                   hintText: "Email",
                   focusNode: _focusNode,
-                  onChanged: (v) => widget.controller.model.user.email = v,
+                  onChanged: (v) => setState(() {
+                    _email = v;
+                  }),
                   validator: (v) => validateEmail(v),
+                  keyboardType: TextInputType.emailAddress,
                 ),
                 Padding(
                   padding:

@@ -18,7 +18,13 @@
 - ci sono solo due ombre:
  - lightShadow per quando qualcosa fluttua ma non è "in faccia"
  - darkShadow quando qualcosa è "in faccia"
-# FOCAL POINTS
-- non si aggiorna lo stato della searchbar sto impazzendo
+# BUGS
+- il colore bianco non mi sembra ovunque uguale
+- il text field si illumina rosso e pure nero dopo errore
 
 # TODO
+- sistemare logica di login
+- creare card host 
+- aggiunge :id a product quando faccio il click sul prodotto
+- animazione in search-input, non mi convince, mi sa che possiamo farne a meno oppure specializzarla
+- aggiungere sezione per creare un gruppo di favoriti
