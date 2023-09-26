@@ -2,6 +2,7 @@ import 'package:closeby/components/cb-components/bottom_modal.dart';
 import 'package:closeby/components/cb-components/text_button.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ProductDescription extends StatelessWidget {
   const ProductDescription({
@@ -32,7 +33,7 @@ class ProductDescription extends StatelessWidget {
             child: CBTextButton(
               onPressed: () async =>
                   await showCBBottomModal(context, testDescription),
-              label: "Show more",
+              label: 'show_more'.tr,
             ),
           ),
       ],

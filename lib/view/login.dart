@@ -13,8 +13,8 @@ class Login extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return CBWrapper(
-      title: "Profile",
-      subtitle: "Welcome to CloseBy",
+      title: 'profile'.tr,
+      subtitle: 'profile_sub'.tr,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

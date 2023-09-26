@@ -1,12 +1,13 @@
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 Future<DateTimeRange?> showCBDatePicker(BuildContext context) async {
   return await showDateRangePicker(
     context: context,
     helpText: '',
-    saveText: 'Done',
+    saveText: 'done'.tr,
     firstDate: DateTime.now(),
     lastDate: DateTime(DateTime.now().year + 10),
     initialEntryMode: DatePickerEntryMode.calendarOnly,

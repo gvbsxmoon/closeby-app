@@ -10,6 +10,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 class Product extends StatelessWidget {
@@ -61,7 +62,7 @@ class Product extends StatelessWidget {
               ),
             ),
             TextSpan(
-              text: "per day",
+              text: 'per_day'.tr,
               style: AppFonts.figtree(
                 fontWeight: FontWeight.w400,
               ),
@@ -70,7 +71,7 @@ class Product extends StatelessWidget {
         ),
       ),
       rightWidget: CBButton(
-        label: 'Reserve',
+        label: 'reserve'.tr,
         onTap: () => Get.back(),
       ),
     );
@@ -126,8 +127,7 @@ class Product extends StatelessWidget {
         text: TextSpan(
           children: [
             TextSpan(
-              text:
-                  "We remind you that it is essential that payments and contacts with hosts do not take place outside the app for ",
+              text: 'safety_banner1'.tr,
               style: AppFonts.figtree(
                   fontSize: 12,
                   fontWeight: FontWeight.w400,
@@ -139,7 +139,7 @@ class Product extends StatelessWidget {
                   AppFonts.figtree(fontSize: 12, color: AppColor.rebeccaPurple),
             ),
             TextSpan(
-                text: " to protect you.",
+                text: 'safety_banner2'.tr,
                 style: AppFonts.figtree(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,

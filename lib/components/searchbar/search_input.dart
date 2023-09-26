@@ -89,13 +89,13 @@ class _SearchInputState extends State<SearchInput>
             leftWidget: TextButton(
               onPressed: () => controller.onSearchbarClear(),
               child: Text(
-                'Clear all',
+                'clear'.tr,
                 style: AppFonts.figtree()
                     .copyWith(decoration: TextDecoration.underline),
               ),
             ),
             rightWidget: CBButton(
-              label: 'Search',
+              label: 'search'.tr,
               icon: FontAwesomeIcons.magnifyingGlass,
               onTap: () => Get.back(),
             ),
@@ -119,7 +119,7 @@ class _SearchInputState extends State<SearchInput>
           children: [
             SearchSection(
               isExpanded: controller.model.isPlaceExpanded,
-              title: 'Where to?',
+              title: 'where'.tr,
               selected: controller.model.selectedPlace,
               onTap: () => controller.onPlaceExpanded(),
               child: SizedBox(
@@ -152,7 +152,7 @@ class _SearchInputState extends State<SearchInput>
             ),
             SearchSection(
               isExpanded: controller.model.isGoodExpanded,
-              title: 'What?',
+              title: 'what'.tr,
               selected: controller.model.selectedGood,
               onTap: () => controller.onGoodExpanded(),
               child: Padding(
@@ -180,7 +180,7 @@ class _SearchInputState extends State<SearchInput>
               height: 16,
             ),
             SearchDateSection(
-              title: 'When?',
+              title: 'when'.tr,
               selected: controller.model.selectedDate,
               onTap: openDatePicker,
             ),

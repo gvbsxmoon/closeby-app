@@ -3,6 +3,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class ProductHostSection extends StatelessWidget {
   const ProductHostSection({
@@ -23,14 +24,14 @@ class ProductHostSection extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Text(
-                    "This place is hosted by Luca",
+                    'hosted_by'.tr,
                     style: AppFonts.figtree(
                       fontSize: 18,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                   Text(
-                    "Joined in 2019",
+                    'joined'.tr,
                     style: AppFonts.figtree(
                       fontWeight: FontWeight.w400,
                       color: AppColor.secondaryBlack,
@@ -55,7 +56,7 @@ class ProductHostSection extends StatelessWidget {
                   size: 12, color: AppColor.primaryBlack),
               const SizedBox(width: 16),
               Text(
-                "3 reviews",
+                "3 ${'reviews'.tr}",
                 style: AppFonts.figtree(
                   fontWeight: FontWeight.w400,
                 ),
@@ -69,7 +70,7 @@ class ProductHostSection extends StatelessWidget {
                   size: 12, color: AppColor.primaryBlack),
               const SizedBox(width: 16),
               Text(
-                "Identity verified",
+                'identity_verified'.tr,
                 style: AppFonts.figtree(
                   fontWeight: FontWeight.w400,
                 ),
@@ -83,14 +84,14 @@ class ProductHostSection extends StatelessWidget {
                 fontWeight: FontWeight.w400,
                 color: AppColor.secondaryBlack,
               ),
-              child: const Column(
+              child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text("Languages: English, Italian"),
-                  SizedBox(height: 4),
-                  Text("Response rate: 100%"),
-                  SizedBox(height: 4),
-                  Text("Response time: within an hour"),
+                  Text('spoken_languages'.tr),
+                  const SizedBox(height: 4),
+                  Text('response_rate'.tr),
+                  const SizedBox(height: 4),
+                  Text('response_time'.tr),
                 ],
               ),
             ),
@@ -98,7 +99,7 @@ class ProductHostSection extends StatelessWidget {
           CBButton(
             expanded: true,
             outlined: true,
-            label: "Contact host",
+            label: 'contact_host'.tr,
             onTap: () {},
           ),
         ],

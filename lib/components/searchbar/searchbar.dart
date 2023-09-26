@@ -41,8 +41,8 @@ class Searchbar extends StatelessWidget {
                   mainAxisSize: MainAxisSize.min,
                   children: <Widget>[
                     Text(
-                      controller.model.selectedGood == 'Anything'
-                          ? 'What are you looking for?'
+                      controller.model.selectedGood == 'anything'.tr
+                          ? 'generic_anything'.tr
                           : controller.model.selectedGood,
                       style: AppFonts.figtree(),
                     ),

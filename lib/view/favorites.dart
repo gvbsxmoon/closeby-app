@@ -3,7 +3,7 @@ import "package:closeby/components/cb-components/wrapper.dart";
 import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
-import "package:get/route_manager.dart";
+import "package:get/get.dart";
 
 class Favorites extends StatelessWidget {
   const Favorites({super.key});
@@ -12,8 +12,8 @@ class Favorites extends StatelessWidget {
   Widget build(BuildContext context) {
     return CBWrapper(
       margin: true,
-      title: "Favorites",
-      subtitle: "Log in to view your wishlists",
+      title: 'favorites'.tr,
+      subtitle: 'favorites_sub'.tr,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -22,7 +22,7 @@ class Favorites extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "You can create, view, or edit wishlists once you’ve logged in.",
+                'favorites_desc'.tr,
                 style: AppFonts.figtree(
                     fontWeight: FontWeight.w400,
                     color: AppColor.secondaryBlack),
@@ -30,7 +30,7 @@ class Favorites extends StatelessWidget {
             ],
           ),
           CBButton(
-              label: 'Log in',
+              label: 'login'.tr,
               expanded: true,
               onTap: () => Get.toNamed('/profile'))
         ],

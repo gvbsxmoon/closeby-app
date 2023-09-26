@@ -3,6 +3,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 
 class ProductReviews extends StatelessWidget {
   const ProductReviews({
@@ -26,7 +27,7 @@ class ProductReviews extends StatelessWidget {
                   size: 14, color: AppColor.primaryBlack),
               const SizedBox(width: 8),
               Text(
-                "4.96 · 3 reviews",
+                "4.96 · 3 ${'reviews'.tr}",
                 style: AppFonts.figtree(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,

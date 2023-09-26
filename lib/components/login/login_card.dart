@@ -3,6 +3,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/shadow.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
 
 class LoginCard extends StatelessWidget {
   const LoginCard({super.key});
@@ -23,17 +24,17 @@ class LoginCard extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text('Get into CloseBy', style: AppFonts.figtree()),
+            Text('profile_card_title'.tr, style: AppFonts.figtree()),
             const SizedBox(height: 4),
             Text(
-              "It's simple to get set up",
+              'profile_card_desc1'.tr,
               style: AppFonts.figtree(
                 fontWeight: FontWeight.w400,
                 color: AppColor.secondaryBlack,
               ),
             ),
             Text(
-              "and start earning.",
+              'profile_card_desc2'.tr,
               style: AppFonts.figtree(
                 fontWeight: FontWeight.w400,
                 color: AppColor.secondaryBlack,

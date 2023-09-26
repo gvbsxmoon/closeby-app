@@ -2,7 +2,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 Future<dynamic> showCBBottomModal(
     BuildContext context, String description) async {
@@ -21,7 +21,7 @@ Future<dynamic> showCBBottomModal(
               children: [
                 Padding(
                   padding: const EdgeInsets.fromLTRB(24, 64, 24, 0),
-                  child: Text('What more',
+                  child: Text('what_more'.tr,
                       style: AppFonts.figtree(fontSize: 18)),
                 ),
                 Padding(

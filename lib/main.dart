@@ -1,3 +1,4 @@
+import 'package:closeby/locale/locales.dart';
 import 'package:closeby/router/router.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
@@ -29,6 +30,10 @@ class MainApp extends StatelessWidget {
           useMaterial3: true,
           scaffoldBackgroundColor: AppColor.offWhite,
         ),
+        translations: Locales(),
+        locale: Locales.defaultLocale,
+        fallbackLocale: Locales.defaultLocale,
+        supportedLocales: Locales.supportedLocales,
         debugShowCheckedModeBanner: false,
       ),
     );

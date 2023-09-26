@@ -8,7 +8,7 @@ class SearchbarController extends GetxController {
 
   void onPlaceSelected(int index, String selected) {
     if (index == model.selectedPlaceIndex) {
-      model.selectedPlace = 'Anywhere';
+      model.selectedPlace = 'anywhere'.tr;
       model.selectedPlaceIndex = -1;
     } else {
       model.selectedPlace = selected;
@@ -20,7 +20,7 @@ class SearchbarController extends GetxController {
 
   void onGoodSelected(int index, String selected, Function() openDatePicker) {
     if (index == model.selectedGoodIndex) {
-      model.selectedGood = 'Anything';
+      model.selectedGood = 'anything'.tr;
       model.selectedGoodIndex = -1;
     } else {
       model.selectedGood = selected;
@@ -53,10 +53,10 @@ class SearchbarController extends GetxController {
   void onSearchbarClear() {
     model.isPlaceExpanded = true;
     model.isGoodExpanded = false;
-    model.selectedPlace = 'Anywhere';
+    model.selectedPlace = 'anywhere'.tr;
     model.selectedPlaceIndex = -1;
-    model.selectedGood = 'Anything';
+    model.selectedGood = 'anything'.tr;
     model.selectedGoodIndex = -1;
-    model.selectedDate = 'Anytime';
+    model.selectedDate = 'anytime'.tr;
   }
 }

@@ -3,9 +3,9 @@ import 'package:get/get.dart';
 class SearchbarModel {
   final RxBool _isPlaceExpanded = true.obs;
   final RxBool _isGoodExpanded = false.obs;
-  final RxString _selectedPlace = "Anywhere".obs;
-  final RxString _selectedGood = "Anything".obs;
-  final RxString _selectedDate = "Anytime".obs;
+  final RxString _selectedPlace = "anywhere".tr.obs;
+  final RxString _selectedGood = "anything".tr.obs;
+  final RxString _selectedDate = "anytime".tr.obs;
   final RxInt _selectedPlaceIndex = (-1).obs;
   final RxInt _selectedGoodIndex = (-1).obs;
 

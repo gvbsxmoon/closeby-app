@@ -3,6 +3,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 class Navbar extends StatelessWidget {
@@ -25,19 +26,19 @@ class Navbar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: <NavbarItem>[
-            const NavbarItem(
+            NavbarItem(
               icon: FontAwesomeIcons.magnifyingGlass,
-              label: 'Explore',
+              label: 'explore'.tr,
               route: '/',
             ),
-            const NavbarItem(
+            NavbarItem(
               icon: FontAwesomeIcons.heart,
-              label: 'Favorites',
+              label: 'favorites'.tr,
               route: '/favorites',
             ),
             NavbarItem(
               icon: FontAwesomeIcons.circleUser,
-              label: LoginModel().isLogged ? 'Profile' : 'Log in',
+              label: 'profile'.tr,
               route: '/profile',
             ),
           ],

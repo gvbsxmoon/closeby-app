@@ -10,6 +10,7 @@ import 'package:closeby/utils/mixins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 class LoginForm extends StatefulWidget {
@@ -79,19 +80,19 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
     return Column(
       children: [
         CBTextField(
-          hintText: "First name",
+          hintText: 'name'.tr,
           onChanged: (v) => setState(() {
             _firstName = v;
           }),
-          validator: (v) => validate(v, "First name"),
+          validator: (v) => validate(v, 'name'.tr),
         ),
         const SizedBox(height: 16),
         CBTextField(
-          hintText: "Last name",
+          hintText: 'surname'.tr,
           onChanged: (v) => setState(() {
             _lastName = v;
           }),
-          validator: (v) => validate(v, "Last name"),
+          validator: (v) => validate(v, 'surname'.tr),
         ),
         const SizedBox(height: 16),
         CBTextField(
@@ -115,7 +116,7 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
         ),
         const SizedBox(height: 16),
         CBTextField(
-          hintText: "Confirm password",
+          hintText: 'confirm_pass'.tr,
           obscureText: _obscureTextSecondary,
           showEye: true,
           showPassword: () {
@@ -152,7 +153,6 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
 
       _formKey.currentState!.reset();
     } else {
-      print("form not validated");
     }
   }
 
@@ -164,7 +164,7 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
         children: [
           Center(
             child: Text(
-              "Continue with email",
+              'email_button'.tr,
               style: AppFonts.figtree(fontSize: 14),
             ),
           ),
@@ -202,7 +202,7 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
                   padding:
                       const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
                   child: Text(
-                    "Enter the email with which you are signed in or the one with which you intend to sign up.",
+                    'banner'.tr,
                     style: AppFonts.figtree(
                         fontSize: 12,
                         fontWeight: FontWeight.w400,
@@ -226,10 +226,10 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
             child: CBButton(
               expanded: true,
               label: _isRegistered
-                  ? "Log in"
+                  ? 'login'.tr
                   : _isEmailSubmitted
-                      ? "Sign up"
-                      : "Continue",
+                      ? 'signup'.tr
+                      : 'continue'.tr,
               onTap: _onSubmit,
             ),
           ),
