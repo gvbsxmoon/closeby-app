@@ -11,7 +11,6 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 
 class Product extends StatelessWidget {
   const Product({super.key});
