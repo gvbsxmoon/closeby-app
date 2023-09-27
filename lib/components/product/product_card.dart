@@ -5,6 +5,7 @@ import 'package:closeby/utils/shadow.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:get/get.dart';
 import 'package:get/route_manager.dart';
 
 class ProductCard extends StatelessWidget {
@@ -92,7 +93,7 @@ class ProductCard extends StatelessWidget {
                 style: AppFonts.figtree(),
               ),
               TextSpan(
-                text: "per day",
+                text: 'per_day'.tr,
                 style: AppFonts.figtree(
                   fontWeight: FontWeight.w400,
                 ),
