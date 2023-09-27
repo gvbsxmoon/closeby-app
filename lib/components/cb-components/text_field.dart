@@ -52,6 +52,7 @@ class _CBTextFieldState extends State<CBTextField> {
   Widget build(BuildContext context) {
     return TextFormField(
       cursorColor: AppColor.darkGrey,
+      showCursor: false,
       inputFormatters: widget.inputFormatters,
       controller: controller,
       focusNode: widget.focusNode,
@@ -65,7 +66,6 @@ class _CBTextFieldState extends State<CBTextField> {
       decoration: InputDecoration(
         suffixIcon: widget.showEye
             ? GestureDetector(
-                onTap: widget.showPassword,
                 child: Icon(
                   widget.obscureText
                       ? FontAwesomeIcons.eye
@@ -89,6 +89,10 @@ class _CBTextFieldState extends State<CBTextField> {
                 borderSide: BorderSide(color: AppColor.darkGrey, width: 1),
                 borderRadius: BorderRadius.circular(16),
               ),
+        focusedErrorBorder: OutlineInputBorder(
+          borderSide: BorderSide(color: AppColor.primaryBlack, width: 2),
+          borderRadius: BorderRadius.circular(16),
+        ),
         focusedBorder: OutlineInputBorder(
           borderSide: BorderSide(color: AppColor.primaryBlack, width: 2),
           borderRadius: BorderRadius.circular(16),

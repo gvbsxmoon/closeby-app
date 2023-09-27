@@ -21,7 +21,7 @@ class ProductReviewCard extends StatelessWidget {
       margin: EdgeInsets.only(left: 24, right: isLast ? 24 : 0),
       width: MediaQuery.of(context).size.width * 0.84,
       decoration: ShapeDecoration(
-        color: AppColor.lightGrey.withOpacity(0.4),
+        color: AppColor.lightGrey.withOpacity(0.5),
         shape: SmoothRectangleBorder(
           borderRadius: SmoothBorderRadius(
             cornerRadius: 16,
