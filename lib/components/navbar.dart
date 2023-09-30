@@ -14,34 +14,35 @@ class Navbar extends StatelessWidget {
     return Hero(
       tag: 'navbar',
       child: Container(
-        height: 100,
-        padding: const EdgeInsets.only(top: 16.0),
-        decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(color: AppColor.lightGrey, width: 1),
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          decoration: BoxDecoration(
+            border: Border(
+              top: BorderSide(color: AppColor.lightGrey, width: 1),
+            ),
+          ),
+          child: IntrinsicHeight(
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: <NavbarItem>[
+                NavbarItem(
+                  icon: FontAwesomeIcons.magnifyingGlass,
+                  label: 'explore'.tr,
+                  route: '/',
+                ),
+                NavbarItem(
+                  icon: FontAwesomeIcons.heart,
+                  label: 'favorites'.tr,
+                  route: '/favorites',
+                ),
+                NavbarItem(
+                  icon: FontAwesomeIcons.circleUser,
+                  label: 'profile'.tr,
+                  route: '/profile',
+                ),
+              ],
+            ),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <NavbarItem>[
-            NavbarItem(
-              icon: FontAwesomeIcons.magnifyingGlass,
-              label: 'explore'.tr,
-              route: '/',
-            ),
-            NavbarItem(
-              icon: FontAwesomeIcons.heart,
-              label: 'favorites'.tr,
-              route: '/favorites',
-            ),
-            NavbarItem(
-              icon: FontAwesomeIcons.circleUser,
-              label: 'profile'.tr,
-              route: '/profile',
-            ),
-          ],
-        ),
-      ),
     );
   }
 }
