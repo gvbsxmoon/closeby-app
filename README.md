@@ -19,8 +19,7 @@
  - lightShadow per quando qualcosa fluttua ma non è "in faccia"
  - darkShadow quando qualcosa è "in faccia"
 # BUGS
-- il colore bianco non mi sembra ovunque uguale
-- il text field si illumina rosso e pure nero dopo errore
+- l api auth/signin/check/:email non funziona nel modo corretto, deve ritornare true se gia esiste in db, false in caso contrario
 
 # TODO
 - sistemare logica di login

@@ -134,24 +134,42 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
     );
   }
 
-  void _onSubmit() {
+  void _checkEmailOnSubmit() async {
     if (_formKey.currentState!.validate()) {
       _isEmailSubmitted = true;
 
-      if (!widget.controller.checkEmail(_email)) {
+      try {
+        final isRegistered = await widget.controller.checkEmail(_email);
         setState(() {
-          //_isregistered should be setted by the api
-          _isRegistered = false;
+          _isRegistered = isRegistered;
         });
-      } else {
-        setState(() {
-          //_isregistered should be setted by the api
-          _isRegistered = false;
-        });
+      } catch (err) {
+        print(err);
       }
 
       _formKey.currentState!.reset();
-    } else {
+    }
+  }
+
+  void _loginOnSubmit() async {
+    print('sono nella login on prima del current state...');
+
+
+    if (_formKey.currentState!.validate()) {
+      print('sono nella login on submit...');
+
+      try {
+        print('sono nella try on submit... $_isRegistered');
+
+        _isRegistered
+            ? await widget.controller.signIn(_email, _password)
+            : await widget.controller
+                .signUp(_firstName, _lastName, _email, _password);
+
+        print('sono nella login on submit...');
+      } catch (err) {
+        print(err);
+      }
     }
   }
 
@@ -229,7 +247,7 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
                   : _isEmailSubmitted
                       ? 'signup'.tr
                       : 'continue'.tr,
-              onTap: _onSubmit,
+              onTap: _isEmailSubmitted ? _loginOnSubmit : _checkEmailOnSubmit,
             ),
           ),
         ],

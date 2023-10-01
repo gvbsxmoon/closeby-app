@@ -12,6 +12,12 @@ class Login extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return controller.model.isLogged
+        ? _buildProfileScreen()
+        : _buildLogInScreen();
+  }
+
+  CBWrapper _buildLogInScreen() {
     return CBWrapper(
       title: 'profile'.tr,
       subtitle: 'profile_sub'.tr,
@@ -30,6 +36,13 @@ class Login extends StatelessWidget {
           ),
         ],
       ),
+    );
+  }
+
+  CBWrapper _buildProfileScreen() {
+    return CBWrapper(
+      title: 'profile'.tr,
+      child: const Text('correctly logged in'),
     );
   }
 }
