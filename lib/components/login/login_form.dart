@@ -136,23 +136,28 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
 
   void _checkEmailOnSubmit() async {
     if (_formKey.currentState!.validate()) {
-      _isEmailSubmitted = true;
+      setState(() {
+        _isEmailSubmitted = true;
+        _isRegistered = true;
+      });
 
-      try {
+      /* try {
         final isRegistered = await widget.controller.checkEmail(_email);
         setState(() {
           _isRegistered = isRegistered;
         });
       } catch (err) {
         print(err);
-      }
+      } */
 
       _formKey.currentState!.reset();
     }
   }
 
   void _loginOnSubmit() async {
-    print('sono nella login on prima del current state...');
+    widget.controller.model.isLogged = true;
+    Get.toNamed('/profile');
+    /* print('sono nella login on prima del current state...');
 
 
     if (_formKey.currentState!.validate()) {
@@ -170,7 +175,7 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
       } catch (err) {
         print(err);
       }
-    }
+    } */
   }
 
   @override

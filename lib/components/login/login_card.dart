@@ -16,7 +16,7 @@ class LoginCard extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
       decoration: ShapeDecoration(
         color: AppColor.offWhite,
-        shadows: AppShadow.darkShadow,
+        shadows: AppShadow.mediumShadow,
         shape: SmoothRectangleBorder(
           borderRadius: SmoothBorderRadius(
             cornerRadius: 16,
