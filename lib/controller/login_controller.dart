@@ -23,32 +23,38 @@ class LoginController extends GetxController {
       final response = await service.invoke(
         path: '/auth/signin',
         method: HTTPMethod.post,
-        body: {email, password},
+        body: <String, dynamic>{'email': email, 'password': password},
       );
 
       Token().setToken(response.body);
+
       model.isLogged = true;
       Get.toNamed('/profile');
     } catch (err) {
-      throw Exception(err);
+      throw Exception('SIGN IN __$err');
     }
   }
 
   Future<void> signUp(
-      String name, String surname, String email, String password) async {
+      String firstName, String lastName, String email, String password) async {
     try {
       final response = await service.invoke(
         path: '/auth/signup',
         method: HTTPMethod.post,
-        body: {name, surname, email, password},
+        body: <String, dynamic>{
+          'name': firstName,
+          'surname': lastName,
+          'email': email,
+          'password': password
+        },
       );
 
       Token().setToken(response.body);
-      model.isLogged = true;
 
+      model.isLogged = true;
       Get.toNamed('/profile');
     } catch (err) {
-      throw Exception(err);
+      throw Exception('SIGN UP __$err');
     }
   }
 }

@@ -24,7 +24,7 @@ class AppService {
     String path = '/',
     HTTPMethod method = HTTPMethod.get,
     Map<String, String> headers = const {'Content-Type': 'application/json'},
-    Object? body,
+    Map<String, dynamic>? body,
     Map<String, String>? params,
   }) async {
     final req = http.Request(httpMethod[method]!, Uri.parse(_baseUrl + path));
@@ -32,6 +32,8 @@ class AppService {
     req.headers.addAll(headers);
 
     if (params != null) req.url.queryParameters.addAll(params);
+
+    print(body);
 
     if (body != null) req.body = json.encode(body);
 

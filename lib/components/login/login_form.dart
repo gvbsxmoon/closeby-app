@@ -24,7 +24,7 @@ class LoginForm extends StatefulWidget {
   State<LoginForm> createState() => _LoginFormState();
 }
 
-class _LoginFormState extends State<LoginForm> with FormValidator {
+class _LoginFormState extends State<LoginForm> with FormValidator, StringUtils {
   final _formKey = GlobalKey<FormState>();
   final _focusNode = FocusNode();
 
@@ -83,7 +83,7 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
           onChanged: (v) => setState(() {
             _firstName = v;
           }),
-          validator: (v) => validate(v, 'name'.tr),
+          validator: (v) => validateString(v, 'name'.tr),
         ),
         const SizedBox(height: 16),
         CBTextField(
@@ -91,7 +91,7 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
           onChanged: (v) => setState(() {
             _lastName = v;
           }),
-          validator: (v) => validate(v, 'surname'.tr),
+          validator: (v) => validateString(v, 'surname'.tr),
         ),
         const SizedBox(height: 16),
         CBTextField(
@@ -138,17 +138,16 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
     if (_formKey.currentState!.validate()) {
       setState(() {
         _isEmailSubmitted = true;
-        _isRegistered = true;
       });
 
-      /* try {
+      try {
         final isRegistered = await widget.controller.checkEmail(_email);
         setState(() {
           _isRegistered = isRegistered;
         });
       } catch (err) {
         print(err);
-      } */
+      }
 
       _formKey.currentState!.reset();
     }
@@ -156,26 +155,22 @@ class _LoginFormState extends State<LoginForm> with FormValidator {
 
   void _loginOnSubmit() async {
     widget.controller.model.isLogged = true;
-    Get.toNamed('/profile');
-    /* print('sono nella login on prima del current state...');
-
 
     if (_formKey.currentState!.validate()) {
-      print('sono nella login on submit...');
-
       try {
-        print('sono nella try on submit... $_isRegistered');
-
         _isRegistered
             ? await widget.controller.signIn(_email, _password)
-            : await widget.controller
-                .signUp(_firstName, _lastName, _email, _password);
-
-        print('sono nella login on submit...');
+            : await widget.controller.signUp(
+                capitalize(_firstName),
+                capitalize(
+                  _lastName,
+                ),
+                _email,
+                _password);
       } catch (err) {
         print(err);
       }
-    } */
+    }
   }
 
   @override
