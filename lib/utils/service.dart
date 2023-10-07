@@ -40,7 +40,7 @@ class AppService {
       final res = await http.Response.fromStream(streamedResponse);
       return res;
     } catch (err) {
-      throw Exception('Errore durante la chiamata al servizio: $err');
+      throw Exception(err);
     }
   }
 }

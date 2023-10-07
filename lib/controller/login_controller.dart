@@ -14,7 +14,7 @@ class LoginController extends GetxController {
 
       return res.statusCode == 409;
     } catch (err) {
-      throw Exception(err);
+      throw Exception('CHECK_EMAIL: $err');
     }
   }
 
@@ -28,7 +28,7 @@ class LoginController extends GetxController {
 
       Token().setToken(response.body);
     } catch (err) {
-      throw Exception('SIGN IN __$err');
+      throw Exception('SIGN_IN: $err');
     }
   }
 
@@ -47,7 +47,7 @@ class LoginController extends GetxController {
 
       Token().setToken(response.body);
     } catch (err) {
-      throw Exception('SIGN UP __$err');
+      throw Exception('SIGN_UP: $err');
     }
   }
 }

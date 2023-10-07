@@ -102,8 +102,11 @@ class Product extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(FontAwesomeIcons.solidStar,
-                    size: 10, color: AppColor.primaryBlack),
+                Icon(
+                  FontAwesomeIcons.solidStar,
+                  size: 10,
+                  color: AppColor.primaryBlack,
+                ),
                 const SizedBox(width: 4),
                 Text(
                   "4.96",

@@ -19,11 +19,8 @@
  - lightShadow per quando qualcosa fluttua ma non è "in faccia"
  - darkShadow quando qualcosa è "in faccia"
 # BUGS
-- l api auth/signin/check/:email non funziona nel modo corretto, deve ritornare true se gia esiste in db, false in caso contrario
+
 
 # TODO
-- sistemare logica di login
-- creare card host 
 - aggiunge :id a product quando faccio il click sul prodotto
-- animazione in search-input, non mi convince, mi sa che possiamo farne a meno oppure specializzarla
 - aggiungere sezione per creare un gruppo di favoriti

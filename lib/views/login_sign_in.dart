@@ -1,4 +1,5 @@
 import 'package:closeby/components/cb-components/button.dart';
+import 'package:closeby/components/cb-components/snackbar.dart';
 import 'package:closeby/components/cb-components/text_button.dart';
 import 'package:closeby/components/cb-components/text_field.dart';
 import 'package:closeby/components/cb-components/wrapper.dart';
@@ -34,6 +35,8 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
   String _email = "";
   String _password = "";
 
+  String _errorMessage = "";
+
   @override
   void initState() {
     _emailFocusNode.requestFocus();
@@ -68,8 +71,9 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
           }
         });
       } catch (err) {
-        //setuppare e mostrare messaggio di errore
-        print(err);
+        if (context.mounted) {
+          showCBSnackbar(context, err.toString());
+        }
       }
     }
   }
@@ -81,8 +85,9 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
         _password,
       );
     } catch (err) {
-      //setuppare e mostrare messaggio di errore
-      print(err);
+      if (context.mounted) {
+        showCBSnackbar(context, err.toString());
+      }
     }
   }
 

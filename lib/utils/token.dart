@@ -7,7 +7,7 @@ class Token {
     try {
       return await _storage.read(key: 'jwt_token');
     } catch (err) {
-      throw Exception('Error reading token: $err');
+      throw Exception('READ_TOKEN $err');
     }
   }
 
@@ -15,7 +15,7 @@ class Token {
     try {
       await _storage.write(key: 'jwt_token', value: token);
     } catch (err) {
-      throw Exception('Error writing token: $err');
+      throw Exception('WRITE_TOKEN $err');
     }
   }
 
@@ -23,7 +23,7 @@ class Token {
     try {
       await _storage.delete(key: 'jwt_token');
     } catch (err) {
-      throw Exception('Error deleting token: $err');
+      throw Exception('DELETE_TOKEN $err');
     }
   }
 }

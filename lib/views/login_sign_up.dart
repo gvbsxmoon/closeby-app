@@ -1,6 +1,7 @@
 import 'package:closeby/components/cb-components/button.dart';
 import 'package:closeby/components/cb-components/checkbox.dart';
 import 'package:closeby/components/cb-components/divider.dart';
+import 'package:closeby/components/cb-components/snackbar.dart';
 import 'package:closeby/components/cb-components/text_field.dart';
 import 'package:closeby/components/cb-components/wrapper.dart';
 import 'package:closeby/components/login/login_header.dart';
@@ -58,8 +59,9 @@ class _LoginSignUpState extends State<LoginSignUp>
           _password,
         );
       } catch (err) {
-        //setuppare e mostrare messaggio di errore
-        print(err);
+        if (context.mounted) {
+          showCBSnackbar(context, err.toString());
+        }
       }
     }
   }

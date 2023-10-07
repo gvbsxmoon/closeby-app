@@ -13,7 +13,7 @@ class AppRouter {
   static List<GetPage> get routes => <GetPage>[
         //core routes
         GetPage(name: '/', page: () => const Explore()),
-        GetPage(name: '/product', page: () => const Product()),
+        GetPage(name: '/product/:id', page: () => const Product()),
         GetPage(name: '/favorites', page: () => const Favorites()),
         GetPage(name: '/profile', page: () => const Profile()),
         GetPage(name: '/login', page: () => const Login()),
