@@ -1,14 +1,20 @@
-/* import 'package:closeby/controller/login_controller.dart';
+import 'package:closeby/components/cb-components/button.dart';
+import 'package:closeby/components/cb-components/text_button.dart';
+import 'package:closeby/components/cb-components/text_field.dart';
+import 'package:closeby/components/cb-components/wrapper.dart';
+import 'package:closeby/components/login/login_header.dart';
+import 'package:closeby/controller/login_controller.dart';
+import 'package:closeby/utils/colors.dart';
+import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/mixins.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:get/get.dart';
 
 class LoginSignIn extends StatefulWidget {
   const LoginSignIn({
     super.key,
-    required this.controller,
   });
-
-  final LoginController controller;
 
   @override
   State<LoginSignIn> createState() => _LoginSignInState();
@@ -18,6 +24,8 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final FocusNode _emailFocusNode = FocusNode();
   final FocusNode _passwordFocusNode = FocusNode();
+
+  final LoginController _controller = Get.put(LoginController());
 
   bool _obscureText = true;
 
@@ -42,19 +50,21 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
   void _checkEmail() async {
     if (_formKey.currentState!.validate()) {
       try {
-        final isRegistered = await widget.controller.checkEmail(_email);
+        final isRegistered = await _controller.checkEmail(_email);
 
         setState(() {
           _isRegistered = isRegistered;
 
           if (isRegistered) {
             _emailFocusNode.unfocus();
-            Future.delayed(const Duration(milliseconds: 100),
-                () => {_passwordFocusNode.requestFocus()});
+            Future.delayed(
+              const Duration(milliseconds: 100),
+              () {
+                _passwordFocusNode.requestFocus();
+              },
+            );
           } else {
-            _pageController.nextPage(
-                duration: const Duration(milliseconds: 150),
-                curve: Curves.bounceIn);
+            Get.toNamed('login/signup');
           }
         });
       } catch (err) {
@@ -66,7 +76,7 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
 
   void _signIn() async {
     try {
-      await widget.controller.signIn(
+      await _controller.signIn(
         _email,
         _password,
       );
@@ -78,6 +88,16 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
 
   @override
   Widget build(BuildContext context) {
+    return CBWrapper(
+      header: const LoginHeader(),
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: _buildSignInForm(),
+      ),
+    );
+  }
+
+  Column _buildSignInForm() {
     return Column(
       children: [
         Form(
@@ -105,27 +125,39 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
                         color: AppColor.secondaryBlack),
                   ),
                 ),
-                secondChild: Padding(
-                  padding: const EdgeInsets.only(top: 16),
-                  child: CBTextField(
-                    hintText: "Password",
-                    obscureText: _obscureText,
-                    focusNode: _passwordFocusNode,
-                    showEye: true,
-                    showPassword: () {
-                      setState(() {
-                        _obscureText = !_obscureText;
-                      });
-                    },
-                    onChanged: (v) => setState(() {
-                      _password = v;
-                    }),
-                    inputFormatters: [
-                      FilteringTextInputFormatter.deny(
-                        RegExp(r'\s'),
+                secondChild: Column(
+                  crossAxisAlignment: CrossAxisAlignment.end,
+                  children: [
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16),
+                      child: CBTextField(
+                        hintText: "Password",
+                        obscureText: _obscureText,
+                        focusNode: _passwordFocusNode,
+                        showEye: true,
+                        showPassword: () {
+                          setState(() {
+                            _obscureText = !_obscureText;
+                          });
+                        },
+                        onChanged: (v) => setState(() {
+                          _password = v;
+                        }),
+                        inputFormatters: [
+                          FilteringTextInputFormatter.deny(
+                            RegExp(r'\s'),
+                          ),
+                        ],
                       ),
-                    ],
-                  ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 16, right: 4),
+                      child: CBTextButton(
+                        onPressed: () {},
+                        label: 'forgot_password'.tr,
+                      ),
+                    ),
+                  ],
                 ),
                 crossFadeState: _isRegistered
                     ? CrossFadeState.showSecond
@@ -145,7 +177,5 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
         ),
       ],
     );
-    ;
   }
 }
- */

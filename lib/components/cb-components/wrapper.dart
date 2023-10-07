@@ -1,4 +1,4 @@
-import "package:closeby/components/navbar.dart";
+import "package:closeby/components/cb-navigation/navbar.dart";
 import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";

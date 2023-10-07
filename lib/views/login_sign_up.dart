@@ -2,6 +2,8 @@ import 'package:closeby/components/cb-components/button.dart';
 import 'package:closeby/components/cb-components/checkbox.dart';
 import 'package:closeby/components/cb-components/divider.dart';
 import 'package:closeby/components/cb-components/text_field.dart';
+import 'package:closeby/components/cb-components/wrapper.dart';
+import 'package:closeby/components/login/login_header.dart';
 import 'package:closeby/controller/login_controller.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
@@ -13,17 +15,17 @@ import 'package:get/get.dart';
 class LoginSignUp extends StatefulWidget {
   const LoginSignUp({
     super.key,
-    required this.controller,
   });
-
-  final LoginController controller;
 
   @override
   State<LoginSignUp> createState() => _LoginSignUpState();
 }
 
-class _LoginSignUpState extends State<LoginSignUp> with FormValidator {
+class _LoginSignUpState extends State<LoginSignUp>
+    with FormValidator, StringUtils {
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   final FocusNode _firstNameFocusNode = FocusNode();
+  final LoginController _controller = Get.put(LoginController());
 
   String _firstName = "";
   String _surname = "";
@@ -36,6 +38,7 @@ class _LoginSignUpState extends State<LoginSignUp> with FormValidator {
   @override
   void initState() {
     _firstNameFocusNode.requestFocus();
+    _email = _controller.model.email;
     super.initState();
   }
 
@@ -45,10 +48,37 @@ class _LoginSignUpState extends State<LoginSignUp> with FormValidator {
     super.dispose();
   }
 
+  void _signUp() async {
+    if (_formKey.currentState!.validate()) {
+      try {
+        await _controller.signUp(
+          capitalize(_firstName),
+          capitalize(_surname),
+          _email,
+          _password,
+        );
+      } catch (err) {
+        //setuppare e mostrare messaggio di errore
+        print(err);
+      }
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
+    return CBWrapper(
+      header: const LoginHeader(),
+      child: Padding(
+        padding: const EdgeInsets.all(24.0),
+        child: _buildSignUpForm(),
+      ),
+    );
+  }
+
+  SingleChildScrollView _buildSignUpForm() {
     return SingleChildScrollView(
       child: Form(
+        key: _formKey,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -73,7 +103,7 @@ class _LoginSignUpState extends State<LoginSignUp> with FormValidator {
             Padding(
               padding: const EdgeInsets.fromLTRB(4, 8, 4, 32),
               child: Text(
-                'Make sure it matches the name on your government ID.',
+                'id_check_banner'.tr,
                 style: AppFonts.figtree(
                     fontSize: 12,
                     fontWeight: FontWeight.w400,
@@ -81,6 +111,7 @@ class _LoginSignUpState extends State<LoginSignUp> with FormValidator {
               ),
             ),
             CBTextField(
+              initialValue: _email,
               hintText: "Email",
               onChanged: (v) => setState(() {
                 _email = v;
@@ -118,12 +149,16 @@ class _LoginSignUpState extends State<LoginSignUp> with FormValidator {
                     color: AppColor.secondaryBlack),
               ),
             ),
-            CBButton(expanded: true, label: 'terms'.tr, onTap: () {}),
+            CBButton(
+              expanded: true,
+              label: 'terms'.tr,
+              onTap: _signUp,
+            ),
             const CBDivider(),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
               child: Text(
-                'CloseBy will send you members-only deals, marketing emails, and push notifications. You can opt out of receiving these at any time in your account settings.',
+                'mailing_list_banner'.tr,
                 style: AppFonts.figtree(
                     fontSize: 12,
                     color: AppColor.secondaryBlack,

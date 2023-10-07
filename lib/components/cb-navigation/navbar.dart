@@ -1,3 +1,4 @@
+import 'package:closeby/model/observable/login_model.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:closeby/utils/colors.dart';
@@ -14,35 +15,35 @@ class Navbar extends StatelessWidget {
     return Hero(
       tag: 'navbar',
       child: Container(
-          padding: const EdgeInsets.only(top: 16.0),
-          decoration: BoxDecoration(
-            border: Border(
-              top: BorderSide(color: AppColor.lightGrey, width: 1),
-            ),
-          ),
-          child: IntrinsicHeight(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: <NavbarItem>[
-                NavbarItem(
-                  icon: FontAwesomeIcons.magnifyingGlass,
-                  label: 'explore'.tr,
-                  route: '/',
-                ),
-                NavbarItem(
-                  icon: FontAwesomeIcons.heart,
-                  label: 'favorites'.tr,
-                  route: '/favorites',
-                ),
-                NavbarItem(
-                  icon: FontAwesomeIcons.circleUser,
-                  label: 'profile'.tr,
-                  route: '/profile',
-                ),
-              ],
-            ),
+        padding: const EdgeInsets.only(top: 16.0),
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(color: AppColor.lightGrey, width: 1),
           ),
         ),
+        child: IntrinsicHeight(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <NavbarItem>[
+              NavbarItem(
+                icon: FontAwesomeIcons.magnifyingGlass,
+                label: 'explore'.tr,
+                route: '/',
+              ),
+              NavbarItem(
+                icon: FontAwesomeIcons.heart,
+                label: 'favorites'.tr,
+                route: '/favorites',
+              ),
+              NavbarItem(
+                icon: FontAwesomeIcons.circleUser,
+                label: 'profile'.tr,
+                route: LoginModel().isLogged ? '/profile' : '/login',
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }

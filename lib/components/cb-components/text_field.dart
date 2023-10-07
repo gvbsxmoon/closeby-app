@@ -7,12 +7,12 @@ import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 class CBTextField extends StatefulWidget {
   const CBTextField({
     super.key,
+    this.initialValue,
     this.hintText,
     this.onChanged,
     this.borderColored = true,
     this.keyboardType,
     this.focusNode,
-    this.controller,
     this.obscureText = false,
     this.showPassword,
     this.showEye = false,
@@ -21,6 +21,7 @@ class CBTextField extends StatefulWidget {
   });
 
   final String? hintText;
+  final String? initialValue;
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
@@ -28,7 +29,6 @@ class CBTextField extends StatefulWidget {
   final Function()? showPassword;
   final bool showEye;
   final bool borderColored;
-  final TextEditingController? controller;
   final List<TextInputFormatter> inputFormatters;
   final String? Function(String?)? validator;
 
@@ -37,23 +37,12 @@ class CBTextField extends StatefulWidget {
 }
 
 class _CBTextFieldState extends State<CBTextField> {
-  late TextEditingController controller;
-  @override
-  void initState() {
-    if (widget.controller != null) {
-      controller = widget.controller!;
-    } else {
-      controller = TextEditingController();
-    }
-    super.initState();
-  }
-
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      initialValue: widget.initialValue,
       cursorColor: AppColor.darkGrey,
       inputFormatters: widget.inputFormatters,
-      controller: controller,
       focusNode: widget.focusNode,
       validator: widget.validator,
       onChanged: (v) => setState(() {

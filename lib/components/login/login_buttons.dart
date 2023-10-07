@@ -1,6 +1,4 @@
 import 'package:closeby/components/cb-components/button.dart';
-import 'package:closeby/components/login/login_form.dart';
-import 'package:closeby/controller/login_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
@@ -8,10 +6,7 @@ import 'package:get/get.dart';
 class LoginSignServiceButtons extends StatelessWidget {
   const LoginSignServiceButtons({
     super.key,
-    required this.controller,
   });
-
-  final LoginController controller;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +31,7 @@ class LoginSignServiceButtons extends StatelessWidget {
           outlined: true,
           icon: FontAwesomeIcons.envelope,
           label: "email_button".tr,
-          onTap: () => Get.to(() => LoginForm(controller: controller)),
+          onTap: () => Get.toNamed('/login/signin'),
         ),
       ],
     );

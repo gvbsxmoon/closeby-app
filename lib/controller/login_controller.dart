@@ -2,15 +2,15 @@ import 'package:closeby/model/observable/login_model.dart';
 import 'package:closeby/utils/service.dart';
 import 'package:closeby/utils/token.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
-import 'package:get/route_manager.dart';
 
 class LoginController extends GetxController {
   LoginModel model = LoginModel();
-  final service = AppService();
+  final _service = AppService();
 
   Future<bool> checkEmail(String email) async {
     try {
-      final res = await service.invoke(path: '/auth/check/$email');
+      final res = await _service.invoke(path: '/auth/check/$email');
+      model.email = email;
 
       return res.statusCode == 409;
     } catch (err) {
@@ -20,25 +20,21 @@ class LoginController extends GetxController {
 
   Future<void> signIn(String email, String password) async {
     try {
-      final response = await service.invoke(
+      final response = await _service.invoke(
         path: '/auth/signin',
         method: HTTPMethod.post,
         body: <String, dynamic>{'email': email, 'password': password},
       );
 
       Token().setToken(response.body);
-
-      /* model.isLogged = true;
-      Get.toNamed('/explore'); */
     } catch (err) {
       throw Exception('SIGN IN __$err');
     }
   }
 
-  Future<void> signUp(
-      String firstName, String lastName, String email, String password) async {
+  Future<void> signUp(String firstName, String lastName, String email, String password) async {
     try {
-      final response = await service.invoke(
+      final response = await _service.invoke(
         path: '/auth/signup',
         method: HTTPMethod.post,
         body: <String, dynamic>{
@@ -50,9 +46,6 @@ class LoginController extends GetxController {
       );
 
       Token().setToken(response.body);
-
-      /* model.isLogged = true;
-      Get.toNamed('/explore'); */
     } catch (err) {
       throw Exception('SIGN UP __$err');
     }

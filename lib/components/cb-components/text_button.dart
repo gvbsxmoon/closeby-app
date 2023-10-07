@@ -1,3 +1,4 @@
+import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
 
@@ -23,7 +24,8 @@ class CBTextButton extends StatelessWidget {
       child: Text(
         label,
         style: AppFonts.figtree(
-          fontSize: 14,
+          fontSize: 12,
+          color: AppColor.primaryBlack,
         ).copyWith(
           decoration: TextDecoration.underline,
         ),

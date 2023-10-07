@@ -1,6 +1,6 @@
 import 'package:closeby/components/cb-components/button.dart';
-import 'package:closeby/components/footer.dart';
 import 'package:closeby/components/cb-components/divider.dart';
+import 'package:closeby/components/cb-navigation/footer.dart';
 import 'package:closeby/components/product/product_amenities.dart';
 import 'package:closeby/components/product/product_description.dart';
 import 'package:closeby/components/product/product_header.dart';
