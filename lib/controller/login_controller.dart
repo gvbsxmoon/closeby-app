@@ -28,8 +28,8 @@ class LoginController extends GetxController {
 
       Token().setToken(response.body);
 
-      model.isLogged = true;
-      Get.toNamed('/profile');
+      /* model.isLogged = true;
+      Get.toNamed('/explore'); */
     } catch (err) {
       throw Exception('SIGN IN __$err');
     }
@@ -51,8 +51,8 @@ class LoginController extends GetxController {
 
       Token().setToken(response.body);
 
-      model.isLogged = true;
-      Get.toNamed('/profile');
+      /* model.isLogged = true;
+      Get.toNamed('/explore'); */
     } catch (err) {
       throw Exception('SIGN UP __$err');
     }

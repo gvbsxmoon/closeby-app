@@ -10,7 +10,7 @@ import 'package:closeby/components/cb-components/chips.dart';
 
 import 'package:closeby/components/cb-components/rounded_button.dart';
 import 'package:closeby/components/searchbar/search_date_section.dart';
-import 'package:closeby/components/cb-components/footer.dart';
+import 'package:closeby/components/footer.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

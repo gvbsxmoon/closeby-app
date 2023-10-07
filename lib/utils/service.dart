@@ -33,8 +33,6 @@ class AppService {
 
     if (params != null) req.url.queryParameters.addAll(params);
 
-    print(body);
-
     if (body != null) req.body = json.encode(body);
 
     try {

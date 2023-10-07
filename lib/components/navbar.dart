@@ -14,7 +14,7 @@ class Navbar extends StatelessWidget {
     return Hero(
       tag: 'navbar',
       child: Container(
-          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          padding: const EdgeInsets.only(top: 16.0),
           decoration: BoxDecoration(
             border: Border(
               top: BorderSide(color: AppColor.lightGrey, width: 1),

@@ -36,7 +36,7 @@ class LoginSignServiceButtons extends StatelessWidget {
           outlined: true,
           icon: FontAwesomeIcons.envelope,
           label: "email_button".tr,
-          onTap: () => Get.to(LoginForm(controller: controller)),
+          onTap: () => Get.to(() => LoginForm(controller: controller)),
         ),
       ],
     );

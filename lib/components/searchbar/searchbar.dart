@@ -15,7 +15,7 @@ class Searchbar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.to(const SearchInput()),
+      onTap: () => Get.to(() => const SearchInput()),
       child: Obx(
         () => Padding(
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),

@@ -27,14 +27,14 @@ class CBWrapper extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.offWhite,
       body: SafeArea(
-        bottom: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (header != null) Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: header!,
-            ),
+            if (header != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: header!,
+              ),
             if (title != null)
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
@@ -61,7 +61,12 @@ class CBWrapper extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: footer ?? const Navbar(),
+      bottomNavigationBar: SafeArea(
+        top: false,
+        left: false,
+        right: false,
+        child: footer ?? const Navbar(),
+      ),
     );
   }
 }

@@ -13,7 +13,7 @@ class _ProfileState extends State<Profile> {
   void _onPressed() {
     setState(() {
       LoginModel().isLogged = false;
-      Get.toNamed('/profile');
+      Get.toNamed('/explore');
     });
   }
 

@@ -30,6 +30,9 @@ Map<String, String> languageIT = {
   'confirm_pass': 'Conferma password',
   'banner':
       "Inserisci l'email con la quale ti sei registrato o quella con la quale intendi farlo.",
+  'signup_banner':
+      "Cliccando su Accetta e continua, accetto i Termini di Servizio di CloseBy, i Termini di Sevizio dei Pagamenti, e la Privacy Policy.",
+  'marketing_checkbox': "Non voglio ricevere messaggi promozionali da CloseBy",
 
   // buttons
   'clear': 'Cancella tutto',
@@ -41,6 +44,7 @@ Map<String, String> languageIT = {
   'done': 'Fatto',
   'show_more': 'Mostra altro',
   'contact_host': "Contatta l'host",
+  'terms': "Accept and continue",
 
   //favorites
   'favorites_sub': 'Accedi per visualizzare i preferiti',

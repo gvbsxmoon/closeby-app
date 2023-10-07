@@ -1,14 +1,11 @@
-import 'package:closeby/components/cb-components/button.dart';
 import 'package:closeby/components/cb-components/rounded_button.dart';
-import 'package:closeby/components/cb-components/text_field.dart';
 import 'package:closeby/components/cb-components/wrapper.dart';
+import 'package:closeby/components/login/login_sign_in.dart';
+import 'package:closeby/components/login/login_sign_up.dart';
 import 'package:closeby/controller/login_controller.dart';
-
-import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/mixins.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
 
@@ -25,153 +22,8 @@ class LoginForm extends StatefulWidget {
 }
 
 class _LoginFormState extends State<LoginForm> with FormValidator, StringUtils {
-  final _formKey = GlobalKey<FormState>();
-  final _focusNode = FocusNode();
 
-  bool _obscureTextPrimary = true;
-  bool _obscureTextSecondary = true;
-
-  bool _isRegistered = false;
-  bool _isEmailSubmitted = false;
-
-  String _email = "";
-  String _password = "";
-  String _firstName = "";
-  String _lastName = "";
-
-  @override
-  void initState() {
-    _focusNode.requestFocus();
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _focusNode.dispose();
-    super.dispose();
-  }
-
-  Widget _buildAlreadySignedUp() {
-    return Padding(
-      padding: const EdgeInsets.only(top: 16),
-      child: CBTextField(
-        hintText: "Password",
-        obscureText: _obscureTextPrimary,
-        showEye: true,
-        showPassword: () {
-          setState(() {
-            _obscureTextPrimary = !_obscureTextPrimary;
-          });
-        },
-        onChanged: (v) => setState(() {
-          _password = v;
-        }),
-        inputFormatters: [
-          FilteringTextInputFormatter.deny(
-            RegExp(r'\s'),
-          ),
-        ],
-      ),
-    );
-  }
-
-  Widget _buildNotSignedUp() {
-    return Column(
-      children: [
-        CBTextField(
-          hintText: 'name'.tr,
-          onChanged: (v) => setState(() {
-            _firstName = v;
-          }),
-          validator: (v) => validateString(v, 'name'.tr),
-        ),
-        const SizedBox(height: 16),
-        CBTextField(
-          hintText: 'surname'.tr,
-          onChanged: (v) => setState(() {
-            _lastName = v;
-          }),
-          validator: (v) => validateString(v, 'surname'.tr),
-        ),
-        const SizedBox(height: 16),
-        CBTextField(
-          hintText: "Password",
-          obscureText: _obscureTextPrimary,
-          showEye: true,
-          showPassword: () {
-            setState(() {
-              _obscureTextPrimary = !_obscureTextPrimary;
-            });
-          },
-          onChanged: (v) => setState(() {
-            _password = v;
-          }),
-          inputFormatters: [
-            FilteringTextInputFormatter.deny(
-              RegExp(r'\s'),
-            ),
-          ],
-          validator: (v) => validatePassword(v),
-        ),
-        const SizedBox(height: 16),
-        CBTextField(
-          hintText: 'confirm_pass'.tr,
-          obscureText: _obscureTextSecondary,
-          showEye: true,
-          showPassword: () {
-            setState(() {
-              _obscureTextSecondary = !_obscureTextSecondary;
-            });
-          },
-          inputFormatters: [
-            FilteringTextInputFormatter.deny(
-              RegExp(r'\s'),
-            ),
-          ],
-          validator: (v) => validateMatch(v, _password, "Passwords"),
-        ),
-      ],
-    );
-  }
-
-  void _checkEmailOnSubmit() async {
-    if (_formKey.currentState!.validate()) {
-      setState(() {
-        _isEmailSubmitted = true;
-      });
-
-      try {
-        final isRegistered = await widget.controller.checkEmail(_email);
-        setState(() {
-          _isRegistered = isRegistered;
-        });
-      } catch (err) {
-        print(err);
-      }
-
-      _formKey.currentState!.reset();
-    }
-  }
-
-  void _loginOnSubmit() async {
-    widget.controller.model.isLogged = true;
-
-    if (_formKey.currentState!.validate()) {
-      try {
-        _isRegistered
-            ? await widget.controller.signIn(_email, _password)
-            : await widget.controller.signUp(
-                capitalize(_firstName),
-                capitalize(
-                  _lastName,
-                ),
-                _email,
-                _password);
-      } catch (err) {
-        print(err);
-      }
-    }
-  }
+  final PageController _pageController = PageController();
 
   @override
   Widget build(BuildContext context) {
@@ -193,65 +45,18 @@ class _LoginFormState extends State<LoginForm> with FormValidator, StringUtils {
         ],
       ),
       footer: const SizedBox(),
-      child: _buildLoginForm(),
-    );
-  }
-
-  Padding _buildLoginForm() {
-    return Padding(
-      padding: const EdgeInsets.all(24),
-      child: Column(
-        children: [
-          Form(
-            key: _formKey,
-            child: Column(
-              children: [
-                CBTextField(
-                  hintText: "Email",
-                  focusNode: _focusNode,
-                  onChanged: (v) => setState(() {
-                    _email = v;
-                  }),
-                  validator: (v) => validateEmail(v),
-                  keyboardType: TextInputType.emailAddress,
-                ),
-                Padding(
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 12, horizontal: 4),
-                  child: Text(
-                    'banner'.tr,
-                    style: AppFonts.figtree(
-                        fontSize: 12,
-                        fontWeight: FontWeight.w400,
-                        color: AppColor.secondaryBlack),
-                  ),
-                ),
-                AnimatedCrossFade(
-                  firstChild: _buildAlreadySignedUp(),
-                  secondChild:
-                      _isEmailSubmitted ? _buildNotSignedUp() : Container(),
-                  crossFadeState: _isRegistered
-                      ? CrossFadeState.showFirst
-                      : CrossFadeState.showSecond,
-                  duration: const Duration(milliseconds: 150),
-                ),
-              ],
-            ),
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(vertical: 32.0),
-            child: CBButton(
-              expanded: true,
-              label: _isRegistered
-                  ? 'login'.tr
-                  : _isEmailSubmitted
-                      ? 'signup'.tr
-                      : 'continue'.tr,
-              onTap: _isEmailSubmitted ? _loginOnSubmit : _checkEmailOnSubmit,
-            ),
-          ),
-        ],
+      child: Padding(
+        padding: const EdgeInsets.all(24),
+        child: PageView(
+          physics: const NeverScrollableScrollPhysics(),
+          controller: _pageController,
+          children: [
+            /* LoginSignIn(controller: widget.controller), */
+            LoginSignUp(controller: widget.controller),
+          ],
+        ),
       ),
     );
   }
+
 }
