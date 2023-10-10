@@ -50,6 +50,7 @@ Map<String, String> languageEN = {
   'contact_host': "Contact host",
   'terms': "Accept and continue",
   'forgot_password': "Forgot password?",
+  'edit': "Edit",
 
   //favorites
   'favorites_sub': 'Log in to view your wishlists',

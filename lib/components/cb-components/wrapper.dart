@@ -4,15 +4,15 @@ import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
 
 class CBWrapper extends StatelessWidget {
-  const CBWrapper({
-    super.key,
-    this.margin = false,
-    this.header,
-    this.title,
-    this.subtitle,
-    required this.child,
-    this.footer,
-  });
+  const CBWrapper(
+      {super.key,
+      this.margin = false,
+      this.header,
+      this.title,
+      this.subtitle,
+      required this.child,
+      this.footer,
+      this.rightAppbarAction});
 
   final bool margin;
   final Widget? header;
@@ -20,6 +20,7 @@ class CBWrapper extends StatelessWidget {
   final String? subtitle;
   final Widget child;
   final Widget? footer;
+  final Widget? rightAppbarAction;
 
   @override
   Widget build(BuildContext context) {
@@ -38,9 +39,15 @@ class CBWrapper extends StatelessWidget {
             if (title != null)
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
-                child: Text(
-                  title!,
-                  style: AppFonts.figtree(fontSize: 32),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      title!,
+                      style: AppFonts.figtree(fontSize: 32),
+                    ),
+                    rightAppbarAction ?? const SizedBox(),
+                  ],
                 ),
               ),
             if (subtitle != null)

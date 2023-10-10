@@ -50,6 +50,7 @@ Map<String, String> languageIT = {
   'contact_host': "Contatta l'host",
   'terms': "Accept and continue",
   'forgot_password': "Password dimenticata?",
+  'edit': "Edit",
 
   //favorites
   'favorites_sub': 'Accedi per visualizzare i preferiti',

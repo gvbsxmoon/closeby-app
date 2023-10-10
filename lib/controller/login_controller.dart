@@ -1,6 +1,8 @@
+import 'package:closeby/controller/navigation_controller.dart';
 import 'package:closeby/model/observable/login_model.dart';
 import 'package:closeby/utils/service.dart';
 import 'package:closeby/utils/token.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class LoginController extends GetxController {
@@ -27,12 +29,18 @@ class LoginController extends GetxController {
       );
 
       Token().setToken(response.body);
+      model.isLogged = true;
+      NavigationController().navigate(
+        route: '/profile',
+        cleanHistory: true,
+      );
     } catch (err) {
       throw Exception('SIGN_IN: $err');
     }
   }
 
-  Future<void> signUp(String firstName, String lastName, String email, String password) async {
+  Future<void> signUp(
+      String firstName, String lastName, String email, String password) async {
     try {
       final response = await _service.invoke(
         path: '/auth/signup',

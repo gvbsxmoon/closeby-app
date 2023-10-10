@@ -156,7 +156,9 @@ class _LoginSignUpState extends State<LoginSignUp>
               label: 'terms'.tr,
               onTap: _signUp,
             ),
-            const CBDivider(),
+            const CBDivider(
+              expanded: true,
+            ),
             Padding(
               padding: const EdgeInsets.fromLTRB(0, 0, 0, 16),
               child: Text(

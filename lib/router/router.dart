@@ -12,7 +12,7 @@ class AppRouter {
 
   static List<GetPage> get routes => <GetPage>[
         //core routes
-        GetPage(name: '/', page: () => const Explore()),
+        GetPage(name: '/explore', page: () => const Explore()),
         GetPage(name: '/product/:id', page: () => const Product()),
         GetPage(name: '/favorites', page: () => const Favorites()),
         GetPage(name: '/profile', page: () => const Profile()),
@@ -23,5 +23,5 @@ class AppRouter {
         GetPage(name: '/login/signin', page: () => const LoginSignIn()),
       ];
 
-  static String get initialRoute => "/";
+  static String get initialRoute => "/explore";
 }
