@@ -3,11 +3,13 @@ import 'package:closeby/model/observable/login_model.dart';
 import 'package:closeby/utils/service.dart';
 import 'package:closeby/utils/token.dart';
 import 'package:get/get.dart';
-import 'package:get/get_state_manager/src/simple/get_controllers.dart';
 
 class LoginController extends GetxController {
   LoginModel model = LoginModel();
   final _service = AppService();
+
+  final NavigationController _navigationController =
+      Get.put(NavigationController());
 
   Future<bool> checkEmail(String email) async {
     try {
@@ -30,8 +32,8 @@ class LoginController extends GetxController {
 
       Token().setToken(response.body);
       model.isLogged = true;
-      NavigationController().navigate(
-        route: '/profile',
+      _navigationController.navigate(
+        route: '/explore',
         cleanHistory: true,
       );
     } catch (err) {

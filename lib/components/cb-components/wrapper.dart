@@ -44,7 +44,7 @@ class CBWrapper extends StatelessWidget {
                   children: [
                     Text(
                       title!,
-                      style: AppFonts.figtree(fontSize: 32),
+                      style: AppFonts.figtree(fontSize: 28),
                     ),
                     rightAppbarAction ?? const SizedBox(),
                   ],

@@ -24,6 +24,7 @@ class CBTextButton extends StatelessWidget {
       child: Text(
         label,
         style: AppFonts.figtree(
+          fontWeight: FontWeight.w400,
           color: AppColor.primaryBlack,
         ).copyWith(
           decoration: TextDecoration.underline,
