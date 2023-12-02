@@ -3,8 +3,8 @@ import 'package:closeby/pages/favorites.dart';
 import 'package:closeby/pages/login.dart';
 import 'package:closeby/pages/product.dart';
 import 'package:closeby/pages/profile.dart';
-import 'package:closeby/views/login_sign_in.dart';
-import 'package:closeby/views/login_sign_up.dart';
+import 'package:closeby/views/login/login_sign_in.dart';
+import 'package:closeby/views/login/login_sign_up.dart';
 import 'package:closeby/views/profile_personal_info.dart';
 import 'package:get/route_manager.dart';
 

@@ -31,7 +31,9 @@ class LoginController extends GetxController {
       );
 
       Token().setToken(response.body);
+
       model.isLogged = true;
+      
       _navigationController.navigate(
         route: '/explore',
         cleanHistory: true,

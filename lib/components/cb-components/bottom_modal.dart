@@ -7,9 +7,6 @@ import 'package:get/get.dart';
 Future<dynamic> showCBBottomModal(
     BuildContext context, String description) async {
   return showModalBottomSheet<void>(
-    shape: RoundedRectangleBorder(
-      borderRadius: BorderRadius.circular(16),
-    ),
     backgroundColor: AppColor.offWhite,
     context: context,
     builder: (BuildContext context) {

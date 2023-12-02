@@ -19,7 +19,7 @@ List<CBListOptions> settingsListOptions = <CBListOptions>[
   ),
   CBListOptions(
     () => null,
-    FontAwesomeIcons.bell,
+    FontAwesomeIcons.gear,
     'App settings',
   )
 ];
