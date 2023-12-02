@@ -31,7 +31,7 @@ class LoginSignServiceButtons extends StatelessWidget {
           outlined: true,
           icon: FontAwesomeIcons.envelope,
           label: "email_button".tr,
-          onTap: () => Get.toNamed('/login/signin'),
+          onTap: () => Get.toNamed('/login/sign-in'),
         ),
       ],
     );

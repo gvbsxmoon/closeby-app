@@ -3,7 +3,6 @@ import 'package:closeby/components/cb-components/text_button.dart';
 import 'package:closeby/components/cb-components/user_card.dart';
 import 'package:closeby/components/cb-components/wrapper.dart';
 import 'package:closeby/components/profile/list_options.dart';
-import 'package:closeby/controller/login_controller.dart';
 import 'package:closeby/controller/navigation_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

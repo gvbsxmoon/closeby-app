@@ -5,7 +5,7 @@ List<CBListOptions> settingsListOptions = <CBListOptions>[
   CBListOptions(
     () => null,
     FontAwesomeIcons.circleUser,
-    'Personal informations',
+    'Personal info',
   ),
   CBListOptions(
     () => null,

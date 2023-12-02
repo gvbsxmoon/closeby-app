@@ -24,6 +24,7 @@ class ProductCard extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 width: MediaQuery.of(context).size.width,
                 decoration: ShapeDecoration(
+                  color: AppColor.lightGrey,
                   shape: SmoothRectangleBorder(
                     borderRadius: SmoothBorderRadius(
                       cornerRadius: 24,
