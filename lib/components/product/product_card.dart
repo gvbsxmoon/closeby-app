@@ -5,7 +5,7 @@ import 'package:closeby/utils/shadow.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:get/route_manager.dart';
+import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
   const ProductCard({super.key});
@@ -16,7 +16,7 @@ class ProductCard extends StatelessWidget {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         GestureDetector(
-          onTap: () => Get.toNamed("/product"),
+          onTap: () => Get.toNamed("/product/531"),
           child: Stack(
             alignment: Alignment.topRight,
             children: [
@@ -24,6 +24,7 @@ class ProductCard extends StatelessWidget {
                 clipBehavior: Clip.antiAlias,
                 width: MediaQuery.of(context).size.width,
                 decoration: ShapeDecoration(
+                  color: AppColor.lightGrey,
                   shape: SmoothRectangleBorder(
                     borderRadius: SmoothBorderRadius(
                       cornerRadius: 24,
@@ -92,7 +93,7 @@ class ProductCard extends StatelessWidget {
                 style: AppFonts.figtree(),
               ),
               TextSpan(
-                text: "per day",
+                text: 'per_day'.tr,
                 style: AppFonts.figtree(
                   fontWeight: FontWeight.w400,
                 ),

@@ -29,7 +29,7 @@ Future<DateTimeRange?> showCBDatePicker(BuildContext context) async {
               onPrimary: AppColor.offWhite,
               surface: AppColor.offWhite,
               onSurface: AppColor.primaryBlack,
-              
+              secondary: AppColor.rebeccaPurple.withOpacity(0.3),
             ),
             dialogBackgroundColor: AppColor.offWhite),
         child: child!,

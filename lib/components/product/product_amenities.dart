@@ -27,7 +27,7 @@ class ProductAmenities extends StatelessWidget {
           Row(
             children: [
               Icon(FontAwesomeIcons.weightHanging,
-                  size: 18, color: AppColor.primaryBlack),
+                  size: 18, color: AppColor.secondaryBlack),
               const SizedBox(width: 16),
               Text(
                 "Heavy lifting",
@@ -41,7 +41,7 @@ class ProductAmenities extends StatelessWidget {
           Row(
             children: [
               Icon(FontAwesomeIcons.box,
-                  size: 18, color: AppColor.primaryBlack),
+                  size: 18, color: AppColor.secondaryBlack),
               const SizedBox(width: 16),
               Text(
                 "Package",
@@ -55,7 +55,7 @@ class ProductAmenities extends StatelessWidget {
           Row(
             children: [
               Icon(FontAwesomeIcons.tornado,
-                  size: 18, color: AppColor.primaryBlack),
+                  size: 18, color: AppColor.secondaryBlack),
               const SizedBox(width: 16),
               Text(
                 "Empty cellars",
@@ -69,7 +69,7 @@ class ProductAmenities extends StatelessWidget {
           Row(
             children: [
               Icon(FontAwesomeIcons.shower,
-                  size: 18, color: AppColor.primaryBlack),
+                  size: 18, color: AppColor.secondaryBlack),
               const SizedBox(width: 16),
               Text(
                 "Pre-rent cleaning",

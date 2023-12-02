@@ -1,3 +1,5 @@
+import 'package:closeby/controller/navigation_controller.dart';
+import 'package:closeby/model/observable/login_model.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:closeby/utils/colors.dart';
@@ -14,32 +16,39 @@ class Navbar extends StatelessWidget {
     return Hero(
       tag: 'navbar',
       child: Container(
-        height: 100,
         padding: const EdgeInsets.only(top: 16.0),
         decoration: BoxDecoration(
           border: Border(
             top: BorderSide(color: AppColor.lightGrey, width: 1),
           ),
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: <NavbarItem>[
-            NavbarItem(
-              icon: FontAwesomeIcons.magnifyingGlass,
-              label: 'explore'.tr,
-              route: '/',
-            ),
-            NavbarItem(
-              icon: FontAwesomeIcons.heart,
-              label: 'favorites'.tr,
-              route: '/favorites',
-            ),
-            NavbarItem(
-              icon: FontAwesomeIcons.circleUser,
-              label: 'profile'.tr,
-              route: '/profile',
-            ),
-          ],
+        child: IntrinsicHeight(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <NavbarItem>[
+              NavbarItem(
+                icon: FontAwesomeIcons.magnifyingGlass,
+                label: 'explore'.tr,
+                route: '/explore',
+              ),
+              NavbarItem(
+                icon: FontAwesomeIcons.heart,
+                label: 'favorites'.tr,
+                route: '/favorites',
+              ),
+              LoginModel().isLogged
+                  ? NavbarItem(
+                      icon: FontAwesomeIcons.circleUser,
+                      label: 'profile'.tr,
+                      route: '/profile',
+                    )
+                  : NavbarItem(
+                      icon: FontAwesomeIcons.circleUser,
+                      label: 'login'.tr,
+                      route: '/login',
+                    ),
+            ],
+          ),
         ),
       ),
     );
@@ -47,7 +56,7 @@ class Navbar extends StatelessWidget {
 }
 
 class NavbarItem extends StatelessWidget {
-  const NavbarItem({
+  NavbarItem({
     super.key,
     required this.icon,
     required this.label,
@@ -58,10 +67,12 @@ class NavbarItem extends StatelessWidget {
   final String label;
   final String route;
 
+  final NavigationController _controller = Get.put(NavigationController());
+
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => Get.toNamed(route),
+      onTap: () => _controller.navigate(route: route),
       child: Column(
         children: [
           Padding(
@@ -69,7 +80,7 @@ class NavbarItem extends StatelessWidget {
             child: Icon(
               icon,
               size: 18,
-              color: ModalRoute.of(context)?.settings.name == route
+              color: _controller.model.route == route
                   ? AppColor.rebeccaPurple
                   : AppColor.darkGrey,
             ),

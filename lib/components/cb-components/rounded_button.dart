@@ -19,8 +19,8 @@ class CBRoundedButton extends StatelessWidget {
       onTap: onTap,
       child: Container(
         margin: leftMargin ? const EdgeInsets.only(left: 24) : null,
-        width: 32,
-        height: 32,
+        width: 36,
+        height: 36,
         decoration: BoxDecoration(
           shape: BoxShape.circle,
           color: Colors.white,

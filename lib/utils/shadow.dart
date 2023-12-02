@@ -21,12 +21,12 @@ class AppShadow {
     BoxShadow(
       color: AppColor.primaryBlack.withOpacity(0.04),
       offset: const Offset(0, 1),
-      blurRadius: 12,
+      blurRadius: 6,
     ),
     BoxShadow(
       color: AppColor.primaryBlack.withOpacity(0.04),
       offset: const Offset(0, 2),
-      blurRadius: 16,
+      blurRadius: 12,
     ),
   ];
 

@@ -30,6 +30,13 @@ Map<String, String> languageIT = {
   'confirm_pass': 'Conferma password',
   'banner':
       "Inserisci l'email con la quale ti sei registrato o quella con la quale intendi farlo.",
+  'signup_banner':
+      "Cliccando su Accetta e continua, accetto i Termini di Servizio di CloseBy, i Termini di Sevizio dei Pagamenti, e la Privacy Policy.",
+  'marketing_checkbox': "Non voglio ricevere messaggi promozionali da CloseBy",
+  'id_check_banner':
+      "Assicurati che sia uguale al nome indicato sulla Carta d'Identità Nazionale.",
+  'mailing_list_banner':
+      "CloseBy invierà ai soli membri offerte, email di marketing, e notifiche. Potrai decidere di riceverle in qualsiasi momenti andando nelle impostazioni del tuo account.",
 
   // buttons
   'clear': 'Cancella tutto',
@@ -41,6 +48,9 @@ Map<String, String> languageIT = {
   'done': 'Fatto',
   'show_more': 'Mostra altro',
   'contact_host': "Contatta l'host",
+  'terms': "Accept and continue",
+  'forgot_password': "Password dimenticata?",
+  'edit': "Edit",
 
   //favorites
   'favorites_sub': 'Accedi per visualizzare i preferiti',

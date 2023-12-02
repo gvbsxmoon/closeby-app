@@ -29,7 +29,7 @@ class Header extends StatelessWidget {
                     TextSpan(
                       text: "Close",
                       style: AppFonts.figtree(
-                          color: AppColor.lightRebeccaPurple,
+                          color: AppColor.midRebeccaPurple,
                           fontSize: 24,
                           fontWeight: FontWeight.bold),
                     ),

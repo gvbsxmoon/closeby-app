@@ -1,5 +1,5 @@
 import 'package:closeby/components/cb-components/wrapper.dart';
-import 'package:closeby/components/header.dart';
+import 'package:closeby/components/cb-navigation/header.dart';
 import 'package:closeby/components/product/product_card.dart';
 import 'package:flutter/material.dart';
 

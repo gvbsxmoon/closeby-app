@@ -1,6 +1,6 @@
 import 'package:closeby/components/cb-components/button.dart';
-import 'package:closeby/components/cb-components/footer.dart';
 import 'package:closeby/components/cb-components/divider.dart';
+import 'package:closeby/components/cb-navigation/footer.dart';
 import 'package:closeby/components/product/product_amenities.dart';
 import 'package:closeby/components/product/product_description.dart';
 import 'package:closeby/components/product/product_header.dart';
@@ -11,7 +11,6 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:get/get.dart';
-import 'package:get/route_manager.dart';
 
 class Product extends StatelessWidget {
   const Product({super.key});
@@ -46,7 +45,7 @@ class Product extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: _buildProductFooter(),
+      bottomNavigationBar: SafeArea(child: _buildProductFooter()),
     );
   }
 
@@ -103,8 +102,11 @@ class Product extends StatelessWidget {
             Row(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Icon(FontAwesomeIcons.solidStar,
-                    size: 10, color: AppColor.primaryBlack),
+                Icon(
+                  FontAwesomeIcons.solidStar,
+                  size: 10,
+                  color: AppColor.primaryBlack,
+                ),
                 const SizedBox(width: 4),
                 Text(
                   "4.96",

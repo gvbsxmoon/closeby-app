@@ -1,4 +1,5 @@
 import "package:closeby/components/cb-components/button.dart";
+import "package:closeby/components/cb-components/snackbar.dart";
 import "package:closeby/components/cb-components/wrapper.dart";
 import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
@@ -29,10 +30,7 @@ class Favorites extends StatelessWidget {
               ),
             ],
           ),
-          CBButton(
-              label: 'login'.tr,
-              expanded: true,
-              onTap: () => Get.toNamed('/profile'))
+          CBButton(label: 'login'.tr, expanded: true, onTap: () {})
         ],
       ),
     );

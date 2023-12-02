@@ -1,6 +1,7 @@
 import 'package:closeby/components/cb-components/button.dart';
 import 'package:closeby/components/cb-components/datepicker.dart';
 import 'package:closeby/components/cb-components/wrapper.dart';
+import 'package:closeby/components/cb-navigation/footer.dart';
 import 'package:closeby/controller/searchbar_controller.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
@@ -10,7 +11,6 @@ import 'package:closeby/components/cb-components/chips.dart';
 
 import 'package:closeby/components/cb-components/rounded_button.dart';
 import 'package:closeby/components/searchbar/search_date_section.dart';
-import 'package:closeby/components/cb-components/footer.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 

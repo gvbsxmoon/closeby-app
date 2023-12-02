@@ -29,7 +29,7 @@ class ProductDescription extends StatelessWidget {
         ),
         if (testDescription.length > limit)
           Padding(
-            padding: const EdgeInsets.only(top: 8.0),
+            padding: const EdgeInsets.only(top: 12.0),
             child: CBTextButton(
               onPressed: () async =>
                   await showCBBottomModal(context, testDescription),

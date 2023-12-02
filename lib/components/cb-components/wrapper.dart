@@ -1,18 +1,18 @@
-import "package:closeby/components/navbar.dart";
+import "package:closeby/components/cb-navigation/navbar.dart";
 import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
 
 class CBWrapper extends StatelessWidget {
-  const CBWrapper({
-    super.key,
-    this.margin = false,
-    this.header,
-    this.title,
-    this.subtitle,
-    required this.child,
-    this.footer,
-  });
+  const CBWrapper(
+      {super.key,
+      this.margin = false,
+      this.header,
+      this.title,
+      this.subtitle,
+      required this.child,
+      this.footer,
+      this.rightAppbarAction});
 
   final bool margin;
   final Widget? header;
@@ -20,6 +20,7 @@ class CBWrapper extends StatelessWidget {
   final String? subtitle;
   final Widget child;
   final Widget? footer;
+  final Widget? rightAppbarAction;
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +28,26 @@ class CBWrapper extends StatelessWidget {
       resizeToAvoidBottomInset: false,
       backgroundColor: AppColor.offWhite,
       body: SafeArea(
-        bottom: false,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            if (header != null) Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: header!,
-            ),
+            if (header != null)
+              Padding(
+                padding: const EdgeInsets.only(top: 16),
+                child: header!,
+              ),
             if (title != null)
               Padding(
                 padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
-                child: Text(
-                  title!,
-                  style: AppFonts.figtree(fontSize: 32),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      title!,
+                      style: AppFonts.figtree(fontSize: 28),
+                    ),
+                    rightAppbarAction ?? const SizedBox(),
+                  ],
                 ),
               ),
             if (subtitle != null)
@@ -61,7 +68,12 @@ class CBWrapper extends StatelessWidget {
           ],
         ),
       ),
-      bottomNavigationBar: footer ?? const Navbar(),
+      bottomNavigationBar: SafeArea(
+        top: false,
+        left: false,
+        right: false,
+        child: footer ?? const Navbar(),
+      ),
     );
   }
 }
