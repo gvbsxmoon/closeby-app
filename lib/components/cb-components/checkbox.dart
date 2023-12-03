@@ -1,6 +1,7 @@
 import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
+import "package:gap/gap.dart";
 
 class CBCheckbox extends StatefulWidget {
   const CBCheckbox({
@@ -65,9 +66,7 @@ class _CBCheckboxState extends State<CBCheckbox> {
               ],
             ),
           ),
-          const SizedBox(
-            width: 12,
-          ),
+          const Gap(12),
           Text(
             widget.label,
             style: AppFonts.figtree(

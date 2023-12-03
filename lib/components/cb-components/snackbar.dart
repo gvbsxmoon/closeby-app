@@ -2,6 +2,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 
 void showCBSnackbar(
   BuildContext context,
@@ -23,7 +24,7 @@ void showCBSnackbar(
               size: 14,
             ),
           ),
-          const SizedBox(width: 8.0),
+          const Gap(8),
           Flexible(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

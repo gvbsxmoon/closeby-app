@@ -3,6 +3,7 @@ import 'package:closeby/components/cb-components/user_card.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class ProductHostSection extends StatelessWidget {
@@ -17,9 +18,7 @@ class ProductHostSection extends StatelessWidget {
       child: Column(
         children: [
           const CBUserCard(),
-          const SizedBox(
-            height: 24,
-          ),
+          const Gap(24),
           Text(
             '${'spoken_languages'.tr}English, Italian, German · ${'response_rate'.tr}100% · ${'response_time'.tr}Within 2 hours',
             textAlign: TextAlign.center,
@@ -29,9 +28,7 @@ class ProductHostSection extends StatelessWidget {
               color: AppColor.secondaryBlack,
             ),
           ),
-          const SizedBox(
-            height: 24,
-          ),
+          const Gap(24),
           CBButton(
             expanded: true,
             outlined: true,

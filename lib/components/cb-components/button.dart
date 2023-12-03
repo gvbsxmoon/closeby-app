@@ -1,6 +1,7 @@
 import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class CBButton extends StatefulWidget {
   const CBButton({
@@ -61,9 +62,7 @@ class _CBButtonState extends State<CBButton> {
                       : AppColor.offWhite,
                 ),
               if (widget.icon != null)
-                const SizedBox(
-                  width: 8,
-                ),
+                const Gap(8),
               Text(
                 widget.label,
                 style: AppFonts.figtree(

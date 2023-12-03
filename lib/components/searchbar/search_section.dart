@@ -2,6 +2,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/shadow.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class SearchSection extends StatelessWidget {
   const SearchSection({
@@ -66,11 +67,7 @@ class SearchSection extends StatelessWidget {
               AnimatedSize(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
-                child: isExpanded
-                    ? const SizedBox(
-                        height: 24,
-                      )
-                    : const SizedBox(),
+                child: isExpanded ? const Gap(24) : const Gap(0),
               ),
               if (isExpanded)
                 AnimatedCrossFade(

@@ -10,6 +10,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class Product extends StatelessWidget {
@@ -107,7 +108,7 @@ class Product extends StatelessWidget {
                   size: 10,
                   color: AppColor.primaryBlack,
                 ),
-                const SizedBox(width: 4),
+                const Gap(4),
                 Text(
                   "4.96",
                   style: AppFonts.figtree(

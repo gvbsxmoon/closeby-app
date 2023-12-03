@@ -3,6 +3,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 
 class CBList extends StatelessWidget {
   const CBList({
@@ -25,9 +26,7 @@ class CBList extends StatelessWidget {
             listTitle,
             style: AppFonts.figtree(fontSize: 18),
           ),
-          const SizedBox(
-            height: 16,
-          ),
+          const Gap(16),
           Column(
             children: listOptions
                 .map(
@@ -80,9 +79,7 @@ class CBListTile extends StatelessWidget {
                       size: 18,
                       color: AppColor.secondaryBlack,
                     ),
-                    const SizedBox(
-                      width: 16,
-                    ),
+                    const Gap(16),
                     Text(
                       label,
                       style: AppFonts.figtree(fontWeight: FontWeight.w400),

@@ -3,6 +3,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class ProductReviews extends StatelessWidget {
@@ -25,7 +26,7 @@ class ProductReviews extends StatelessWidget {
             children: [
               Icon(FontAwesomeIcons.solidStar,
                   size: 14, color: AppColor.primaryBlack),
-              const SizedBox(width: 8),
+              const Gap(8),
               Text(
                 "4.96 · 3 ${'reviews'.tr}",
                 style: AppFonts.figtree(

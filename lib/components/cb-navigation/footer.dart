@@ -13,7 +13,7 @@ class CBFooter extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.only(top: 16, left: 24, right: 24),
+      padding: const EdgeInsets.fromLTRB(24, 16, 24, 0),
       decoration: BoxDecoration(
         color: AppColor.offWhite,
         border: Border(top: BorderSide(color: AppColor.lightGrey, width: 1)),
