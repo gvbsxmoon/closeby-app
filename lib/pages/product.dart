@@ -33,7 +33,7 @@ class Product extends StatelessWidget {
             const ProductHostSection(),
             const CBDivider(),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 24.0),
+              padding: EdgeInsets.symmetric(horizontal: 24.0),
               child: ProductDescription(testDescription: _testDescription),
             ),
             const CBDivider(),

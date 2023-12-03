@@ -13,7 +13,7 @@ class Favorites extends StatelessWidget {
     return CBWrapper(
       margin: true,
       title: 'favorites'.tr,
-      subtitle: 'favorites_sub'.tr,
+      subtitle: LoginModel().isLogged ? null : 'favorites_sub'.tr,
       child: LoginModel().isLogged ? FavoritesLogged() : FavoritesGuest(),
     );
   }

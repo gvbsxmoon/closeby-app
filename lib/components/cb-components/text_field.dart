@@ -13,9 +13,7 @@ class CBTextField extends StatefulWidget {
     this.borderColored = true,
     this.keyboardType,
     this.focusNode,
-    this.obscureText = false,
-    this.showPassword,
-    this.showEye = false,
+    this.isPassword = false,
     this.inputFormatters = const [],
     this.validator,
   });
@@ -25,9 +23,7 @@ class CBTextField extends StatefulWidget {
   final void Function(String)? onChanged;
   final TextInputType? keyboardType;
   final FocusNode? focusNode;
-  final bool obscureText;
-  final Function()? showPassword;
-  final bool showEye;
+  final bool isPassword;
   final bool borderColored;
   final List<TextInputFormatter> inputFormatters;
   final String? Function(String?)? validator;
@@ -37,6 +33,14 @@ class CBTextField extends StatefulWidget {
 }
 
 class _CBTextFieldState extends State<CBTextField> {
+  late bool _obscureText;
+
+  @override
+  void initState() {
+    _obscureText = widget.isPassword;
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return TextFormField(
@@ -50,13 +54,18 @@ class _CBTextFieldState extends State<CBTextField> {
       }),
       style: AppFonts.figtree(),
       keyboardType: widget.keyboardType,
-      obscureText: widget.obscureText,
+      obscureText: _obscureText,
       decoration: InputDecoration(
-        suffixIcon: widget.showEye
+        suffixIcon: widget.isPassword
             ? GestureDetector(
-                onTap: widget.showPassword,
+                onTap: () {
+                  print(_obscureText);
+                  setState(() {
+                    _obscureText = !_obscureText;
+                  });
+                },
                 child: Icon(
-                  widget.obscureText
+                  _obscureText
                       ? FontAwesomeIcons.eye
                       : FontAwesomeIcons.eyeSlash,
                   color: AppColor.darkGrey,

@@ -34,7 +34,6 @@ class _LoginSignUpState extends State<LoginSignUp>
   String _password = "";
 
   bool _marketing = false;
-  bool _obscureText = false;
 
   @override
   void initState() {
@@ -124,13 +123,7 @@ class _LoginSignUpState extends State<LoginSignUp>
             const SizedBox(height: 16),
             CBTextField(
               hintText: "Password",
-              obscureText: _obscureText,
-              showEye: true,
-              showPassword: () {
-                setState(() {
-                  _obscureText = !_obscureText;
-                });
-              },
+              isPassword: true,
               onChanged: (v) => setState(() {
                 _password = v;
               }),

@@ -28,8 +28,6 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
 
   final LoginController _controller = Get.put(LoginController());
 
-  bool _obscureText = true;
-
   bool _isRegistered = false;
 
   String _email = "";
@@ -67,7 +65,7 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
               },
             );
           } else {
-            Get.toNamed('login/signup');
+            Get.toNamed('/login/sign-up');
           }
         });
       } catch (err) {
@@ -137,14 +135,8 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
                       padding: const EdgeInsets.only(top: 16),
                       child: CBTextField(
                         hintText: "Password",
-                        obscureText: _obscureText,
                         focusNode: _passwordFocusNode,
-                        showEye: true,
-                        showPassword: () {
-                          setState(() {
-                            _obscureText = !_obscureText;
-                          });
-                        },
+                        isPassword: true,
                         onChanged: (v) => setState(() {
                           _password = v;
                         }),
