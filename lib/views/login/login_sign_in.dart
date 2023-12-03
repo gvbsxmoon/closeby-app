@@ -10,6 +10,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/mixins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class LoginSignIn extends StatefulWidget {
@@ -131,24 +132,23 @@ class _LoginSignInState extends State<LoginSignIn> with FormValidator {
                 secondChild: Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 16),
-                      child: CBTextField(
-                        hintText: "Password",
-                        focusNode: _passwordFocusNode,
-                        isPassword: true,
-                        onChanged: (v) => setState(() {
-                          _password = v;
-                        }),
-                        inputFormatters: [
-                          FilteringTextInputFormatter.deny(
-                            RegExp(r'\s'),
-                          ),
-                        ],
-                      ),
+                    const Gap(16),
+                    CBTextField(
+                      hintText: "Password",
+                      focusNode: _passwordFocusNode,
+                      isPassword: true,
+                      onChanged: (v) => setState(() {
+                        _password = v;
+                      }),
+                      inputFormatters: [
+                        FilteringTextInputFormatter.deny(
+                          RegExp(r'\s'),
+                        ),
+                      ],
                     ),
+                    const Gap(16),
                     Padding(
-                      padding: const EdgeInsets.only(top: 16, right: 4),
+                      padding: const EdgeInsets.only(right: 4),
                       child: CBTextButton(
                         onPressed: () {},
                         label: 'forgot_password'.tr,

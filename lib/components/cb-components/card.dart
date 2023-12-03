@@ -2,6 +2,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class CBCard extends StatefulWidget {
   const CBCard({
@@ -52,7 +53,7 @@ class _CBCardState extends State<CBCard> {
             ),
           ),
         ),
-        const SizedBox(height: 8),
+        const Gap(8),
         Padding(
           padding: const EdgeInsets.only(left: 2.0),
           child: Text(

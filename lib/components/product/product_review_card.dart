@@ -3,6 +3,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 
 class ProductReviewCard extends StatelessWidget {
   const ProductReviewCard({
@@ -36,7 +37,7 @@ class ProductReviewCard extends StatelessWidget {
             testDescription: testDescription,
             limit: 120,
           ),
-          const SizedBox(height: 24),
+          const Gap(24),
           Row(
             children: [
               ClipOval(
@@ -47,9 +48,7 @@ class ProductReviewCard extends StatelessWidget {
                   fit: BoxFit.cover,
                 ),
               ),
-              const SizedBox(
-                width: 16,
-              ),
+              const Gap(16),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [

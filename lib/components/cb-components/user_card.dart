@@ -4,6 +4,7 @@ import 'package:closeby/utils/shadow.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 
 class CBUserCard extends StatelessWidget {
   const CBUserCard({
@@ -57,9 +58,7 @@ class CBUserCard extends StatelessWidget {
                     )
                   ],
                 ),
-                const SizedBox(
-                  height: 8,
-                ),
+                const Gap(8),
                 Text(
                   "Luca",
                   style: AppFonts.figtree(

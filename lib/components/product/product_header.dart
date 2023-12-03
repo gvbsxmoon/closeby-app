@@ -3,6 +3,7 @@ import 'package:closeby/components/test_carousel.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:get/route_manager.dart';
 
 class ProductHeader extends StatelessWidget {
@@ -34,7 +35,7 @@ class ProductHeader extends StatelessWidget {
                   onTap: () {},
                   icon: FontAwesomeIcons.arrowUpFromBracket,
                 ),
-                const SizedBox(width: 16),
+                const Gap(16),
                 CBRoundedButton(
                   onTap: () {},
                   icon: FontAwesomeIcons.heart,

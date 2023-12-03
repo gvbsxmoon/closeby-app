@@ -3,6 +3,7 @@ import 'package:closeby/utils/colors.dart';
 import 'package:closeby/utils/fonts.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 
 class Header extends StatelessWidget {
   const Header({
@@ -22,7 +23,7 @@ class Header extends StatelessWidget {
                 "assets/logo.svg",
                 height: 24,
               ),
-              const SizedBox(width: 8),
+              const Gap(8),
               RichText(
                 text: TextSpan(
                   children: [

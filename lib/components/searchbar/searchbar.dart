@@ -21,7 +21,7 @@ class Searchbar extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 24, vertical: 16),
           child: Container(
             padding:
-                const EdgeInsets.only(left: 16, right: 10, bottom: 0, top: 0),
+                const EdgeInsets.only(left: 16, right: 10),
             alignment: Alignment.center,
             width: MediaQuery.of(context).size.width,
             height: 56,

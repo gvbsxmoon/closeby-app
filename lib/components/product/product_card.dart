@@ -5,6 +5,7 @@ import 'package:closeby/utils/shadow.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class ProductCard extends StatelessWidget {
@@ -56,7 +57,7 @@ class ProductCard extends StatelessWidget {
             ],
           ),
         ),
-        const SizedBox(height: 12),
+        const Gap(12),
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
@@ -69,7 +70,7 @@ class ProductCard extends StatelessWidget {
               children: [
                 Icon(FontAwesomeIcons.solidStar,
                     size: 10, color: AppColor.primaryBlack),
-                const SizedBox(width: 4),
+                const Gap(4),
                 Text(
                   "4.96",
                   style: AppFonts.figtree(fontWeight: FontWeight.w400),
@@ -78,13 +79,13 @@ class ProductCard extends StatelessWidget {
             )
           ],
         ),
-        const SizedBox(height: 4),
+        const Gap(4),
         Text(
           "Garage",
           style: AppFonts.figtree(
               fontWeight: FontWeight.w400, color: AppColor.secondaryBlack),
         ),
-        const SizedBox(height: 4),
+        const Gap(4),
         RichText(
           text: TextSpan(
             children: [

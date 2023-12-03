@@ -11,6 +11,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:closeby/utils/mixins.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class LoginSignUp extends StatefulWidget {
@@ -93,7 +94,7 @@ class _LoginSignUpState extends State<LoginSignUp>
               ),
               validator: (v) => validateString(v, 'name'.tr),
             ),
-            const SizedBox(height: 16),
+            const Gap(16),
             CBTextField(
               hintText: 'surname'.tr,
               onChanged: (v) => setState(() {
@@ -120,7 +121,7 @@ class _LoginSignUpState extends State<LoginSignUp>
               validator: (v) => validateEmail(v),
               keyboardType: TextInputType.emailAddress,
             ),
-            const SizedBox(height: 16),
+            const Gap(16),
             CBTextField(
               hintText: "Password",
               isPassword: true,

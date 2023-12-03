@@ -4,6 +4,7 @@ import 'package:closeby/utils/fonts.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:closeby/utils/colors.dart';
 import 'package:flutter/material.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class Navbar extends StatelessWidget {
@@ -75,16 +76,14 @@ class NavbarItem extends StatelessWidget {
       onTap: () => _controller.navigate(route: route),
       child: Column(
         children: [
-          Padding(
-            padding: const EdgeInsets.only(bottom: 8.0),
-            child: Icon(
-              icon,
-              size: 18,
-              color: _controller.model.route == route
-                  ? AppColor.rebeccaPurple
-                  : AppColor.darkGrey,
-            ),
+          Icon(
+            icon,
+            size: 18,
+            color: _controller.model.route == route
+                ? AppColor.rebeccaPurple
+                : AppColor.darkGrey,
           ),
+          const Gap(8),
           Text(
             label,
             style: AppFonts.figtree(

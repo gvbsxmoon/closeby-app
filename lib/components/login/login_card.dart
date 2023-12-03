@@ -4,6 +4,7 @@ import 'package:closeby/utils/shadow.dart';
 import 'package:figma_squircle/figma_squircle.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class LoginCard extends StatelessWidget {
@@ -29,7 +30,7 @@ class LoginCard extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text('profile_card_title'.tr, style: AppFonts.figtree()),
-            const SizedBox(height: 4),
+            const Gap(4),
             Text(
               'profile_card_desc1'.tr,
               style: AppFonts.figtree(

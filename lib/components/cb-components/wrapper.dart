@@ -2,6 +2,7 @@ import "package:closeby/components/cb-navigation/navbar.dart";
 import "package:closeby/utils/colors.dart";
 import "package:closeby/utils/fonts.dart";
 import "package:flutter/material.dart";
+import "package:gap/gap.dart";
 
 class CBWrapper extends StatelessWidget {
   const CBWrapper(
@@ -46,7 +47,7 @@ class CBWrapper extends StatelessWidget {
                       title!,
                       style: AppFonts.figtree(fontSize: 28),
                     ),
-                    rightAppbarAction ?? const SizedBox(),
+                    rightAppbarAction ?? const Gap(0),
                   ],
                 ),
               ),

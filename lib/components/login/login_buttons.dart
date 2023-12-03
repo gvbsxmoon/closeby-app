@@ -1,6 +1,7 @@
 import 'package:closeby/components/cb-components/button.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 import 'package:get/get.dart';
 
 class LoginSignServiceButtons extends StatelessWidget {
@@ -18,14 +19,14 @@ class LoginSignServiceButtons extends StatelessWidget {
             icon: FontAwesomeIcons.apple,
             label: "apple_button".tr,
             onTap: () {}),
-        const SizedBox(height: 16),
+        const Gap(16),
         CBButton(
             expanded: true,
             outlined: true,
             icon: FontAwesomeIcons.google,
             label: "google_button".tr,
             onTap: () {}),
-        const SizedBox(height: 16),
+        const Gap(16),
         CBButton(
           expanded: true,
           outlined: true,

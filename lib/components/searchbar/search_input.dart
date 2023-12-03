@@ -13,6 +13,7 @@ import 'package:closeby/components/cb-components/rounded_button.dart';
 import 'package:closeby/components/searchbar/search_date_section.dart';
 import 'package:closeby/components/searchbar/search_section.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:gap/gap.dart';
 
 import 'package:get/get.dart';
 
@@ -147,9 +148,7 @@ class _SearchInputState extends State<SearchInput>
                 ),
               ),
             ),
-            const SizedBox(
-              height: 16,
-            ),
+            const Gap(16),
             SearchSection(
               isExpanded: controller.model.isGoodExpanded,
               title: 'what'.tr,
