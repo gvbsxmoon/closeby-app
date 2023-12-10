@@ -1,3 +1,4 @@
+import "package:closeby/components/cb-components/text_button.dart";
 import "package:closeby/components/cb-components/wrapper.dart";
 import "package:closeby/model/observable/login_model.dart";
 import 'package:closeby/views/favorites/favorites_guest.dart';
@@ -13,6 +14,10 @@ class Favorites extends StatelessWidget {
     return CBWrapper(
       margin: true,
       title: 'favorites'.tr,
+      rightAppbarAction: CBTextButton(
+        label: 'edit'.tr,
+        onPressed: () {},
+      ),
       subtitle: LoginModel().isLogged ? null : 'favorites_sub'.tr,
       child: LoginModel().isLogged ? FavoritesLogged() : FavoritesGuest(),
     );

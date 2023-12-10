@@ -6,19 +6,19 @@ class CBRoundedButton extends StatelessWidget {
     super.key,
     required this.onTap,
     required this.icon,
-    this.leftMargin = false,
+    this.margin,
   });
 
   final Function() onTap;
   final IconData icon;
-  final bool leftMargin;
+  final EdgeInsets? margin;
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        margin: leftMargin ? const EdgeInsets.only(left: 24) : null,
+        margin: margin,
         width: 36,
         height: 36,
         decoration: BoxDecoration(

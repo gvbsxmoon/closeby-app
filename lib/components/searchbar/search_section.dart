@@ -64,10 +64,10 @@ class SearchSection extends StatelessWidget {
                   ],
                 ),
               ),
-              AnimatedSize(
+               AnimatedSize(
                 duration: const Duration(milliseconds: 300),
                 curve: Curves.easeInOut,
-                child: isExpanded ? const Gap(24) : const Gap(0),
+                child: isExpanded ? const SizedBox(height: 24) : const SizedBox(),
               ),
               if (isExpanded)
                 AnimatedCrossFade(

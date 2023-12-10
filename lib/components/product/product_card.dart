@@ -83,7 +83,9 @@ class ProductCard extends StatelessWidget {
         Text(
           "Garage",
           style: AppFonts.figtree(
-              fontWeight: FontWeight.w400, color: AppColor.secondaryBlack),
+            fontWeight: FontWeight.w400,
+            color: AppColor.secondaryBlack,
+          ),
         ),
         const Gap(4),
         RichText(

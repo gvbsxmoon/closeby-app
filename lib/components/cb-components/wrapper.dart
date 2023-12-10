@@ -5,15 +5,16 @@ import "package:flutter/material.dart";
 import "package:gap/gap.dart";
 
 class CBWrapper extends StatelessWidget {
-  const CBWrapper(
-      {super.key,
-      this.margin = false,
-      this.header,
-      this.title,
-      this.subtitle,
-      required this.child,
-      this.footer,
-      this.rightAppbarAction});
+  const CBWrapper({
+    super.key,
+    this.margin = false,
+    this.header,
+    this.title,
+    this.subtitle,
+    required this.child,
+    this.footer,
+    this.rightAppbarAction,
+  });
 
   final bool margin;
   final Widget? header;

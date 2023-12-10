@@ -3,6 +3,7 @@ Map<String, String> languageEN = {
   'explore': 'Explore',
   'favorites': 'Favorites',
   'profile': 'Profile',
+  'messages': 'Messages',
 
   // searchabar
   'anything': 'Anything',

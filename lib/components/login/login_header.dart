@@ -19,7 +19,7 @@ class LoginHeader extends StatelessWidget {
           ),
         ),
         CBRoundedButton(
-          leftMargin: true,
+          margin: const EdgeInsets.only(left: 24),
           onTap: () => Get.back(),
           icon: FontAwesomeIcons.chevronLeft,
         )

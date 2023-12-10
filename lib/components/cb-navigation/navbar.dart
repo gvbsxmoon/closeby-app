@@ -37,17 +37,17 @@ class Navbar extends StatelessWidget {
                 label: 'favorites'.tr,
                 route: '/favorites',
               ),
-              LoginModel().isLogged
-                  ? NavbarItem(
-                      icon: FontAwesomeIcons.circleUser,
-                      label: 'profile'.tr,
-                      route: '/profile',
-                    )
-                  : NavbarItem(
-                      icon: FontAwesomeIcons.circleUser,
-                      label: 'login'.tr,
-                      route: '/login',
-                    ),
+              NavbarItem(
+                icon: FontAwesomeIcons.message,
+                label: 'messages'.tr,
+                route: '/',
+                disabled: true,
+              ),
+              NavbarItem(
+                icon: FontAwesomeIcons.circleUser,
+                label: LoginModel().isLogged ? 'profile'.tr : 'login'.tr,
+                route: LoginModel().isLogged ? '/profile' : '/login',
+              ),
             ],
           ),
         ),
@@ -62,18 +62,20 @@ class NavbarItem extends StatelessWidget {
     required this.icon,
     required this.label,
     required this.route,
+    this.disabled = false,
   });
 
   final IconData icon;
   final String label;
   final String route;
+  final bool disabled;
 
   final NavigationController _controller = Get.put(NavigationController());
 
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () => _controller.navigate(route: route),
+      onTap: () => disabled ? null : _controller.navigate(route: route),
       child: Column(
         children: [
           Icon(

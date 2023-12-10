@@ -59,7 +59,6 @@ class _CBTextFieldState extends State<CBTextField> {
         suffixIcon: widget.isPassword
             ? GestureDetector(
                 onTap: () {
-                  print(_obscureText);
                   setState(() {
                     _obscureText = !_obscureText;
                   });
