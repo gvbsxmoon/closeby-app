@@ -12,28 +12,30 @@ class LoginController extends GetxController {
       Get.put(NavigationController());
 
   Future<bool> checkEmail(String email) async {
-    try {
-      final res = await _service.invoke(path: '/auth/check/$email');
-      model.email = email;
-
-      return res.statusCode == 409;
-    } catch (err) {
-      throw Exception('CHECK_EMAIL: $err');
-    }
+    model.email = email;
+    return true;
+//     try {
+//       final res = await _service.invoke(path: '/auth/check/$email');
+//       model.email = email;
+//
+//       return res.statusCode == 409;
+//     } catch (err) {
+//       throw Exception('CHECK_EMAIL: $err');
+//     }
   }
 
   Future<void> signIn(String email, String password) async {
     try {
-      final response = await _service.invoke(
-        path: '/auth/signin',
-        method: HTTPMethod.post,
-        body: <String, dynamic>{'email': email, 'password': password},
-      );
-
-      Token().setToken(response.body);
+//       final response = await _service.invoke(
+//         path: '/auth/signin',
+//         method: HTTPMethod.post,
+//         body: <String, dynamic>{'email': email, 'password': password},
+//       );
+//
+//       Token().setToken(response.body);
 
       model.isLogged = true;
-      
+
       _navigationController.navigate(
         route: '/explore',
         cleanHistory: true,
